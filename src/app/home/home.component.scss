@@ -1,9 +1,19 @@
 @import "../scss_mixins";
+@font-face {
+  font-family: 'AmazonEmber';
+  src: url("../amazonEmber/AmazonEmber_Md.ttf") format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 30px 20px;
+}
 header {
+  height: 100px;
   ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     text-align: center;
     li {
       padding: 30px 20px;
@@ -19,7 +29,7 @@ header {
       color: #3a3a3a;
     }
     .sub-heading {
-      font-family: "Roboto", serif;
+      font-family: "AmazonEmber", serif;
       font-size: 14px;
       font-weight: 500;
       font-stretch: normal;
@@ -54,5 +64,8 @@ header {
         padding: 10px 7px;
       }
     }
+  }
+  @include tablet {
+    height: 100%;
   }
 }
