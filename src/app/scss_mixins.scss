@@ -16,3 +16,5 @@ $mobile-width: 420px;
     @content;
   }
 }
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   constructor() { }
+  foods: string[] = ['one', 'two', 'three'];
+  selected = 'option2';
   ngOnInit(): void {
   }
 }
