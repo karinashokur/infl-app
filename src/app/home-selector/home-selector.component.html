@@ -1,0 +1,19 @@
+<div class="main">
+  <div>
+    <span>I'M A</span>
+<ng-select [items]="simpleItems1"
+           [searchable]=false
+           [(ngModel)]="selectedSimpleItem1">
+</ng-select>
+  </div>
+<div>
+  <span>CATEGORY</span>
+<ng-select [items]="simpleItems2"
+           [searchable]=false
+           [(ngModel)]="selectedSimpleItem2">
+</ng-select>
+</div>
+<button>
+  SEARCH
+</button>
+</div>
