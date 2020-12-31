@@ -1,0 +1,49 @@
+<div class="outer">
+  <div class="heading">
+    CLOUTVOCATE
+  </div>
+  <div class="questionnaire">
+  <div class="split left">
+    <img src="assets/images/BlueBackground.png">
+    <div class="text-on-image">
+      <div class="step">
+        Step 1
+      </div>
+       <div class="big-text">
+         We’ll start by getting to know a bit about you to help guide your experience
+       </div>
+      <div class="small-text">
+        The following questions will help us understand who we can match you with based on similar goals and interests
+      </div>
+    </div>
+  </div>
+  <div class=" split right">
+    <form (ngSubmit)="onSubmit()">
+      <div class="container">
+        <label for="eaddress"><b>What’s your first name?</b></label>
+        <input formControlName="" type="text" placeholder="First Name" name="eaddress" required>
+        <label for="psw"><b>What’s your last name?</b></label>
+        <input formControlName="" type="text" placeholder="Last Name" name="psw" required>
+        <div class="select-option-text">
+          Select the option that best describes you
+        </div>
+        <div class="select-option">
+          <label class="container">I’m a content creator
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">I represent a nonprofit organization
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">I represent a corporation
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="outer">
+  <div class="heading">
+    CLOUTVOCATE
+  </div>
+  <div class="questionnaire">
+    <div class="split left">
+      <img src="assets/images/YellowBackground.png">
+      <div class="text-on-image">
+        <div class="step">
+          Step 2
+        </div>
+        <div class="big-text">
+          {{currentProfile.heading}}
+        </div>
+        <div class="small-text">
+          {{currentProfile.subheading}}
+        </div>
+      </div>
+    </div>
+    <div class=" split right">
+      <form (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="select-option-text">
+            Select the option that best describes you
+          </div>
+          <div class="select-option">
+            <label *ngFor="let option of options" class="container">
+              {{option}}
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

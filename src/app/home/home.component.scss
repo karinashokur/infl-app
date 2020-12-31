@@ -1,8 +1,4 @@
 @import "../scss_mixins";
-@font-face {
-  font-family: 'AmazonEmber';
-  src: url("../../assets/fonts/AmazonEmber_Md.ttf") format('truetype');
-}
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +25,7 @@ header {
       color: #3a3a3a;
     }
     .sub-heading {
-      font-family: "AmazonEmber", serif;
+      font-family: "Roboto", serif;
       font-size: 14px;
       font-weight: 500;
       font-stretch: normal;
@@ -81,7 +77,7 @@ header {
     display: flex;
     flex-direction: column;
   .heading {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 36px;
       font-weight: bold;
       font-stretch: normal;
@@ -91,7 +87,7 @@ header {
       color: #3a3a3a;
     }
     .text {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 14px;
       font-weight: normal;
       font-stretch: normal;
@@ -133,7 +129,7 @@ header {
     display: flex;
     flex-direction: column;
     .section-name {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 14px;
       font-weight: bold;
       font-stretch: normal;
@@ -143,7 +139,7 @@ header {
       color: #0099d9;
     }
     .heading {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 24px;
       font-weight: bold;
       font-stretch: normal;
@@ -153,7 +149,7 @@ header {
       color: #3a3a3a;
     }
     .text {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 14px;
       font-weight: normal;
       font-stretch: normal;
@@ -189,7 +185,7 @@ header {
     text-align: center;
     padding: 50px;
     .bluetext {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 14px;
       font-weight: bold;
       font-stretch: normal;
@@ -199,7 +195,7 @@ header {
       color: #0099d9;
     }
     .heading {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 24px;
       font-weight: bold;
       font-stretch: normal;
@@ -213,7 +209,7 @@ header {
       margin-top: 40px;
     }
     .subtext {
-      font-family: AmazonEmber;
+      font-family: Roboto;
       font-size: 14px;
       font-weight: normal;
       font-stretch: normal;
@@ -241,7 +237,7 @@ header {
       flex-direction: column;
       justify-content: space-evenly;
       .number {
-        font-family: AmazonEmber;
+        font-family: Roboto;
         font-size: 64px;
         font-weight: bold;
         font-stretch: normal;
@@ -251,7 +247,7 @@ header {
         color: #0099d9;
       }
       .card-text {
-        font-family: AmazonEmber;
+        font-family: Roboto;
         font-size: 14px;
         font-weight: normal;
         font-stretch: normal;
@@ -280,7 +276,7 @@ header {
 .section4 {
   text-align: center;
   .bluetext {
-    font-family: AmazonEmber;
+    font-family: Roboto;
     font-size: 14px;
     font-weight: bold;
     font-stretch: normal;
@@ -290,7 +286,7 @@ header {
     color: #0099d9;
   }
   .heading {
-    font-family: AmazonEmber;
+    font-family: Roboto;
     font-size: 24px;
     font-weight: bold;
     font-stretch: normal;
@@ -314,7 +310,7 @@ header {
         width: 75px;
       }
       .card-heading {
-        font-family: AmazonEmber;
+        font-family: Roboto;
         font-size: 18px;
         font-weight: bold;
         font-stretch: normal;
@@ -324,7 +320,7 @@ header {
         color: #3a3a3a;
       }
       .card-text {
-        font-family: AmazonEmber;
+        font-family: Roboto;
         font-size: 14px;
         font-weight: normal;
         font-stretch: normal;
@@ -335,4 +331,65 @@ header {
       }
     }
   }
+}
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 50px 30px;
+  * {
+    list-style-type: none;
+  }
+  div {
+    padding: 10px 30px;
+  }
+  .big-heading {
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2.6px;
+    color: var(--black);
+    margin-bottom: 50px;
+  }
+  .list-icons {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      li {
+        font-size: 25px;
+      }
+    }
+  }
+  .heading {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--black);
+    margin-bottom: 50px;
+  }
+  .list-items {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--black);
+    ul {
+      li {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+.copyright {
+  text-align: center;
 }

@@ -1,0 +1,32 @@
+<div class="outer">
+  <div class="heading">
+    CLOUTVOCATE
+  </div>
+  <div class="register-component">
+    <div class="welcome-heading">
+      Welcome to Cloutvocate!
+    </div>
+    <div class="welcome-subheading">
+      Create an account to get started
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="container">
+        <label for="eaddress"><b>Email Address</b></label>
+        <input formControlName="emailAddress" type="text" placeholder="Email Address" name="eaddress" required>
+        <label for="psw"><b>Password</b></label>
+        <input formControlName="password" type="password" placeholder="Password" name="psw" required>
+          <label for="cpsw"><b>Confirm Password</b></label>
+          <input formControlName="confirmPassword" type="password" placeholder="Password" name="cpsw" required>
+        <div class="error"
+             *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+          <div class="terms">
+            By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </div>
+        <button type="submit" routerLink="/register/onboardinga">Sign Up</button>
+        <div class="signup-text">
+          Already have an accout?  <a routerLink="/login">Sign in</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

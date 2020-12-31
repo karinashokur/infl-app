@@ -1,0 +1,29 @@
+<div class="outer">
+<div class="heading">
+  CLOUTVOCATE
+</div>
+  <div class="login-component">
+    <div class="welcome-heading">
+      Welcome Back
+    </div>
+    <div class="welcome-subheading">
+      Please sign in to continue to the platform
+    </div>
+    <form [formGroup]='loginForm' (ngSubmit)="onSubmit()">
+      <div class="container">
+        <label for="eaddress"><b>Email Address</b></label>
+        <input formControlName="emailAddress" type="text" placeholder="Email Address" name="eaddress" required>
+        <label for="psw"><b>Password</b></label>
+        <input formControlName="password" type="password" placeholder="Enter Password" name="psw" required>
+        <label>
+          <input formControlName="rememberMe" [checked]=true type="checkbox" name="remember"> Keep me signed in
+        </label>
+        <a href="#" class="forgot-password">Forgot your password?</a>
+        <button type="submit">Sign In</button>
+        <div class="signup-text">
+          Don’t have an account? <a routerLink="/register">Sign up</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
