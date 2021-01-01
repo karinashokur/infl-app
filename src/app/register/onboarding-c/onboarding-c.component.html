@@ -1,1 +1,90 @@
-<p>onboarding-c works!</p>
+<div class="outer">
+    <div class="heading">
+      CLOUTVOCATE
+    </div>
+    <div class="questionnaire">
+    <div class="split left">
+      <img src="assets/images/BlueBackground.png">
+      <div class="text-on-image">
+        <div class="step">
+          Step 3
+        </div>
+         <div class="big-text">
+           Help us understand the types of nonprofit organizations you hope to partner with
+         </div>
+        <div class="small-text">
+          To make sure we match you with the perfect partners we need to understand which categories are of interest to you
+        </div>
+      </div>
+    </div>
+    <div class=" split right">
+      <form (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="select-option-text">
+            Please select the type of nonprofit organizations you would be interested in being matched with
+          </div>
+          <div class="select-option">
+            <label class="container">Animals
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Arts,Culture,Humanities
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Community Development
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Education
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Environment
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Health
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Human & Civil Rights
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Human Services
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">International
+                  <input type="radio" checked="checked" name="radio">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Religion
+                  <input type="radio" checked="checked" name="radio">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container">Research & Public Policy
+                 <input type="radio" checked="checked" name="radio">
+                  <span class="checkmark"></span>
+                </label>
+          </div>
+          <div class="select-option-text">
+            For content created in partnership with a nonprofit organization, please tell us if you would be interested in donating a percentage of revenue back to the cause?
+          </div>
+          <div class="select-option">
+            <label class="container">Yes
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">No
+              <input type="radio" checked="checked" name="radio">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
