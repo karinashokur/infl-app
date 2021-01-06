@@ -18,15 +18,15 @@
       </div>
     </div>
     <div class=" split right">
-      <form (ngSubmit)="onSubmit()">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="container">
           <div class="select-option-text">
             Select the option that best describes you
           </div>
           <div class="select-option">
-            <label *ngFor="let option of options" class="container">
+            <label *ngFor="let option of options; let i = index" class="container">
               {{option}}
-              <input type="radio" checked="checked" name="radio">
+              <input type="checkbox" name="radio" value="{{i+1}}" (change)="onCheckChange($event)" formGroupName="selectedOptions">
               <span class="checkmark"></span>
             </label>
           </div>

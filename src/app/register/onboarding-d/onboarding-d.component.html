@@ -1,1 +1,38 @@
-<p>onboarding-d works!</p>
+<div class="outer">
+  <div class="heading">
+    CLOUTVOCATE
+  </div>
+  <div class="questionnaire">
+    <div class="split left">
+      <img src="assets/images/BlackBackground.png">
+      <div class="text-on-image">
+        <div class="step">
+          Step 2
+        </div>
+        <div class="big-text">
+          To understand your position on sponsorship, we have one final question about compensation
+        </div>
+        <div class="small-text">
+          Keep in mind that a large company doesn’t always equal a large budget. This will help us match you with a range of sponsors best suited to your needs
+        </div>
+      </div>
+    </div>
+    <div class=" split right">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="container">
+          <div class="select-option-text">
+            Select the option that best describes you
+          </div>
+          <div class="select-option">
+            <label *ngFor="let option of options; let i = index" class="container">
+              {{option}}
+              <input type="radio" name="range" value="{{i+1}}" formControlName="range">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

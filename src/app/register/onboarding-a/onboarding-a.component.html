@@ -18,26 +18,26 @@
     </div>
   </div>
   <div class=" split right">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
       <div class="container">
         <label for="eaddress"><b>What’s your first name?</b></label>
-        <input formControlName="" type="text" placeholder="First Name" name="eaddress" required>
+        <input formControlName="firstName" type="text" placeholder="First Name" name="eaddress" required>
         <label for="psw"><b>What’s your last name?</b></label>
-        <input formControlName="" type="text" placeholder="Last Name" name="psw" required>
+        <input formControlName="lastName" type="text" placeholder="Last Name" name="psw" required>
         <div class="select-option-text">
           Select the option that best describes you
         </div>
         <div class="select-option">
           <label class="container">I’m a content creator
-            <input type="radio" checked="checked" name="radio">
+            <input type="radio" checked="checked" name="option" value=1 formControlName="option">
             <span class="checkmark"></span>
           </label>
           <label class="container">I represent a nonprofit organization
-            <input type="radio" checked="checked" name="radio">
+            <input type="radio" name="option" value=2 formControlName="option">
             <span class="checkmark"></span>
           </label>
           <label class="container">I represent a corporation
-            <input type="radio" checked="checked" name="radio">
+            <input type="radio" name="option" value=3 formControlName="option">
             <span class="checkmark"></span>
           </label>
         </div>

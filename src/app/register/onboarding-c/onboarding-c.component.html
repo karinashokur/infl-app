@@ -1,1 +1,88 @@
-<p>onboarding-c works!</p>
+<div class="outer">
+  <div class="heading">
+    CLOUTVOCATE
+  </div>
+  <div class="questionnaire">
+    <div class="split left">
+      <img src="assets/images/GreenBackground.png">
+      <div class="text-on-image">
+        <div class="step">
+          Step 3
+        </div>
+        <div class="big-text">
+          {{currentProfile.heading}}
+        </div>
+        <div class="small-text">
+          {{currentProfile.subheading}}
+        </div>
+      </div>
+    </div>
+    <div class=" split right">
+      <form [formGroup]="formInfluencer" (ngSubmit)="submitInfluencer()" *ngIf="currentProfile == profiles.influencer">
+        <div class="container">
+          <div class="select-option-text">
+            Select the option that best describes you
+          </div>
+          <div class="select-option">
+            <label *ngFor="let option of options; let i = index" class="container">
+              {{option}}
+              <input type="checkbox" value="{{i+1}}" name="selectedDescription" formGroupName="selectedDescription" (change)="onCheckChange($event, formInfluencer)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="select-option-text">
+            For content created in partnership with a nonprofit organization, please tell us if you would you be interested
+            in donating a percentage of revenue back to the cause?
+          </div>
+          <div class="select-option-2">
+          <label class="container">
+            Yes
+            <input type="radio" checked="checked" value="yes"  formControlName="partnershipWithNonProfit">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            No
+            <input type="radio" value="no" formControlName="partnershipWithNonProfit">
+            <span class="checkmark"></span>
+          </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+      <form (ngSubmit)="submitNonProfit()" [formGroup]="formNonProfit" *ngIf="currentProfile == profiles.nonProfit">
+        <div class="container">
+          <label for="name"><b>What’s your first name?</b></label>
+          <input type="text" placeholder="Name" name="name" formControlName="name" required>
+          <div class="select-option-text">
+            Please select the category your organization represents
+          </div>
+          <div class="select-option">
+            <label *ngFor="let option of options; let i = index" class="container">
+              {{option}}
+              <input value="{{i+1}}" type="checkbox" name="selectedDescription" formArrayName="selectedDescription" (change)="onCheckChange($event, formNonProfit)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+      <form [formGroup]="formCorporateSponsor" (ngSubmit)="submitCorporateSponsor()" *ngIf="currentProfile == profiles.corporateSponsor">
+        <div class="container">
+          <label for="name"><b>What is the name of your company?</b></label>
+          <input  type="text" placeholder="Name" name="name" formControlName="name" required>
+          <div class="select-option-text">
+            Please select the type of nonprofit organizations you would be interested in being matched with
+          </div>
+          <div class="select-option">
+            <label *ngFor="let option of options; let i = index" class="container">
+              {{option}}
+              <input value="{{i+1}}" type="checkbox" name="selectedDescription" formArrayName="selectedDescription" (change)="onCheckChange($event, formCorporateSponsor)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button type="submit">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

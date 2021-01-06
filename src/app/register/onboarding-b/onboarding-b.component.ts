@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterServiceService} from '../register-service.service';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-onboarding-b',
   templateUrl: './onboarding-b.component.html',
   styleUrls: ['./onboarding-b.component.scss']
 })
 export class OnboardingBComponent implements OnInit {
-  constructor() { }
+  constructor(private registerServiceService: RegisterServiceService,
+              private formBuilder: FormBuilder) {
+    if (this.registerServiceService.questionnaireA.option === '1') {
+      this.currentProfile = this.profiles.influencer;
+    } else if (this.registerServiceService.questionnaireA.option === '2') {
+      this.currentProfile = this.profiles.nonProfit;
+    } else {
+      this.currentProfile = this.profiles.corporateSponsor;
+    }
+  }
+  currentProfile;
   profiles = {
     influencer: {
       heading: 'Now we’ll focus on your work as a content creator!',
@@ -30,7 +42,28 @@ export class OnboardingBComponent implements OnInit {
     'Film & Animation', 'Food & Beverage', 'Gaming', 'Health & Fitness', 'How To',
     'Music', 'News & Politics', 'Nonprofit & Activism', 'People & Blogs', 'Pets & Animals',
     'Science & Technology', 'Self Care & Beauty', 'Sports', 'Travel & Events'];
-  currentProfile = this.profiles.corporateSponsor;
+  form = this.formBuilder.group({
+    selectedOptions: new FormArray([])
+  });
+  onCheckChange(event) {
+    const formArray: FormArray = this.form.get('selectedOptions') as FormArray;
+    if (event.target.checked) {
+      formArray.push(new FormControl(event.target.value));
+    } else {
+      let i = 0;
+      formArray.controls.forEach((ctrl: FormControl) => {
+        if (ctrl.value === event.target.value) {
+          formArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
   ngOnInit(): void {
+  }
+  onSubmit() {
+    console.log(this.form.value.selectedOptions);
+    this.registerServiceService.setQuestionnaireB(this.form.value.selectedOptions);
   }
 }

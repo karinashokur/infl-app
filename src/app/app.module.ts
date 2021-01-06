@@ -20,6 +20,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OnboardingBComponent } from './register/onboarding-b/onboarding-b.component';
 import { OnboardingCComponent } from './register/onboarding-c/onboarding-c.component';
 import { OnboardingDComponent } from './register/onboarding-d/onboarding-d.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { OnboardingDComponent } from './register/onboarding-d/onboarding-d.compo
     OnboardingAComponent,
     OnboardingBComponent,
     OnboardingCComponent,
-    OnboardingDComponent
+    OnboardingDComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

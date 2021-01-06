@@ -7,6 +7,7 @@ import {OnboardingAComponent} from './register/onboarding-a/onboarding-a.compone
 import {OnboardingBComponent} from './register/onboarding-b/onboarding-b.component';
 import {OnboardingCComponent} from './register/onboarding-c/onboarding-c.component';
 import {OnboardingDComponent} from './register/onboarding-d/onboarding-d.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : 'register/onboardingb', component: OnboardingBComponent},
   {path : 'register/onboardingc', component: OnboardingCComponent},
   {path : 'register/onboardingd', component: OnboardingDComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
