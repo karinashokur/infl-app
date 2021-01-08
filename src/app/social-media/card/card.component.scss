@@ -1,0 +1,48 @@
+@import "../../scss_mixins";
+.card {
+  border-radius: 5px;
+  box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.08);
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+  img {
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+  }
+  .heading {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3a3a3a;
+    text-align: center;
+    margin-top: 17px;
+    margin-bottom: 28px;
+  }
+  button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
+    background-color: #0099d9;
+    border: 0;
+    color: white;
+    margin: 0 auto;
+    min-width: 100px;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    @include tablet {
+      width: 60px;
+      height: 30px;
+    }
+  }
+}

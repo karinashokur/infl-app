@@ -78,6 +78,7 @@ export class RegisterServiceService {
     this.questionnaireD = new QuestionnareDInfluencer(compensationRange);
     this.submitQuestionnaireInfluencer();
     this.updateHasSubmittedQuestionnaireAndRedirectDashboard();
+    this.router.navigate(['social']);
   }
   updateHasSubmittedQuestionnaireAndRedirectDashboard() {
     this.apollo.mutate({

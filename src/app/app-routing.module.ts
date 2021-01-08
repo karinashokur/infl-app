@@ -8,6 +8,7 @@ import {OnboardingBComponent} from './register/onboarding-b/onboarding-b.compone
 import {OnboardingCComponent} from './register/onboarding-c/onboarding-c.component';
 import {OnboardingDComponent} from './register/onboarding-d/onboarding-d.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {SocialMediaComponent} from './social-media/social-media.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path : 'register/onboardingb', component: OnboardingBComponent},
   {path : 'register/onboardingc', component: OnboardingCComponent},
   {path : 'register/onboardingd', component: OnboardingDComponent},
+  {path: 'social', component: SocialMediaComponent},
   {path: 'dashboard', component: DashboardComponent}
 ];
 @NgModule({
