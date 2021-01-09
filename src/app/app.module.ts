@@ -21,6 +21,8 @@ import { OnboardingBComponent } from './register/onboarding-b/onboarding-b.compo
 import { OnboardingCComponent } from './register/onboarding-c/onboarding-c.component';
 import { OnboardingDComponent } from './register/onboarding-d/onboarding-d.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SocialMediaComponent } from './social-media/social-media.component';
+import { CardComponent } from './social-media/card/card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     OnboardingBComponent,
     OnboardingCComponent,
     OnboardingDComponent,
-    DashboardComponent
+    DashboardComponent,
+    SocialMediaComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
