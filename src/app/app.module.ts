@@ -23,6 +23,12 @@ import { OnboardingDComponent } from './register/onboarding-d/onboarding-d.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { CardComponent } from './social-media/card/card.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+  AmazonLoginProvider,
+} from 'angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +56,23 @@ import { CardComponent } from './social-media/card/card.component';
     ReactiveFormsModule,
     GraphQLModule,
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            'clientId'
+          ),
+        },
+      ],
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

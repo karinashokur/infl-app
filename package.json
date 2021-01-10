@@ -23,6 +23,7 @@
     "@angular/router": "~9.0.7",
     "@ng-select/ng-select": "^4.0.1",
     "angular-font-awesome": "^3.1.2",
+    "angularx-social-login": "^3.2.0",
     "apollo-angular": "^1.9.1",
     "apollo-angular-link-http": "^1.10.0",
     "apollo-cache-inmemory": "^1.6.0",
