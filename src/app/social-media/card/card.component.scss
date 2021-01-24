@@ -26,8 +26,8 @@
     margin-top: 17px;
     margin-bottom: 28px;
   }
-  button {
-    width: 100px;
+  .connect-button {
+    width: 70%;
     height: 30px;
     border-radius: 5px;
     box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
@@ -35,7 +35,8 @@
     border: 0;
     color: white;
     margin: 0 auto;
-    min-width: 100px;
+    min-width: 60px;
+    padding: 3px;
     &:hover {
       cursor: pointer;
       opacity: 0.8;
