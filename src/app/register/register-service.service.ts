@@ -11,7 +11,7 @@ import {QuestionnareCNonProfit} from './questionnaire/QuestionnareCNonProfit';
 import {QuestionnareDInfluencer} from './questionnaire/QuestionnareDInfluencer';
 import {Router} from '@angular/router';
 import {REGISTER_QUERY, CREATEQUESTIONNAIRECORPORATE, CREATEQUESTIONNAIRENONPROFIT,
-  CREATEQUESTIONNAIREINFLUENCER, UPDATE_HAS_SUBMITTED_AND_USER_TYPE} from '../Apollo/queries';
+  CREATEQUESTIONNAIREINFLUENCER, UPDATEUSERHASSUBMITTEDQUESTIONNAIRE} from '../Apollo/queries';
 import {HttpHeaders} from '@angular/common/http';
 class RegisterCover {
   data: {
@@ -41,7 +41,7 @@ export class RegisterServiceService {
       this.localstorageService.storeJwtToken(data.data.register.jwt);
       this.localstorageService.storeId(data.data.register.user.id);
     });
-    await this.loginService.checkIsLoggedIn();
+    this.loginService.checkIsLoggedIn();
   }
   async registerUserUtil(email, password) {
     return await this.apollo.mutate({
@@ -82,10 +82,9 @@ export class RegisterServiceService {
   }
   updateHasSubmittedQuestionnaireAndRedirectDashboard() {
     this.apollo.mutate({
-      mutation: UPDATE_HAS_SUBMITTED_AND_USER_TYPE,
+      mutation: UPDATEUSERHASSUBMITTEDQUESTIONNAIRE,
       variables: {
-        id: this.localstorageService.getId(),
-        option: this.questionnaireA.options
+        id: this.localstorageService.getId()
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
@@ -132,7 +131,7 @@ export class RegisterServiceService {
         firstName: this.questionnaireA.firstName,
         lastName: this.questionnaireA.lastName,
         interestInDonating: this.questionnaireC.interestedInDonating,
-        rangeOfCompensation: this.questionnaireD.compensationRange,
+        rangeOfCompensation: this.questionnaireD.rangeOfCompensation,
         user: this.localstorageService.getId(),
         type_of_contents: this.questionnaireB.contentType,
         type_of_non_profit_organisations: this.questionnaireC.typeOfInterestedNonProfit

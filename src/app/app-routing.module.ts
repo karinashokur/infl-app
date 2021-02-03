@@ -18,7 +18,7 @@ const routes: Routes = [
   {path : 'register/onboardingc', component: OnboardingCComponent},
   {path : 'register/onboardingd', component: OnboardingDComponent},
   {path: 'social', component: SocialMediaComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
