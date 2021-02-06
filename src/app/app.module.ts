@@ -29,6 +29,7 @@ import {
   FacebookLoginProvider,
   AmazonLoginProvider,
 } from 'angularx-social-login';
+import {DashboardModule} from './dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import {
     GraphQLModule,
     HttpClientModule,
     MatRadioModule,
-    SocialLoginModule
+    SocialLoginModule,
+    DashboardModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
@@ -67,7 +69,7 @@ import {
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            'clientId'
+            '126404175701-bkfa3lpoo3omt5o8e261s38rq6gsslph.apps.googleusercontent.com'
           ),
         },
       ],

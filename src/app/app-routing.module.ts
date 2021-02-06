@@ -18,7 +18,7 @@ const routes: Routes = [
   {path : 'register/onboardingc', component: OnboardingCComponent},
   {path : 'register/onboardingd', component: OnboardingDComponent},
   {path: 'social', component: SocialMediaComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

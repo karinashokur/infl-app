@@ -16,7 +16,4 @@ export class CardComponent implements OnInit {
   onSubmit;
   ngOnInit(): void {
   }
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
 }

@@ -1,0 +1,21 @@
+<div *ngIf="overlay" class="side-bar-overlay">
+  <app-dashboard-sidebar></app-dashboard-sidebar>
+</div>
+<div (click)="onToggleOverlay()" class="side-nav-button"><i class="fa fa-bars" aria-hidden="true"></i></div>
+<div class="outer">
+  <div class="left heading">
+    CLOUTVOCATE
+  </div>
+  <div class="placeholder"></div>
+    <div class="notification-items">
+      <ul>
+        <li><app-notification-icon [className]="'fa fa-inbox'"></app-notification-icon></li>
+        <li><app-notification-icon [className]="'fa fa-comments-o'"></app-notification-icon></li>
+        <li><app-notification-icon [className]="'fa fa-bell'"></app-notification-icon></li>
+      </ul>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+</div>

@@ -14,7 +14,9 @@ export class DashboardComponent implements OnInit {
               private router: Router,
               private loginService: LoginService) {
   }
+  imgSrc: string;
   ngOnInit(): void {
+    this.imgSrc = 'assets/images/BlackBackground.png';
   }
   logout() {
     this.localstorageService.logout();

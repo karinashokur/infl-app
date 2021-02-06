@@ -11,28 +11,20 @@
         This process will not allow the platform to post to any profile added without your permission. We utilize key analytics to help boost the matches you’ll receive.
       </div>
       <div class="button">
-        <button>NEXT</button>
+        <button (click)="onNext()">NEXT</button>
       </div>
     </div>
     <div class="right">
       <div class="right-row">
-      <app-card [heading]="'facebook'" [imgSrc]="'assets/images/Facebook%20Logo.png'"></app-card>
+      <app-card [heading]="'facebook'" [imgSrc]="'assets/images/Facebook%20Logo.png'" ></app-card>
       <app-card [heading]="'Instagram'" [imgSrc]="'assets/images/Instagram%20Logo.png'" ></app-card>
       <app-card [heading]="'TikTok'" [imgSrc]="'assets/images/TikTok%20Logo.png'" ></app-card>
       </div>
       <div class="right-row">
       <app-card [heading]="'Snapchat'" [imgSrc]="'assets/images/Snapchat%20Logo.png'" ></app-card>
       <app-card [heading]="'Twitter'" [imgSrc]="'assets/images/Twitter%20Logo.png'" ></app-card>
-      <app-card [heading]="'Youtube'" [imgSrc]="'assets/images/YouTube%20Logo.png'" ></app-card>
+      <app-card [heading]="'Youtube'" [imgSrc]="'assets/images/YouTube%20Logo.png'" [onSubmit]="signInWithGoogle"></app-card>
       </div>
     </div>
-  </div>
-  <div *ngIf="user!= null">
-    Here :
-  <img src="{{ user.photoUrl }}">
-  <div>
-    <h4>{{ user.name }}</h4>
-    <p>{{ user.email }}</p>
-  </div>
   </div>
 </div>

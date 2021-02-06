@@ -32,7 +32,7 @@ export const LOGIN_QUERY = gql`
     }`;
 export const CREATEQUESTIONNAIRECORPORATE = gql`
       mutation($firstName: String!, $lastName: String!, $name: String!,
-      $type_of_contents: [Int], $type_of_non_profit_organisations: [Int]) {
+      $type_of_contents: [ID], $type_of_non_profit_organisations: [ID], $user: ID) {
         createQuestionnaireCorporate(input: {
           data: {
             firstName: $firstName
@@ -86,14 +86,15 @@ mutation createQuestionnaireInfluencer($firstName: String!, $lastName: String!, 
     }
   }
 }`;
-export const UPDATEUSERHASSUBMITTEDQUESTIONNAIRE = gql`
-mutation updateUser($id: ID!) {
+export const UPDATE_HAS_SUBMITTED_AND_USER_TYPE = gql`
+mutation updateUser($id: ID!, $option: ID!) {
   updateUser(input: {
     where: {
       id: $id
     }
     data : {
       hasSubmitQuestionnaire: true
+      user_type: $option
     }
   }) {
     user {
