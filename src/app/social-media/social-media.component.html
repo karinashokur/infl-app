@@ -16,13 +16,13 @@
     </div>
     <div class="right">
       <div class="right-row">
-      <app-card [heading]="'facebook'" [imgSrc]="'assets/images/Facebook%20Logo.png'" ></app-card>
+      <app-card [heading]="'facebook'" [imgSrc]="'assets/images/Facebook%20Logo.png'"></app-card>
       <app-card [heading]="'Instagram'" [imgSrc]="'assets/images/Instagram%20Logo.png'" ></app-card>
       <app-card [heading]="'TikTok'" [imgSrc]="'assets/images/TikTok%20Logo.png'" ></app-card>
       </div>
       <div class="right-row">
       <app-card [heading]="'Snapchat'" [imgSrc]="'assets/images/Snapchat%20Logo.png'" ></app-card>
-      <app-card [heading]="'Twitter'" [imgSrc]="'assets/images/Twitter%20Logo.png'" ></app-card>
+      <app-card [heading]="'Twitter'" [imgSrc]="'assets/images/Twitter%20Logo.png'" [onSubmit]="signInWithAmazon"></app-card>
       <app-card [heading]="'Youtube'" [imgSrc]="'assets/images/YouTube%20Logo.png'" [onSubmit]="signInWithGoogle"></app-card>
       </div>
     </div>

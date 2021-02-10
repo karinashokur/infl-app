@@ -25,6 +25,7 @@
     flex-direction: row;
     overflow-y: scroll;
     .side-bar {
+      flex-grow: 1;
       width: 25%;
       min-width: 200px;
       app-dashboard-sidebar {
@@ -33,6 +34,9 @@
       @include tablet {
         display: none;
       };
+    }
+    .router-outlet {
+      flex-grow: 3;
     }
     @include tablet {
       padding: 50px 50px 0;

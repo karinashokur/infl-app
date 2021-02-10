@@ -85,6 +85,15 @@ mutation createQuestionnaireInfluencer($firstName: String!, $lastName: String!, 
       id
     }
   }
+  createSocialAuthToken(input: {
+        data: {
+          questionnaire_influencer: $user
+        }
+    }) {
+    socialAuthToken{
+      id
+    }
+}
 }`;
 export const UPDATE_HAS_SUBMITTED_AND_USER_TYPE = gql`
 mutation updateUser($id: ID!, $option: ID!) {
@@ -103,3 +112,45 @@ mutation updateUser($id: ID!, $option: ID!) {
   }
 }
 `;
+export const ADDGOOGLEAUTH = gql`
+  mutation addSocialAuth ($google: String!, $id: ID!) {
+  createSocialAuthToken(input: {
+    data: {
+      google: $google
+      questionnaire_influencer: $id
+    }
+  }) {
+    socialAuthToken {
+      id
+    }
+  }
+}
+`;
+export const ADDAMAZONAUTH = gql`
+   mutation addSocialAuth ($amazon: String!, $id: ID!) {
+  createSocialAuthToken(input: {
+    data: {
+      amazon: $amazon
+      questionnaire_influencer: $id
+    }
+  }) {
+    socialAuthToken {
+      id
+    }
+  }
+}
+`;
+export const CHECKSOCIALAUTH = gql`
+      query socialAuthCheck($id: ID!) {
+        socialAuthTokensConnection (
+          where : {
+            questionnaire_influencer: $id
+          }
+        ) {
+          values {
+            google
+            amazon
+          }
+        }
+      }
+    `;

@@ -85,7 +85,7 @@ export class RegisterServiceService {
       mutation: UPDATE_HAS_SUBMITTED_AND_USER_TYPE,
       variables: {
         id: this.localstorageService.getId(),
-        option: this.questionnaireA.options
+        option: this.questionnaireA.option
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),

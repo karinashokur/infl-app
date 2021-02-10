@@ -10,6 +10,7 @@ import { MessagingComponent } from './messaging/messaging.component';
 import { InfluencerComponent } from './influencer/influencer.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -19,11 +20,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NonProfitComponent,
     MessagingComponent,
     InfluencerComponent,
-    SponsorComponent],
-    exports: [
-        DashboardTopbarComponent,
-        DashboardSidebarComponent
+    SponsorComponent,
+    LogoutModalComponent,
     ],
+  exports: [
+    DashboardTopbarComponent,
+    DashboardSidebarComponent,
+    LogoutModalComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

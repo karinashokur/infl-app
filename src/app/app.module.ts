@@ -72,6 +72,12 @@ import {DashboardModule} from './dashboard/dashboard.module';
             '126404175701-bkfa3lpoo3omt5o8e261s38rq6gsslph.apps.googleusercontent.com'
           ),
         },
+        {
+          id: AmazonLoginProvider.PROVIDER_ID,
+          provider: new AmazonLoginProvider(
+            'clientId'
+          ),
+        },
       ],
     } as SocialAuthServiceConfig,
   }],
