@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LogoutEventEmitterService} from './logout-event-emitter.service';
-import {Router} from "@angular/router";
-import {LocalstorageService} from "../../localstorage.service";
-import {SessionStorageService} from "../../sessionstorage.service";
+import {Router} from '@angular/router';
+import {LocalstorageService} from '../../localstorage.service';
+import {SessionStorageService} from '../../sessionstorage.service';
 @Component({
   selector: 'app-logout-modal',
   templateUrl: './logout-modal.component.html',

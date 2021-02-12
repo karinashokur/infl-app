@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 const TOKEN_KEY = 'This is Token!!';
 const ID_KEY = 'This is id';
-const ID_USER_TYPE = 'This is user Type'
+const ID_USER_TYPE = 'This is user Type';
 @Injectable({
   providedIn: 'root'
 })

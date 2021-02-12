@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LocalstorageService} from '../../localstorage.service';
 import {SessionStorageService} from '../../sessionstorage.service';
 import {Router} from '@angular/router';
-import {LogoutEventEmitterService} from "../logout-modal/logout-event-emitter.service";
+import {LogoutEventEmitterService} from '../logout-modal/logout-event-emitter.service';
 @Component({
   selector: 'app-dashboard-sidebar',
   templateUrl: './dashboard-sidebar.component.html',
