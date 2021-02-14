@@ -154,3 +154,11 @@ export const CHECKSOCIALAUTH = gql`
         }
       }
     `;
+export const CHECKUSEROPTION = gql`
+  query getUserType($id: ID!) {
+  user(id: $id) {
+    user_type {
+      id
+    }
+  }
+}`;

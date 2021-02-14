@@ -39,6 +39,9 @@ export class LocalstorageService {
     this.localStorage.set(ID_USER_TYPE, userType);
   }
   public getUserType() {
-    this.localStorage.get(ID_USER_TYPE);
+    if (!this.localStorage.has(ID_USER_TYPE)) {
+      return null;
+    }
+    return this.localStorage.get(ID_USER_TYPE);
   }
 }

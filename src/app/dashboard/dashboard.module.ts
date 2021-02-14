@@ -11,6 +11,7 @@ import { InfluencerComponent } from './influencer/influencer.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LogoutModalComponent } from './logout-modal/logout-modal.component';
+import { InfluencerCardComponent } from './non-profit/influencer-card/influencer-card.component';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -22,6 +23,7 @@ import { LogoutModalComponent } from './logout-modal/logout-modal.component';
     InfluencerComponent,
     SponsorComponent,
     LogoutModalComponent,
+    InfluencerCardComponent,
     ],
   exports: [
     DashboardTopbarComponent,
