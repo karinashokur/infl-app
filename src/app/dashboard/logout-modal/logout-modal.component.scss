@@ -1,3 +1,4 @@
+@import "../../scss_mixins";
 .outer {
   position: fixed;
   background-color: rgba(0,0,0,0.5);
@@ -17,6 +18,9 @@
     flex-direction: column;
     border-radius: 5px;
     box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.08);
+    @include mobile {
+      width: 90%;
+    }
     * {
       margin-top: 10px;
     }
@@ -52,6 +56,9 @@
       width: 60%;
       padding: 20px;
       border: 0;
+      @include mobile {
+        padding: 10px;
+      }
     }
     .keepSignedIn {
       border-radius: 5px;

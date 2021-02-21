@@ -1,1 +1,26 @@
-<p>influencer-card works!</p>
+<div class="outer">
+  <div class="top">
+    <div class="top-image">
+      <img src="{{influencer.imgSrc}}">
+    </div>
+    <div class="interestedIn">
+      <div *ngFor="let interest of influencer.interestedIn">
+        {{interest}}
+      </div>
+    </div>
+  </div>
+  <div class="name">
+    {{influencer.name}}
+  </div>
+  <div class="some-text">
+    {{influencer.content}}
+  </div>
+  <div class="social-icons">
+    <div class="icon">
+      <i class="fa fa-youtube-play" aria-hidden="true"></i> &nbsp; {{influencer.social.youtube}}
+    </div>
+  </div>
+  <div class="view-profile">
+    <button (click)="goToProfile()">VIEW PROFILE</button>
+  </div>
+</div>

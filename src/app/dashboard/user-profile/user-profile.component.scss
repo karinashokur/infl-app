@@ -1,0 +1,173 @@
+@import "../../scss_mixins";
+.outer {
+  .image {
+    img {
+      width: 100%;
+      height: 300px;
+    }
+  }
+  .details-tabs {
+    background-color: white;
+    width: 100%;
+    * {
+      margin-top: 5px;
+    }
+    .inner-details-tabs {
+      display: flex;
+      flex-direction: row;
+      padding: 30px 100px;
+      justify-content: space-between;
+      align-items: center;
+      @include mobile {
+        flex-direction: column;
+        padding: 30px 30px;
+      }
+      .details-tabs-left {
+        .tags {
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #58c5af;
+        }
+        .name {
+          font-family: Roboto;
+          font-size: 24px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 0.75;
+          letter-spacing: normal;
+          color: #3a3a3a;
+        }
+        .location {
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 2;
+          letter-spacing: normal;
+          color: #3a3a3a;
+        }
+      }
+      .details-tabs-right {
+        display: flex;
+        flex-direction: column;
+        button {
+          border: 0;
+          border-radius: 5px;
+          box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.1);
+          background-color: #0099d9;
+          text-shadow: 4px 5px 20px rgba(0, 0, 0, 0.1);
+          font-family: Roboto;
+          font-size: 10px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #ffffff;
+          padding: 10px 20px;
+        }
+      }
+    }
+    .tabs {
+      padding: 0 100px;
+      button {
+        border: 0;
+        padding: 10px;
+        background-color: white;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .active {
+        border-bottom: 2px solid #0099d9;
+      }
+    }
+  }
+  .lower-tab-section {
+    margin-top: 10px;
+    background: white;
+    width: 100%;
+    .lower-tab-1 {
+      padding: 40px 100px;
+      @include mobile {
+        padding: 40px 40px;
+      }
+      .heading {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        color: #3a3a3a;
+        margin-bottom: 20px;
+      }
+      .text {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.57;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+    }
+    .lower-tab-3 {
+      .card {
+        width: 100%;
+        margin-top: 10px;
+        padding: 30px 100px;
+        .heading {
+          font-family: Roboto;
+          font-size: 18px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1;
+          letter-spacing: normal;
+          color: #000000;
+          margin-bottom: 30px;
+        }
+        .items {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          font-family: Roboto;
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #3a3a3a;
+          .selected {
+            font-family: Roboto;
+            font-size: 12px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #0099d9;
+          }
+          .item {
+            width: 24%;
+            margin-top: 10px;
+            .item-sub {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

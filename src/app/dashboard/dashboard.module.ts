@@ -12,6 +12,9 @@ import { SponsorComponent } from './sponsor/sponsor.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LogoutModalComponent } from './logout-modal/logout-modal.component';
 import { InfluencerCardComponent } from './non-profit/influencer-card/influencer-card.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { AudienceCardComponent } from './user-profile/audience-card/audience-card.component';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -24,6 +27,8 @@ import { InfluencerCardComponent } from './non-profit/influencer-card/influencer
     SponsorComponent,
     LogoutModalComponent,
     InfluencerCardComponent,
+    UserProfileComponent,
+    AudienceCardComponent,
     ],
   exports: [
     DashboardTopbarComponent,
@@ -33,7 +38,8 @@ import { InfluencerCardComponent } from './non-profit/influencer-card/influencer
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTabsModule
   ]
 })
 export class DashboardModule { }

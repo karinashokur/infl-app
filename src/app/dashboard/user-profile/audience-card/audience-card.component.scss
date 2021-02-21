@@ -1,0 +1,68 @@
+@import "../../../scss_mixins";
+.outer {
+  padding: 50px 50px;
+  background: white;
+  .outer-inner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    .heading {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-grow: 1;
+      img {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+      .heading-text {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+    }
+    .stats {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-grow: 3;
+      .no-display {
+        display: none;
+      }
+      .block {
+        width: 30%;
+        margin-bottom: 20px;
+        .stat-head {
+          font-family: Roboto;
+          font-size: 10px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #3a3a3a;
+        }
+        .stat-text {
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #3a3a3a;
+        }
+      }
+    }
+  }
+}

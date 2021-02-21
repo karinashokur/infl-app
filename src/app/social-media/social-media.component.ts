@@ -65,7 +65,7 @@ export class SocialMediaComponent implements OnInit {
     });
   }
   onNext() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['dashboard/influencer']);
   }
   signInWithGoogle(): void {
     this.isGoogleSignIn = true;

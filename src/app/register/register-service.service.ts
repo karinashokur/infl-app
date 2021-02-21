@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 import {REGISTER_QUERY, CREATEQUESTIONNAIRECORPORATE, CREATEQUESTIONNAIRENONPROFIT,
   CREATEQUESTIONNAIREINFLUENCER, UPDATE_HAS_SUBMITTED_AND_USER_TYPE} from '../Apollo/queries';
 import {HttpHeaders} from '@angular/common/http';
+import {DashboardService} from '../dashboard/dashboard.service';
 class RegisterCover {
   data: {
     register: {
@@ -30,7 +31,8 @@ export class RegisterServiceService {
   constructor(private apollo: Apollo,
               private localstorageService: LocalstorageService,
               private loginService: LoginService,
-              private router: Router) {}
+              private router: Router,
+              private dashboardService: DashboardService) {}
   questionnaireA;
   questionnaireB;
   questionnaireC;
@@ -63,7 +65,8 @@ export class RegisterServiceService {
   public setQuestionnaireCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit) {
     this.questionnaireC = new QuestionnareCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit);
     this.submitQuestionnaireCorporateSponsor();
-    this.updateHasSubmittedQuestionnaireAndRedirectDashboard();
+    this.updateHasSubmittedQuestionnaireAndUserType().then();
+    this.router.navigate(['dashboard/sponsor']);
   }
   public setQuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating) {
     this.questionnaireC = new QuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating);
@@ -72,16 +75,17 @@ export class RegisterServiceService {
   public setQuestionnaireCNonProfit(nameOfOrganization, categoryOfOrganization) {
     this.questionnaireC = new QuestionnareCNonProfit(nameOfOrganization, categoryOfOrganization);
     this.submitQuestionnaireNonProfit();
-    this.updateHasSubmittedQuestionnaireAndRedirectDashboard();
+    this.updateHasSubmittedQuestionnaireAndUserType().then();
+    this.router.navigate(['dashboard/non-profit']);
   }
   public setQuestionnaireDInfluencer(compensationRange) {
     this.questionnaireD = new QuestionnareDInfluencer(compensationRange);
     this.submitQuestionnaireInfluencer();
-    this.updateHasSubmittedQuestionnaireAndRedirectDashboard();
+    this.updateHasSubmittedQuestionnaireAndUserType().then();
     this.router.navigate(['social']);
   }
-  updateHasSubmittedQuestionnaireAndRedirectDashboard() {
-    this.apollo.mutate({
+  async updateHasSubmittedQuestionnaireAndUserType() {
+    return await this.apollo.mutate({
       mutation: UPDATE_HAS_SUBMITTED_AND_USER_TYPE,
       variables: {
         id: this.localstorageService.getId(),
@@ -90,8 +94,7 @@ export class RegisterServiceService {
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
-    }).subscribe();
-    this.router.navigate(['dashboard']);
+    }).toPromise();
   }
    submitQuestionnaireCorporateSponsor() {
     this.apollo.mutate({

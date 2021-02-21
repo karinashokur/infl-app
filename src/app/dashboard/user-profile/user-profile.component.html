@@ -1,0 +1,73 @@
+<div class="outer">
+  <div class="image">
+    <img src="assets/images/BlackBackground.png">
+  </div>
+  <div class="details-tabs">
+    <div class="inner-details-tabs">
+      <div class="details-tabs-left">
+        <div class="tags">
+          Music
+        </div>
+        <div class="name">
+          Elijah Woods x Jamie Fine
+        </div>
+        <div class="location">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          Ottawa, Ontario, Canada
+        </div>
+      </div>
+      <div class="details-tabs-right">
+        <button>CREATE PROPOSAL</button>
+        <button>SEND MESSAGE</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <button [ngClass]="{'active': currentTab==1}" (click)="setTab(1)">Biography</button>
+      <button [ngClass]="{'active': currentTab==2}" (click)="setTab(2)">Audience</button>
+      <button [ngClass]="{'active': currentTab==3}" (click)="setTab(3)">Interests</button>
+    </div>
+  </div>
+  <div class="lower-tab-section">
+    <div class="lower-tab-1" *ngIf="currentTab==1">
+      <div class="heading">
+        Biography
+      </div>
+      <div class="text">
+        <p>Multi-platinum, 4x JUNO Awards nominated breakout duo Elijah Woods x Jamie Fine (ExJ) debut their latest project with the new track “Want You Back”. Adding a fresh take on their inventive sound, the 2020 JUNO Award nominees for “Group of the Year” and “Pop Album of the Year”, iHeartRadio Much Music Best New Canadian Artist and 2019 SOCAN Pop Music Award winners produce, write, and play on all of their songs - melding the three skills into genre-blurring, emotionally impactful experiences unlike any other, striving to create moods and worlds through highly eclectic, surreal musical moments.</p>
+        <p>2019 JUNO Award nominees for “Breakthrough Group of the Year” and “JUNO Fan Choice”, ExJ kicked off last year with the release of their debut EP “8:47”. The EP features seven self-penned tracks, including the CRIA 2x PLATINUM-certified chart-topper “Ain’t Easy”, and CRIA GOLD-certified single “Better Off”, in addition to the Top 10 hit single “You” – all showcasing the talented pair’s delicate marriage of exploratory musical styles and palpable emotional play. Last spring, the twosome spent time on the road as direct support to Marianas Trench on the “Suspending Gravity” national tour, making stops in Hamilton, Toronto, Montreal, Calgary and more before wrapping at Vancouver’s The Orpheum.</p>
+        <p>With more than 60 million collective streams and one million Shazam’s of their songs worldwide, ExJ is comprised of instrumentalist/composer Elijah Woods, “churning out endlessly inventive hooks” (Ottawa Citizen), and lyricist/vocalist Jamie Fine, whose “vocal delivery bores the influence of artists from Alanis to Adele” (Ottawa Citizen), ExJ strive to remain true to a vision that deviates from the mainstream, bringing full-sized moments and their kinetic energy to the forefront, one genre-defying hit at a time.</p>
+      </div>
+    </div>
+    <div class="lower-tab-2" *ngIf="currentTab==2">
+      <div *ngFor="let a of audience">
+        <app-audience-card [a]="a" ></app-audience-card>
+      </div>
+    </div>
+    <div class="lower-tab-3" *ngIf="currentTab==3">
+      <div class="card">
+        <div class="heading">
+          Nonprofit Organizations
+        </div>
+        <div class="items">
+          <div class="item" *ngFor="let org of nonProfitOrganisation; let i = index">
+            <div class="item-sub" [ngClass]="{'selected': isNonProfitSelected((i+1))}">
+              {{org}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="heading">
+          Sponsorship Categories
+        </div>
+        <div class="items">
+          <div class="item" *ngFor="let category of sponsorCategories; let i = index">
+            <div class="item-sub" [ngClass]="{'selected': isCategorySelected((i+1))}">
+              {{category}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

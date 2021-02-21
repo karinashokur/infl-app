@@ -8,6 +8,7 @@ import {LoginCover} from '../Apollo/loginCover';
 import {HasSubmissionCovered} from '../Apollo/hasSubmissionCovered';
 import {ApolloQueryResult} from 'apollo-client';
 import {CHECK_QUESTIONNAIRE_SUBMISSION, LOGIN_QUERY} from '../Apollo/queries';
+import {DashboardService} from '../dashboard/dashboard.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,8 @@ export class LoginService {
   constructor(private localstorageService: LocalstorageService,
               private sessionStorageService: SessionStorageService,
               private apollo: Apollo,
-              private router: Router) { }
+              private router: Router,
+              private dashboardService: DashboardService) { }
   async loginWithRemember(email, password) {
     await this.login(email, password, this.localstorageService);
   }
@@ -66,7 +68,7 @@ export class LoginService {
       this.router.navigate(['register/onboardinga']);
     } else {
       if (this.localstorageService.isLoggedIn() || this.sessionStorageService.isLoggedIn()) {
-        this.router.navigate(['/dashboard']);
+        this.dashboardService.redirectToDashboard();
       }
     }
   }
