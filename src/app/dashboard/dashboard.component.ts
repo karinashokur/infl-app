@@ -15,6 +15,9 @@ export class DashboardComponent implements OnInit {
               private router: Router,
               private dashboardService: DashboardService) {
     this.imgSrc = 'assets/images/BlackBackground.png';
+    if (this.router.url === '/dashboard') {
+      this.dashboardService.redirectToDashboard();
+    }
   }
   imgSrc: string;
   ngOnInit(): void {

@@ -1,0 +1,212 @@
+@import "../../scss_mixins";
+.input-style {
+  border-radius: 5px;
+  border: solid 1.5px #dee2e2;
+  background-color: #ffffff;
+  padding: 15px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #c4c4c4;
+  box-sizing : border-box;
+}
+.text-area {
+  width: 100%;
+  height: 100px;
+}
+.input-text {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #3a3a3a;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.card {
+  margin-bottom: 10px;
+  background: white;
+  padding: 30px 100px;
+  @include tablet {
+    padding: 30px 30px;
+  }
+  .heading {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #0099d9;
+  }
+  .influencer-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+    .image {
+      margin-right: 20px;
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+    .name-detail {
+      .name {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+      .post {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+    }
+  }
+  .sub-heading {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3a3a3a;
+    margin-top: 13px;
+    margin-bottom: 30px;
+  }
+  .campaign-name-category {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .input-name {
+      flex-grow: 3;
+      input {
+        width: 100%;
+      }
+      margin-right: 20px;
+    }
+    .input-category {
+      flex-grow: 1;
+      select {
+        width: 100%;
+      }
+    }
+    @include tablet {
+      align-items: center;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+  .campaign-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include tablet {
+      align-items: center;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .campaign-date-left {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      @include tablet {
+        flex-wrap: wrap;
+      }
+      @include mobile {
+        flex-direction: column;
+      }
+    }
+  }
+  .social-promoters {
+    .social-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      .social-checkbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input {
+          margin-top: 12px;
+        }
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  .boolean-select-options-2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .boolean-select-option {
+      max-width: 40%;
+      @include mobile {
+        max-width: 100%;
+      }
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  button {
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
+    padding: 12px 50px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  .clicksave {
+    background-color: #c4c4c4;
+  }
+  .submit {
+    background: #0099d9;
+  }
+}

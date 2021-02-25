@@ -6,6 +6,8 @@ import {InfluencerComponent} from './influencer/influencer.component';
 import {SponsorComponent} from './sponsor/sponsor.component';
 import {MessagingComponent} from './messaging/messaging.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
+import {CreateProposalComponent} from "./create-proposal/create-proposal.component";
+import {ViewProposalComponent} from "./view-proposal/view-proposal.component";
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
       {path: 'non-profit', component: NonProfitComponent},
@@ -14,7 +16,9 @@ const routes: Routes = [
       {path: 'non-profit/messaging', component: MessagingComponent},
       {path: 'influencer/messaging', component: MessagingComponent},
       {path: 'sponsor/messaging', component: MessagingComponent},
-      {path: 'user/:id', component: UserProfileComponent}
+      {path: 'user/:id', component: UserProfileComponent},
+      {path: 'createProposal', component: CreateProposalComponent},
+      {path: 'viewProposal/:id', component: ViewProposalComponent}
     ]},
 ];
 @NgModule({

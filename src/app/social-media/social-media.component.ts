@@ -59,17 +59,21 @@ export class SocialMediaComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
+      console.log(user);
       if (this.loggedIn) {
         this.addGoogleDataToDatabase();
       }
     });
   }
   onNext() {
-    this.router.navigate(['dashboard/influencer']);
+    this.router.navigate(['dashboard']);
   }
   signInWithGoogle(): void {
+    const googleLoginOptions = {
+      scope: 'https:
+    };
     this.isGoogleSignIn = true;
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID, googleLoginOptions);
   }
   signInWithAmazon(): void {
     this.authService.signIn(AmazonLoginProvider.PROVIDER_ID);

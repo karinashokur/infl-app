@@ -15,6 +15,10 @@ import { InfluencerCardComponent } from './non-profit/influencer-card/influencer
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AudienceCardComponent } from './user-profile/audience-card/audience-card.component';
+import { CreateProposalComponent } from './create-proposal/create-proposal.component';
+import { ViewProposalComponent } from './view-proposal/view-proposal.component';
+import { ProposalStatusComponent } from './proposal-status/proposal-status.component';
+import {ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -29,17 +33,21 @@ import { AudienceCardComponent } from './user-profile/audience-card/audience-car
     InfluencerCardComponent,
     UserProfileComponent,
     AudienceCardComponent,
+    CreateProposalComponent,
+    ViewProposalComponent,
+    ProposalStatusComponent,
     ],
   exports: [
     DashboardTopbarComponent,
     DashboardSidebarComponent,
     LogoutModalComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    MatSidenavModule,
-    MatTabsModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        MatSidenavModule,
+        MatTabsModule,
+        ReactiveFormsModule
+    ]
 })
 export class DashboardModule { }

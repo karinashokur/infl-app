@@ -68,7 +68,7 @@ export class LoginService {
       this.router.navigate(['register/onboardinga']);
     } else {
       if (this.localstorageService.isLoggedIn() || this.sessionStorageService.isLoggedIn()) {
-        this.dashboardService.redirectToDashboard();
+        this.router.navigate(['dashboard']);
       }
     }
   }

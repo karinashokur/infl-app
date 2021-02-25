@@ -66,7 +66,7 @@ export class RegisterServiceService {
     this.questionnaireC = new QuestionnareCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit);
     this.submitQuestionnaireCorporateSponsor();
     this.updateHasSubmittedQuestionnaireAndUserType().then();
-    this.router.navigate(['dashboard/sponsor']);
+    this.router.navigate(['dashboard']);
   }
   public setQuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating) {
     this.questionnaireC = new QuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating);
@@ -76,7 +76,7 @@ export class RegisterServiceService {
     this.questionnaireC = new QuestionnareCNonProfit(nameOfOrganization, categoryOfOrganization);
     this.submitQuestionnaireNonProfit();
     this.updateHasSubmittedQuestionnaireAndUserType().then();
-    this.router.navigate(['dashboard/non-profit']);
+    this.router.navigate(['dashboard']);
   }
   public setQuestionnaireDInfluencer(compensationRange) {
     this.questionnaireD = new QuestionnareDInfluencer(compensationRange);
