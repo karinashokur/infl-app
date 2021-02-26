@@ -12,7 +12,8 @@ header {
     list-style-type: none;
     text-align: center;
     li {
-      padding: 30px 20px;
+      padding: 15px 20px;
+      margin-top: 15px;
     }
     .heading {
       font-family: "Avenir", serif;
@@ -34,7 +35,6 @@ header {
       letter-spacing: normal;
       color: #3a3a3a;
       &:hover {
-        color: #0099d9;
         cursor: pointer;
       }
     }
@@ -59,6 +59,12 @@ header {
         float: none;
         padding: 10px 7px;
       }
+    }
+    .signup {
+      border-radius: 5px;
+      box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
+      background-color: #0099d9;
+      color: white;
     }
   }
   @include tablet {
