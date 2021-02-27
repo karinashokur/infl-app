@@ -18,7 +18,8 @@ import { AudienceCardComponent } from './user-profile/audience-card/audience-car
 import { CreateProposalComponent } from './create-proposal/create-proposal.component';
 import { ViewProposalComponent } from './view-proposal/view-proposal.component';
 import { ProposalStatusComponent } from './proposal-status/proposal-status.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -47,7 +48,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         DashboardRoutingModule,
         MatSidenavModule,
         MatTabsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatTableModule
     ]
 })
 export class DashboardModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RegisterServiceService} from '../register-service.service';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {influencerCategories, onBoardingCProfiles} from '../../constants';
 @Component({
   selector: 'app-onboarding-c',
   templateUrl: './onboarding-c.component.html',
@@ -18,24 +19,8 @@ export class OnboardingCComponent implements OnInit {
     }
   }
   currentProfile;
-  profiles = {
-    influencer: {
-      heading: 'Help us understand the types of nonprofit organizations you hope to partner with',
-      subheading: 'To make sure we match you with the perfect partners we need to understand which categories are of interest to you',
-    },
-    nonProfit: {
-      heading: 'Tell us more about the type of organization you represent',
-      subheading: 'To make sure we match you with the perfect partners we need to understand which categories you represent',
-    },
-    corporateSponsor: {
-      heading: 'Tell us about the type of corporation you represent',
-      subheading: 'To make sure we match you with the right ' +
-        'partners and content we need to understand which categories you would like to align with',
-    }
-  };
-  options = ['Animals', 'Arts, Culture, Humanities', 'Community Development', 'Education',
-  'Environment', 'Health', 'Human & Civil Rights', 'Human Services', 'International',
-  'Religion', 'Research & Public Policy'];
+  profiles = onBoardingCProfiles;
+  options = influencerCategories;
   formInfluencer = this.formBuilder.group({
       selectedDescription: new FormArray([]),
       partnershipWithNonProfit: ['', Validators.required]

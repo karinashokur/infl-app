@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {influencerCategories, nonProfitCategories} from '../../constants';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -24,13 +25,8 @@ export class UserProfileComponent implements OnInit {
         audience: 10000
       }
     }];
-    this.nonProfitOrganisation = ['Animals', 'Arts, Culture, Humanities', 'Community Development', 'Education',
-      'Environment', 'Health', 'Human & Civil Rights', 'Human Services', 'International',
-      'Religion', 'Research & Public Policy'];
-    this.sponsorCategories = ['Auto & Vehicles', 'Comedy', 'Education', 'Entertainment', 'Fashion',
-      'Film & Animation', 'Food & Beverage', 'Gaming', 'Health & Fitness', 'How To',
-      'Music', 'News & Politics', 'Nonprofit & Activism', 'People & Blogs', 'Pets & Animals',
-      'Science & Technology', 'Self Care & Beauty', 'Sports', 'Travel & Events'];
+    this.nonProfitOrganisation = influencerCategories;
+    this.sponsorCategories = nonProfitCategories;
     this.selectedCategories = [1, 2, 3, 4];
     this.selectedNonProfit = [3, 5, 6];
   }

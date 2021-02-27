@@ -1,1 +1,68 @@
-<p>influencer works!</p>
+<div class="upper">
+  <div class="heading">
+    Overview
+  </div>
+  <div class="upper-cards">
+    <div class="card">
+      <div class="card-text">
+        Total Amount Raised
+      </div>
+      <div class="card-amount">
+        $228,398.29
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-text">
+        Amazon Pay Balance
+      </div>
+      <div class="card-amount">
+        $28,398.29
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-text">
+        Active Campaigns
+      </div>
+      <div class="card-amount">
+        4
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lower">
+  <div class="heading">
+    <div class="heading-text">
+      Matches
+    </div>
+    <div class="heading-match">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+      <select>
+        <option>Name A - Z </option>
+        <option>Name A - Z </option>
+        <option>Name A - Z </option>
+      </select>
+    </div>
+  </div>
+<table>
+<thead>
+<tr>
+  <td>Date</td>
+  <td>CAMPAIGN</td>
+  <td>INFLUENCER</td>
+  <td>STATUS</td>
+  <td>SPONSOR</td>
+  <td>STATUS</td>
+</tr>
+</thead>
+  <tbody>
+  <tr *ngFor="let proposal of proposals; let i = index">
+    <td>{{proposal.date}}</td>
+    <td>{{proposal.campaignName}}</td>
+    <td>{{proposal.influencer}}</td>
+    <td style="color: {{status[proposal.status1].color}}">{{status[proposal.status1].name}}</td>
+    <td>{{proposal.sponsor}}</td>
+    <td style="color: {{status[proposal.status2].color}}">{{status[proposal.status2].name}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>

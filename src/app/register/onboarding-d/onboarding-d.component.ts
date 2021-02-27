@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {RegisterServiceService} from '../register-service.service';
+import {onBoardingScreenDRange} from '../../constants';
 @Component({
   selector: 'app-onboarding-d',
   templateUrl: './onboarding-d.component.html',
@@ -9,8 +10,7 @@ import {RegisterServiceService} from '../register-service.service';
 export class OnboardingDComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private registerServiceService: RegisterServiceService) { }
-  options = ['$0 - $1,000', '$1,001 - $5,000', '$5,001 - $10,000', '$10,001 - $50,000',
-    '$50,001 - $100,000', '$100,001 - $500,000', '$500,001 - $1,000,000', '$1,000,000+'];
+  options = onBoardingScreenDRange;
   form = this.formBuilder.group({
     range: ['', Validators.required]
   });

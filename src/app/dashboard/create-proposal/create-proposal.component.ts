@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {nonProfitCategories} from '../../constants';
 @Component({
   selector: 'app-create-proposal',
   templateUrl: './create-proposal.component.html',
@@ -23,10 +24,7 @@ export class CreateProposalComponent implements OnInit {
     offerTaxReceipt: ['', Validators.required],
     anyThingElse: ['', Validators.required]
   });
-  campaignCategory = ['Auto & Vehicles', 'Comedy', 'Education', 'Entertainment', 'Fashion',
-    'Film & Animation', 'Food & Beverage', 'Gaming', 'Health & Fitness', 'How To',
-    'Music', 'News & Politics', 'Nonprofit & Activism', 'People & Blogs', 'Pets & Animals',
-    'Science & Technology', 'Self Care & Beauty', 'Sports', 'Travel & Events'];
+  campaignCategory = nonProfitCategories;
   onCheckChange(e) {
     const checkArray: FormArray = this.proposalForm.get('targetPlatform') as FormArray;
     if (e.target.checked) {
