@@ -43,26 +43,5 @@
       </select>
     </div>
   </div>
-  <table>
-    <thead>
-    <tr>
-      <td>Date</td>
-      <td>CAMPAIGN</td>
-      <td>INFLUENCER</td>
-      <td>STATUS</td>
-      <td>SPONSOR</td>
-      <td>STATUS</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let proposal of proposals; let i = index">
-      <td>{{proposal.date}}</td>
-      <td>{{proposal.campaignName}}</td>
-      <td>{{proposal.influencer}}</td>
-      <td style="color: {{status[proposal.status1].color}}">{{status[proposal.status1].name}}</td>
-      <td>{{proposal.sponsor}}</td>
-      <td style="color: {{status[proposal.status2].color}}">{{status[proposal.status2].name}}</td>
-    </tr>
-    </tbody>
-  </table>
+<app-proposal-status-sponsor></app-proposal-status-sponsor>
 </div>

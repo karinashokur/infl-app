@@ -30,6 +30,7 @@ import {
   AmazonLoginProvider,
 } from 'angularx-social-login';
 import {DashboardModule} from './dashboard/dashboard.module';
+import {ToastrModule} from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,10 @@ import {DashboardModule} from './dashboard/dashboard.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }),
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
@@ -75,7 +80,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
         {
           id: AmazonLoginProvider.PROVIDER_ID,
           provider: new AmazonLoginProvider(
-            'clientId'
+            'amzn1.application-oa2-client.d627327cd6f749f3846a6b57f69688be'
           ),
         },
       ],

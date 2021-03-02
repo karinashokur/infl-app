@@ -1,6 +1,6 @@
 <div class="outer">
   <div class="image">
-    <img src="assets/images/BlackBackground.png">
+    <img src="{{bannerImage}}">
   </div>
   <div class="details-tabs">
     <div class="inner-details-tabs">
@@ -9,15 +9,14 @@
           Music
         </div>
         <div class="name">
-          Elijah Woods x Jamie Fine
+          {{userProfile.firstName}} {{userProfile.lastName}}
         </div>
         <div class="location">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          Ottawa, Ontario, Canada
+          {{userProfile.position}} of {{userProfile.companyName}}
         </div>
       </div>
       <div class="details-tabs-right">
-        <button>CREATE PROPOSAL</button>
+        <button (click)="goToCreateProposal()">CREATE PROPOSAL</button>
         <button>SEND MESSAGE</button>
       </div>
     </div>
@@ -36,6 +35,8 @@
         <p>Multi-platinum, 4x JUNO Awards nominated breakout duo Elijah Woods x Jamie Fine (ExJ) debut their latest project with the new track “Want You Back”. Adding a fresh take on their inventive sound, the 2020 JUNO Award nominees for “Group of the Year” and “Pop Album of the Year”, iHeartRadio Much Music Best New Canadian Artist and 2019 SOCAN Pop Music Award winners produce, write, and play on all of their songs - melding the three skills into genre-blurring, emotionally impactful experiences unlike any other, striving to create moods and worlds through highly eclectic, surreal musical moments.</p>
         <p>2019 JUNO Award nominees for “Breakthrough Group of the Year” and “JUNO Fan Choice”, ExJ kicked off last year with the release of their debut EP “8:47”. The EP features seven self-penned tracks, including the CRIA 2x PLATINUM-certified chart-topper “Ain’t Easy”, and CRIA GOLD-certified single “Better Off”, in addition to the Top 10 hit single “You” – all showcasing the talented pair’s delicate marriage of exploratory musical styles and palpable emotional play. Last spring, the twosome spent time on the road as direct support to Marianas Trench on the “Suspending Gravity” national tour, making stops in Hamilton, Toronto, Montreal, Calgary and more before wrapping at Vancouver’s The Orpheum.</p>
         <p>With more than 60 million collective streams and one million Shazam’s of their songs worldwide, ExJ is comprised of instrumentalist/composer Elijah Woods, “churning out endlessly inventive hooks” (Ottawa Citizen), and lyricist/vocalist Jamie Fine, whose “vocal delivery bores the influence of artists from Alanis to Adele” (Ottawa Citizen), ExJ strive to remain true to a vision that deviates from the mainstream, bringing full-sized moments and their kinetic energy to the forefront, one genre-defying hit at a time.</p>
+        <h3>Youtube : {{channelName}}</h3>
+        {{channelDescription}}
       </div>
     </div>
     <div class="lower-tab-2" *ngIf="currentTab==2">

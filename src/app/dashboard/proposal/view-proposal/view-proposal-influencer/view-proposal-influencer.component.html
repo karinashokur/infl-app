@@ -1,0 +1,44 @@
+<form [formGroup]="influencerProposalForm">
+<app-view-proposal-top></app-view-proposal-top>
+<div class="card">
+  <div class="heading">
+    Additional Information
+  </div>
+  <div class="sub-heading">
+    This information will help us to align your goals with the best influencer for your organization
+  </div>
+  <div class="boolean-select-options-2">
+    <div class="boolean-select-option">
+      <div class="input-text">
+        Are you able to offer a tax receipt to an influencer who donates back to the cause?
+      </div>
+      <div class="radio-options">
+        <div class="radio-option">
+          <input  [value]="true" type="radio" name="offerTaxReceipt" disabled [checked]="proposal.taxReceipt"> Yes
+          <input  [value]="false" type="radio" name="offerTaxReceipt" disabled [checked]="!proposal.taxReceipt"> No
+        </div>
+      </div>
+    </div>
+    <div class="boolean-select-option campaignRevenueGenerated">
+      <div class="input-text">
+        How much of the campaign revenue generated are you interested in giving back?
+      </div>
+      <input formControlName="revenueDonated" class="input-style revenueDonated" type="number" placeholder="10" min="0" max="100">
+    </div>
+  </div>
+  <div class="bottom-text-area">
+    <div class="input-text">
+      Is there anything else the influencer should know or consider?
+    </div>
+    <textarea formControlName="anyThingElse" class="input-style text-area">
+    </textarea>
+  </div>
+</div>
+<div class="buttons">
+  <button class="clicksave">MAKE CHANGES</button>
+  <div class="right-buttons">
+    <button class="submit" routerLink="/proposal" (click)="onAccept()">ACCEPT</button>
+    <button class="submit" routerLink="/proposal" (click)="onDecline()">DECLINE</button>
+  </div>
+</div>
+</form>

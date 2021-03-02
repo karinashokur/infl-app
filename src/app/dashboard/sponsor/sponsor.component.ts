@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {proposalStatus} from '../../constants';
 @Component({
   selector: 'app-sponsor',
   templateUrl: './sponsor.component.html',
@@ -49,7 +48,6 @@ export class SponsorComponent implements OnInit {
       status2: 3,
     }
   ];
-  status = proposalStatus;
   ngOnInit(): void {
   }
 }

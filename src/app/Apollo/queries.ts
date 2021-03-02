@@ -112,25 +112,12 @@ mutation updateUser($id: ID!, $option: ID!) {
   }
 }
 `;
-export const ADDGOOGLEAUTH = gql`
-  mutation addSocialAuth ($google: String!, $id: ID!) {
-  createSocialAuthToken(input: {
-    data: {
-      google: $google
-      questionnaire_influencer: $id
-    }
-  }) {
-    socialAuthToken {
-      id
-    }
-  }
-}
-`;
-export const ADDAMAZONAUTH = gql`
-   mutation addSocialAuth ($amazon: String!, $id: ID!) {
+export const ADDSOCIALAUTH = gql`
+mutation addSocialAuth ($amazon: String!, $id: ID!, $google: String!) {
   createSocialAuthToken(input: {
     data: {
       amazon: $amazon
+      google: $google
       questionnaire_influencer: $id
     }
   }) {

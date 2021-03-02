@@ -1,17 +1,17 @@
 <div class="outer">
-  <div class="top">
+  <div class="top" (click)="goToUser()">
     <div class="top-image">
-      <img src="{{imgSrc}}">
+      <img src="{{user.imgSrc}}">
     </div>
     <div class="description">
       <div class="top-heading">
-        Rohit Jain
+        {{user.firstName}} {{user.lastName}}
       </div>
       <div class="post">
-        Manager
+        {{user.position}}
       </div>
       <div class="org-name">
-        xyz Corporation
+        {{user.companyName}}
       </div>
     </div>
   </div>
@@ -21,22 +21,22 @@
       Quick Links
     </div>
     <div class="list-item">
-      <a>Dashboard</a>
+      <a routerLink="/dashboard">Dashboard</a>
     </div>
     <div class="list-item">
-      <a>Campaigns</a>
+      <a routerLink="/dashboard/campaign">Campaigns</a>
     </div>
     <div class="list-item">
-      <a>Proposals</a>
+      <a routerLink="/dashboard/proposal">Proposals</a>
     </div>
     <div class="list-item">
       <a>Calendar</a>
     </div>
     <div class="list-item">
-      <a>Payments</a>
+      <a routerLink="/dashboard/payment">Payments</a>
     </div>
     <div class="list-item">
-      <a>Privacy Policy</a>
+      <a href="/assets/privacy/CloutvocatePrivacyPolicy.pdf">Privacy Policy</a>
     </div>
     <div class="list-item">
       <a>Terms & Conditions</a>

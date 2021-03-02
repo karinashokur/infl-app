@@ -13,6 +13,6 @@ export class InfluencerCardComponent implements OnInit {
   ngOnInit(): void {
   }
   goToProfile() {
-    this.router.navigate(['profile', this.influencer.id]);
+    this.router.navigate(['dashboard/user/' + this.influencer.id]);
   }
 }

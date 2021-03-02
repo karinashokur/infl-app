@@ -1,0 +1,49 @@
+<div class="heading">
+  <div class="heading-text">
+    Proposal
+  </div>
+  <div class="heading-match">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+    <select>
+      <option>Name A - Z </option>
+      <option>Name A - Z </option>
+      <option>Name A - Z </option>
+    </select>
+  </div>
+</div>
+<table>
+  <thead>
+  <tr>
+    <td>Date</td>
+    <td>CAMPAIGN</td>
+    <td>INFLUENCER</td>
+    <td>STATUS</td>
+    <td>SPONSOR</td>
+    <td>STATUS</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let proposal of proposals; let i = index" (click)="goToViewProposal(proposal.id)">
+    <td>{{proposal.campaignStartDate | date:'mm/dd/yyyy'}}</td>
+    <td>{{proposal.campaignName}}</td>
+    <td>{{proposal.nonProfitUser.companyName}}</td>
+    <td style="color: {{statusInfluencer[proposal.influencerStatus].color}}">
+      {{statusInfluencer[proposal.influencerStatus].name}}
+      <br>
+      <ng-container *ngIf="proposal.influencerStatus === 2">
+        {{getRemainingDays(proposal.proposalApprovalDate)}} Days Left
+      </ng-container>
+    </td>
+    <td>
+      <ng-container *ngIf="proposal.statusSponsor === 2">Closed</ng-container>
+      <ng-container *ngIf="proposal.statusSponsor === 3">In MarketPlace</ng-container>
+    </td>
+    <td style="color: {{statusSponsor[proposal.statusSponsor].color}}">{{statusSponsor[proposal.statusSponsor].name}}
+      <br>
+      <ng-container *ngIf="proposal.statusSponsor === 1">
+        {{getRemainingDays(proposal.proposalApprovalDate)}} Days Left
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
