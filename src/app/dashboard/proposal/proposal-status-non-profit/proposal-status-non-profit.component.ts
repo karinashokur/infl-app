@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {proposal, proposalStatusInfluencer, proposalStatusSponsor} from "../../../constants";
+import {proposal, proposalStatusInfluencer, proposalStatusSponsor} from '../../../constants';
 @Component({
   selector: 'app-proposal-status-non-profit',
   templateUrl: './proposal-status-non-profit.component.html',

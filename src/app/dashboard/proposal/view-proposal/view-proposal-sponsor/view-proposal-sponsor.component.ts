@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {proposal} from '../../../../constants';
-import {FormBuilder, Validators} from "@angular/forms";
-import {ViewProposalService} from "../view-proposal.service";
+import {FormBuilder, Validators} from '@angular/forms';
+import {ViewProposalService} from '../view-proposal.service';
 @Component({
   selector: 'app-view-proposal-sponsor',
   templateUrl: './view-proposal-sponsor.component.html',
