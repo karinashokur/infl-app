@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Apollo} from 'apollo-angular';
-import {CHECKUSEROPTION} from '../Apollo/queries';
+import {GETUSERTYPE} from '../Apollo/queries';
 import {LocalstorageService} from '../localstorage.service';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -23,7 +23,7 @@ export class DashboardService {
   }
   async getUserOption() {
     return await this.apollo.mutate({
-      mutation: CHECKUSEROPTION,
+      mutation: GETUSERTYPE,
       variables: {
         id: this.localstorageService.getId()
       },
@@ -35,12 +35,14 @@ export class DashboardService {
   redirectToDashboard() {
     this.getUserOption().then((data: UserOption) => {
       this.localstorageService.setUserType(data.data.user.user_type.id);
-      if (this.localstorageService.getUserType() === '1') {
+      if (this.localstorageService.getUserType() === 1) {
         this.router.navigate(['/dashboard/influencer']);
-      } else if (this.localstorageService.getUserType() === '2') {
+      } else if (this.localstorageService.getUserType() === 2) {
         this.router.navigate(['/dashboard/non-profit']);
-      } else {
+      } else if (this.localstorageService.getUserType() === 3) {
         this.router.navigate(['/dashboard/sponsor']);
+      } else {
+        this.router.navigate(['/']);
       }
     });
   }

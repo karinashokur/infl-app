@@ -30,118 +30,106 @@ export const LOGIN_QUERY = gql`
         jwt
       }
     }`;
-export const CREATEQUESTIONNAIRECORPORATE = gql`
-      mutation($firstName: String!, $lastName: String!, $name: String!,
-      $type_of_contents: [ID], $type_of_non_profit_organisations: [ID], $user: ID) {
-        createQuestionnaireCorporate(input: {
+export const CREATESPONSOR = gql`
+      mutation($firstName: String!, $lastName: String!, $organisation: String!,
+      $type_of_influencers: [ID], $type_of_non_profit_organisations: [ID], $user: ID!) {
+        createSponsor(input: {
           data: {
-            firstName: $firstName
-            lastName: $lastName
-            name: $name
-            type_of_contents: $type_of_contents
-            type_of_non_profit_organisations: $type_of_non_profit_organisations
+            firstName :$firstName,
+            lastName: $lastName,
+            organisation: $organisation,
+            type_of_influencers: $type_of_influencers,
+            type_of_non_profit_organisations: $type_of_non_profit_organisations,
             user: $user
           }
         }) {
-          questionnaireCorporate {
+          sponsor{
             id
           }
         }
+        updateUser(input: {
+          where: {
+            id: $user
+          }
+          data : {
+            hasSubmitQuestionnaire: true
+            user_type: "3"
+          }
+        }) {
+          user {
+            hasSubmitQuestionnaire
+          }
+        }
       }
     `;
-export const CREATEQUESTIONNAIRENONPROFIT = gql`
-  mutation createQuestionnaireNonProfit($firstName: String!, $lastName: String!, $name: String!,
-   $type_of_contents: [ID], $type_of_non_profit_organisations: [ID], $user: ID) {
-        createQuestionnaireNonProfit(input: {
+export const CREATENONPROFIT = gql`
+  mutation createQuestionnaireNonProfit($firstName: String!, $lastName: String!, $organisation: String!,
+   $type_of_influencers: [ID], $type_of_non_profit_organisations: [ID], $user: ID!) {
+        createNonProfit(input: {
           data: {
             firstName: $firstName
             lastName: $lastName
-            nameOfOrganization: $name
-            type_of_contents: $type_of_contents
+            organisation: $organisation
+            type_of_influencers: $type_of_influencers
             type_of_non_profit_organisations: $type_of_non_profit_organisations
             user: $user
           }
         }) {
-    questionnaireNonProfit {
+    nonProfit {
       id
+      }
     }
-  }
-}`;
-export const CREATEQUESTIONNAIREINFLUENCER = gql`
-mutation createQuestionnaireInfluencer($firstName: String!, $lastName: String!, $interestInDonating: Boolean!,
- $type_of_contents: [ID], $type_of_non_profit_organisations: [ID], $user: ID, $rangeOfCompensation: ID) {
-        createQuestionnaireInfluencer(input: {
+    updateUser(input: {
+      where: {
+        id: $user
+      }
+      data : {
+        hasSubmitQuestionnaire: true
+        user_type: "2"
+      }
+    }) {
+      user {
+        hasSubmitQuestionnaire
+      }
+    }
+  }`;
+export const CREATEINFLUENCER = gql`
+mutation createQuestionnaireInfluencer($firstName: String!, $lastName: String!, $interestedInDonating: Boolean!,
+ $type_of_influencers: [ID], $type_of_non_profit_organisations: [ID], $user: ID!, $rangeOfCompensation: ID!,
+$googleAuthToken: String!, $amazonAuthToken: String!, $googlePhotoUrl: String!) {
+        createInfluencer(input: {
           data: {
             firstName: $firstName
             lastName: $lastName
-            interestedInDonating: $interestInDonating
-            type_of_contents: $type_of_contents
+            interestedInDonating: $interestedInDonating
+            type_of_influencers: $type_of_influencers
             type_of_non_profit_organisations: $type_of_non_profit_organisations
             range_of_compensation: $rangeOfCompensation
+            googleAuthToken: $googleAuthToken
+            amazonAuthToken: $amazonAuthToken
+            googlePhotoUrl: $googlePhotoUrl
             user: $user
           }
         }) {
-    questionnaireInfluencer {
-      id
-    }
-  }
-  createSocialAuthToken(input: {
-        data: {
-          questionnaire_influencer: $user
+          influencer {
+            id
+          }
         }
-    }) {
-    socialAuthToken{
-      id
-    }
-}
+        updateUser(input: {
+          where: {
+            id: $user
+          }
+          data : {
+            hasSubmitQuestionnaire: true
+            user_type: "1"
+          }
+        }) {
+          user {
+            hasSubmitQuestionnaire
+          }
+        }
 }`;
-export const UPDATE_HAS_SUBMITTED_AND_USER_TYPE = gql`
-mutation updateUser($id: ID!, $option: ID!) {
-  updateUser(input: {
-    where: {
-      id: $id
-    }
-    data : {
-      hasSubmitQuestionnaire: true
-      user_type: $option
-    }
-  }) {
-    user {
-      hasSubmitQuestionnaire
-    }
-  }
-}
-`;
-export const ADDSOCIALAUTH = gql`
-mutation addSocialAuth ($amazon: String!, $id: ID!, $google: String!) {
-  createSocialAuthToken(input: {
-    data: {
-      amazon: $amazon
-      google: $google
-      questionnaire_influencer: $id
-    }
-  }) {
-    socialAuthToken {
-      id
-    }
-  }
-}
-`;
-export const CHECKSOCIALAUTH = gql`
-      query socialAuthCheck($id: ID!) {
-        socialAuthTokensConnection (
-          where : {
-            questionnaire_influencer: $id
-          }
-        ) {
-          values {
-            google
-            amazon
-          }
-        }
-      }
-    `;
-export const CHECKUSEROPTION = gql`
+export const GETUSERTYPE = gql`
   query getUserType($id: ID!) {
   user(id: $id) {
     user_type {

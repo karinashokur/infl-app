@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import gql from 'graphql-tag';
 import {Apollo} from 'apollo-angular';
 import {LocalstorageService} from '../localstorage.service';
 import {LoginService} from '../login/login.service';
@@ -10,10 +9,13 @@ import {QuestionnaireCInfluencer} from './questionnaire/QuestionnaireCInfluencer
 import {QuestionnareCNonProfit} from './questionnaire/QuestionnareCNonProfit';
 import {QuestionnareDInfluencer} from './questionnaire/QuestionnareDInfluencer';
 import {Router} from '@angular/router';
-import {REGISTER_QUERY, CREATEQUESTIONNAIRECORPORATE, CREATEQUESTIONNAIRENONPROFIT,
-  CREATEQUESTIONNAIREINFLUENCER, UPDATE_HAS_SUBMITTED_AND_USER_TYPE} from '../Apollo/queries';
+import {REGISTER_QUERY, CREATESPONSOR, CREATENONPROFIT,
+  CREATEINFLUENCER} from '../Apollo/queries';
 import {HttpHeaders} from '@angular/common/http';
 import {DashboardService} from '../dashboard/dashboard.service';
+import {SocialToken} from '../social-media/social-media.component';
+import {ToastrService} from 'ngx-toastr';
+import {retry} from 'rxjs/operators';
 class RegisterCover {
   data: {
     register: {
@@ -32,7 +34,9 @@ export class RegisterServiceService {
               private localstorageService: LocalstorageService,
               private loginService: LoginService,
               private router: Router,
-              private dashboardService: DashboardService) {}
+              private dashboardService: DashboardService,
+              private tostr: ToastrService
+  ) {}
   questionnaireA;
   questionnaireB;
   questionnaireC;
@@ -42,6 +46,7 @@ export class RegisterServiceService {
       console.log(data);
       this.localstorageService.storeJwtToken(data.data.register.jwt);
       this.localstorageService.storeId(data.data.register.user.id);
+      this.tostr.success('Welcome Aboard ' + email, 'Registration Successful');
     });
     await this.loginService.checkIsLoggedIn();
   }
@@ -64,8 +69,7 @@ export class RegisterServiceService {
   }
   public setQuestionnaireCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit) {
     this.questionnaireC = new QuestionnareCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit);
-    this.submitQuestionnaireCorporateSponsor();
-    this.updateHasSubmittedQuestionnaireAndUserType().then();
+    this.submitCreateSponsor();
     this.router.navigate(['dashboard']);
   }
   public setQuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating) {
@@ -74,75 +78,69 @@ export class RegisterServiceService {
   }
   public setQuestionnaireCNonProfit(nameOfOrganization, categoryOfOrganization) {
     this.questionnaireC = new QuestionnareCNonProfit(nameOfOrganization, categoryOfOrganization);
-    this.submitQuestionnaireNonProfit();
-    this.updateHasSubmittedQuestionnaireAndUserType().then();
+    this.submitCreateNonProfit();
     this.router.navigate(['dashboard']);
   }
   public setQuestionnaireDInfluencer(compensationRange) {
     this.questionnaireD = new QuestionnareDInfluencer(compensationRange);
-    this.submitQuestionnaireInfluencer();
-    this.updateHasSubmittedQuestionnaireAndUserType().then();
     this.router.navigate(['social']);
   }
-  async updateHasSubmittedQuestionnaireAndUserType() {
-    return await this.apollo.mutate({
-      mutation: UPDATE_HAS_SUBMITTED_AND_USER_TYPE,
-      variables: {
-        id: this.localstorageService.getId(),
-        option: this.questionnaireA.option
-      },
-      context: {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
-      }
-    }).toPromise();
-  }
-   submitQuestionnaireCorporateSponsor() {
+   submitCreateSponsor() {
     this.apollo.mutate({
-      mutation: CREATEQUESTIONNAIRECORPORATE,
+      mutation: CREATESPONSOR,
       variables: {
         firstName: this.questionnaireA.firstName,
         lastName: this.questionnaireA.lastName,
-        name: this.questionnaireC.nameOfCompany,
+        organisation: this.questionnaireC.nameOfCompany,
         user: this.localstorageService.getId(),
-        type_of_contents: this.questionnaireB.contentType,
+        type_of_influencers: this.questionnaireB.contentType,
         type_of_non_profit_organisations: this.questionnaireC.nonprofitInterestedIn
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
-    }).subscribe();
+    }).subscribe((data) => {
+      this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+    });
   }
-  submitQuestionnaireNonProfit() {
+  submitCreateNonProfit() {
     this.apollo.mutate({
-      mutation: CREATEQUESTIONNAIRENONPROFIT,
+      mutation: CREATENONPROFIT,
       variables: {
         firstName: this.questionnaireA.firstName,
         lastName: this.questionnaireA.lastName,
-        name: this.questionnaireC.nameOfOrganization,
+        organisation: this.questionnaireC.nameOfOrganization,
         user: this.localstorageService.getId(),
-        type_of_contents: this.questionnaireB.contentType,
+        type_of_influencers: this.questionnaireB.contentType,
         type_of_non_profit_organisations: this.questionnaireC.categoryOrganizationRepresent
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
-    }).subscribe();
+    }).subscribe((data) => {
+      this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+    });
   }
-  submitQuestionnaireInfluencer() {
+  submitCreateInfluencer(token: SocialToken) {
     this.apollo.mutate({
-      mutation: CREATEQUESTIONNAIREINFLUENCER,
+      mutation: CREATEINFLUENCER,
       variables: {
         firstName: this.questionnaireA.firstName,
         lastName: this.questionnaireA.lastName,
-        interestInDonating: this.questionnaireC.interestedInDonating,
+        interestedInDonating: this.questionnaireC.interestedInDonating,
         rangeOfCompensation: this.questionnaireD.compensationRange,
         user: this.localstorageService.getId(),
-        type_of_contents: this.questionnaireB.contentType,
-        type_of_non_profit_organisations: this.questionnaireC.typeOfInterestedNonProfit
+        type_of_influencers: this.questionnaireB.contentType,
+        type_of_non_profit_organisations: this.questionnaireC.typeOfInterestedNonProfit,
+        googleAuthToken: token.google.authToken,
+        amazonAuthToken: token.amazon.authToken,
+        googlePhotoUrl: token.google.photoUrl
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
-    }).subscribe();
+    }).subscribe((data) => {
+      this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+    });
   }
 }

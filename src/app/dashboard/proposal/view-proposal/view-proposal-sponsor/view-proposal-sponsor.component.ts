@@ -37,6 +37,6 @@ export class ViewProposalSponsorComponent implements OnInit {
     );
   }
   onDecline() {
-    this.viewProposalService.rejectInfluencerProposal();
+    this.viewProposalService.rejectSponsorProposal();
   }
 }

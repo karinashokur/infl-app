@@ -8,18 +8,8 @@ import {Apollo} from 'apollo-angular';
 import {HttpHeaders} from '@angular/common/http';
 import {user} from '../constants';
 import {ToastrService} from 'ngx-toastr';
-class CheckSocialAuth {
-  data: {
-    socialAuthTokensConnection: {
-      values: [{
-          id
-          google
-          amazon
-        }]
-    };
-  };
-}
-class SocialToken {
+import {RegisterServiceService} from '../register/register-service.service';
+export class SocialToken {
   amazon: {
     authToken
   };
@@ -50,7 +40,8 @@ export class SocialMediaComponent implements OnInit {
               private router: Router,
               private localstorageService: LocalstorageService,
               private apollo: Apollo,
-              private toastr: ToastrService
+              private toastr: ToastrService,
+              private registerServiceService: RegisterServiceService
   ) {
     console.log('cons');
     this.token = new SocialToken();
@@ -58,20 +49,6 @@ export class SocialMediaComponent implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
   token: SocialToken;
-  addSocialAuthTokesToDataBase() {
-    user.photoUrl = this.token.google.photoUrl;
-    this.apollo.mutate({
-      mutation: ADDSOCIALAUTH,
-      variables: {
-        amazon: this.token.amazon.authToken,
-        google: this.token.google.authToken,
-        id: this.localstorageService.getId()
-      },
-      context: {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
-      }
-    }).subscribe();
-  }
   ngOnInit() {
     console.log('onInit');
     this.authService.authState.subscribe((data: SocialUser) => {
@@ -94,7 +71,7 @@ export class SocialMediaComponent implements OnInit {
   }
   onNext() {
     if (this.isValidToken()) {
-      this.addSocialAuthTokesToDataBase();
+      this.registerServiceService.submitCreateInfluencer(this.token);
       user.socialAuthToken = this.token;
       this.router.navigate(['dashboard']);
     }

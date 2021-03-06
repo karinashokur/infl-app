@@ -17,5 +17,9 @@ export class ViewProposalService {
     proposal.influencerStatus = 4;
   }
   acceptSponsorProposal(promotingCampaign: any, bubbles: any, howShouldItLook: any, callToAction: any, anyThingElse: any) {
+      proposal.statusSponsor = 1;
+  }
+  rejectSponsorProposal() {
+    proposal.statusSponsor = 2;
   }
 }
