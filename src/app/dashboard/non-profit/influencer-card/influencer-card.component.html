@@ -1,23 +1,23 @@
 <div class="outer">
   <div class="top">
     <div class="top-image">
-      <img src="{{influencer.imgSrc}}">
+      <img src="{{influencer.googlePhotoUrl}}">
     </div>
     <div class="interestedIn">
-      <div *ngFor="let interest of influencer.interestedIn">
-        {{interest}}
+      <div *ngFor="let interest of influencer.typeOfNonProfits">
+        {{interest.name}}
       </div>
     </div>
   </div>
   <div class="name">
-    {{influencer.name}}
+    {{influencer.firstName}} {{influencer.lastName}}
   </div>
   <div class="some-text">
-    {{influencer.content}}
+    With over 60+ million collective streams and one million Shazam’s of their songs worldwide, ExJ is comprised of composer / instrumentalist Elijah Woods and lyricist / vocalist Jamie Fine.
   </div>
   <div class="social-icons">
     <div class="icon">
-      <i class="fa fa-youtube-play" aria-hidden="true"></i> &nbsp; {{influencer.social.youtube}}
+      <i class="fa fa-youtube-play" aria-hidden="true"></i> &nbsp; {{youtubeCount}}
     </div>
   </div>
   <div class="view-profile">

@@ -8,7 +8,7 @@ class UserOption {
   data: {
     user: {
       user_type: {
-        id
+        id: string
       }
     }
   };
@@ -35,11 +35,14 @@ export class DashboardService {
   redirectToDashboard() {
     this.getUserOption().then((data: UserOption) => {
       this.localstorageService.setUserType(data.data.user.user_type.id);
-      if (this.localstorageService.getUserType() === 1) {
+      console.log(this.localstorageService.getUserType());
+      console.log(this.localstorageService.getUserType() === '1');
+      console.log(typeof(this.localstorageService.getUserType()));
+      if (this.localstorageService.getUserType() === '1') {
         this.router.navigate(['/dashboard/influencer']);
-      } else if (this.localstorageService.getUserType() === 2) {
+      } else if (this.localstorageService.getUserType() === '2') {
         this.router.navigate(['/dashboard/non-profit']);
-      } else if (this.localstorageService.getUserType() === 3) {
+      } else if (this.localstorageService.getUserType() === '3') {
         this.router.navigate(['/dashboard/sponsor']);
       } else {
         this.router.navigate(['/']);

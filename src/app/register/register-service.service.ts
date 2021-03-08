@@ -32,7 +32,6 @@ class RegisterCover {
 export class RegisterServiceService {
   constructor(private apollo: Apollo,
               private localstorageService: LocalstorageService,
-              private loginService: LoginService,
               private router: Router,
               private dashboardService: DashboardService,
               private tostr: ToastrService
@@ -48,7 +47,7 @@ export class RegisterServiceService {
       this.localstorageService.storeId(data.data.register.user.id);
       this.tostr.success('Welcome Aboard ' + email, 'Registration Successful');
     });
-    await this.loginService.checkIsLoggedIn();
+    await this.router.navigate(['register/onboardinga']);
   }
   async registerUserUtil(email, password) {
     return await this.apollo.mutate({

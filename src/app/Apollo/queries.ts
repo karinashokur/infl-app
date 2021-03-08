@@ -12,10 +12,13 @@ export const REGISTER_QUERY = gql`
         jwt
       }
     }`;
-export const CHECK_QUESTIONNAIRE_SUBMISSION = gql`
+export const CHECKQUESTIONNAIREANDGETUSERTYPE = gql`
     query($id: ID!) {
       user(id: $id) {
         hasSubmitQuestionnaire
+        user_type {
+          id
+        }
       }
     }`;
 export const LOGIN_QUERY = gql`
@@ -134,6 +137,86 @@ export const GETUSERTYPE = gql`
   user(id: $id) {
     user_type {
       id
+    }
+  }
+}`;
+export const GETUSERDETAILSSIDEBAR = gql`
+query($id: ID!) {
+  user(id: $id) {
+    id
+    non_profit {
+      firstName
+      lastName
+      organisation
+    }
+    influencer {
+      firstName
+      lastName
+      googlePhotoUrl
+    }
+    sponsor {
+      firstName
+      lastName
+      organisation
+    }
+  }
+}
+`;
+export const GETDATAFORINFLUENCERCARD = gql`
+query {
+  users(
+    where: {user_type: "1"},
+    limit: 10
+  ) {
+    id
+    influencer {
+      firstName
+      lastName
+      type_of_non_profit_organisations{
+        name
+      }
+      googleAuthToken
+      googlePhotoUrl
+    }
+  }
+}`;
+export const SEARCHQUERY = gql`
+query ($text: String!) {
+  influencers(
+    where: {
+      firstName_contains: $text
+    }
+    limit: 10
+  ) {
+    user {
+        id
+        influencer {
+          firstName
+          lastName
+          type_of_non_profit_organisations{
+            name
+          }
+          googleAuthToken
+          googlePhotoUrl
+        }
+      }
+    }
+  }
+`;
+export const USERPROFILEQUERY = gql`
+query($id: ID!) {
+  user(id: $id) {
+    id
+    influencer {
+      firstName
+      lastName
+      googleAuthToken
+      type_of_influencers {
+        id
+      }
+      type_of_non_profit_organisations {
+        id
+      }
     }
   }
 }`;

@@ -5,13 +5,35 @@ import {Router} from '@angular/router';
 import {LogoutEventEmitterService} from './logout-modal/logout-event-emitter.service';
 import {user} from '../../constants';
 import {DashboardSidebarService} from './dashboard-sidebar.service';
-class UserSideBar {
+export class UserSideBar {
   userId;
   imgSrc;
   firstName;
   lastName;
   position;
   companyName;
+}
+class UserQueryDetail {
+  data: {
+    user: {
+      id;
+      non_profit: {
+        firstName;
+        lastName;
+        organisation;
+      };
+      influencer: {
+        firstName;
+        lastName;
+        googlePhotoUrl;
+      };
+      sponsor: {
+        firstName;
+        lastName;
+        organisation;
+      }
+    }
+  };
 }
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -23,14 +45,17 @@ export class DashboardSidebarComponent implements OnInit {
               private localstorageService: LocalstorageService,
               private sessionStorageService: SessionStorageService,
               private logoutEventEmitterService: LogoutEventEmitterService,
-              private dashboardSidebarService: DashboardSidebarService) { }
+              private dashboardSidebarService: DashboardSidebarService) {
+  }
   showLogoutPopup: boolean;
   user: UserSideBar;
   ngOnInit(): void {
     if (!this.localstorageService.isLoggedIn()) {
       this.router.navigate(['login']);
     } else {
-      this.user = this.dashboardSidebarService.getUser();
+      this.dashboardSidebarService.getUser().then((data: UserSideBar) => {
+        this.user = data;
+      });
     }
   }
   showLogout() {

@@ -1,4 +1,4 @@
-<div class="outer">
+<div class="outer" *ngIf="userProfile">
   <div class="image">
     <img src="{{bannerImage}}">
   </div>
@@ -6,13 +6,13 @@
     <div class="inner-details-tabs">
       <div class="details-tabs-left">
         <div class="tags">
-          Music
+          <span *ngFor="let tags of selectedInfluencer">{{sponsorCategories[tags-1]}} &nbsp;</span>
         </div>
         <div class="name">
           {{userProfile.firstName}} {{userProfile.lastName}}
         </div>
         <div class="location">
-          {{userProfile.position}} of {{userProfile.companyName}}
+          {{userProfile.position}} of {{userProfile.organisation}}
         </div>
       </div>
       <div class="details-tabs-right">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="lower-tab-2" *ngIf="currentTab==2">
-      <div *ngFor="let a of audience">
+      <div *ngFor="let a of userProfile.audience">
         <app-audience-card [a]="a" ></app-audience-card>
       </div>
     </div>

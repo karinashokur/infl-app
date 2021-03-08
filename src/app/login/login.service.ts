@@ -7,7 +7,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {LoginCover} from '../Apollo/loginCover';
 import {HasSubmissionCovered} from '../Apollo/hasSubmissionCovered';
 import {ApolloQueryResult} from 'apollo-client';
-import {CHECK_QUESTIONNAIRE_SUBMISSION, LOGIN_QUERY} from '../Apollo/queries';
+import {CHECKQUESTIONNAIREANDGETUSERTYPE, LOGIN_QUERY} from '../Apollo/queries';
 import {DashboardService} from '../dashboard/dashboard.service';
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class LoginService {
     await this.login(email, password, this.localstorageService);
   }
   async loginWithoutRemember(email, password) {
-    await this.login(email, password, this.sessionStorageService);
+    await this.login(email, password, this.localstorageService);
   }
   async login(email, password, service) {
     await this.login_util(email, password).then((data: LoginCover) => {
@@ -46,7 +46,7 @@ export class LoginService {
       id = this.sessionStorageService.getId();
     }
     return await this.apollo.query({
-      query: CHECK_QUESTIONNAIRE_SUBMISSION,
+      query: CHECKQUESTIONNAIREANDGETUSERTYPE,
       variables: {
       id: '' + id
       },
@@ -59,6 +59,9 @@ export class LoginService {
     let check = false;
     await this.checkHasSubmittedQuestionnaire().then((data: ApolloQueryResult<HasSubmissionCovered>) => {
       check = data.data.user.hasSubmitQuestionnaire;
+      if (data.data.user.user_type !== null) {
+        this.localstorageService.setUserType(data.data.user.user_type.id);
+      }
     });
     return check;
   }

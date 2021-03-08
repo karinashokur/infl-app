@@ -44,17 +44,10 @@
   </div>
 </div>
   <div class="influencer">
-      <div class="influencer-card">
-      <app-influencer-card [influencer]="influencers[0]"></app-influencer-card>
+    <div class="influencer-card" *ngFor="let influencer of influencers">
+      <div>
+      <app-influencer-card [influencer]="influencer"></app-influencer-card>
       </div>
-      <div class="influencer-card">
-        <app-influencer-card [influencer]="influencers[0]"></app-influencer-card>
-      </div>
-      <div class="influencer-card">
-        <app-influencer-card [influencer]="influencers[0]"></app-influencer-card>
-      </div>
-      <div class="influencer-card">
-        <app-influencer-card [influencer]="influencers[0]"></app-influencer-card>
-      </div>
+    </div>
   </div>
 </div>

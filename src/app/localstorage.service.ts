@@ -24,6 +24,7 @@ export class LocalstorageService {
     if (this.isLoggedIn()) {
       this.localStorage.remove(TOKEN_KEY);
       this.localStorage.remove(ID_KEY);
+      this.localStorage.remove(ID_USER_TYPE);
     }
   }
   public storeId(id) {
@@ -35,11 +36,10 @@ export class LocalstorageService {
     }
     return -1;
   }
-  public setUserType(userType) {
+  public setUserType(userType: string) {
     this.localStorage.set(ID_USER_TYPE, userType);
   }
-  public getUserType() {
-    return 1;
+  public getUserType(): string {
     if (!this.localStorage.has(ID_USER_TYPE)) {
       return null;
     }

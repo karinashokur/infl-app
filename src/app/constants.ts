@@ -74,7 +74,7 @@ export const proposalStatusSponsor = {
     color: '#0099d9'
   },
 };
-export let user = {
+export let user: { firstName: any; lastName: any; companyName: string; position: string; userId: any; imgSrc: any } = {
   id: 99,
   firstName: 'Rohit',
   lastName: 'Jain',

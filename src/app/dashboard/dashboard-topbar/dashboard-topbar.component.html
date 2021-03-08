@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div class="search">
-      <input type="text" placeholder="Search">
+      <input #search (keyup)="onEnter(search.value)" type="text" placeholder="Search">
       <i class="fa fa-search" aria-hidden="true"></i>
     </div>
 </div>

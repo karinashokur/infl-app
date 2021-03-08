@@ -1,31 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import {influencerCategories, nonProfitCategories, user} from '../../constants';
-import {Router} from '@angular/router';
-import {YoutubeService} from '../youtube.service';
-class YoutubeData {
-  items: [{
-    brandingSettings: {
-      channel: {
-        title
-        description
+import {influencerCategories, nonProfitCategories} from '../../constants';
+import {ActivatedRoute, Router} from '@angular/router';
+import {YoutubeData, YoutubeService} from '../youtube.service';
+import {Apollo} from 'apollo-angular';
+import {UserProfileService} from './user-profile.service';
+import {ApolloQueryResult} from 'apollo-client';
+class UserProfileQuery {
+    user: {
+      id;
+      influencer: {
+        firstName;
+        lastName;
+        googleAuthToken;
+        type_of_influencers: [{
+          id;
+        }]
+        type_of_non_profit_organisations: [{
+          id;
+        }]
       }
-      image: {
-        bannerImageUrl
-      }
-    }
-    statistics: {
-      commentCount
-      subscriberCount
-      videoCount
-      viewCount
-    }
-  }];
+    };
 }
 class UserProfile {
   firstName;
   lastName;
+  organisation;
   position;
-  companyName;
+  audience: [{
+    image;
+    title;
+    stats;
+  }];
 }
 @Component({
   selector: 'app-user-profile',
@@ -34,44 +39,64 @@ class UserProfile {
 })
 export class UserProfileComponent implements OnInit {
   constructor(private router: Router,
-              private youtubeService: YoutubeService) {
-    this.youtubeService._getYoutubeRequest().then((data: YoutubeData) => {
-      console.log(data);
-      this.bannerImage = data.items[0].brandingSettings.image.bannerImageUrl;
-      this.channelDescription = data.items[0].brandingSettings.channel.description;
-      this.channelName = data.items[0].brandingSettings.channel.title;
-      this.audience = [{
-        image: 'assets/images/YouTube%20Logo.png',
-        title: 'Youtube',
-        stats: data.items[0].statistics
-      }];
-    });
-    this.userProfile = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      position: user.position,
-      companyName: user.companyName
-    };
-  }
+              private youtubeService: YoutubeService,
+              private userProfileService: UserProfileService,
+              private route: ActivatedRoute) {}
   channelName;
   channelDescription;
   bannerImage;
-  currentTab;
+  currentTab = 1;
   audience;
+  googleAuthToken;
   userProfile: UserProfile;
   nonProfitOrganisation: string[];
   sponsorCategories: string[];
   selectedNonProfit: number[];
-  selectedCategories: number[];
+  selectedInfluencer: number[];
   ngOnInit(): void {
-    this.currentTab = 1;
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userProfileService.getUserDetails(id).then((data: ApolloQueryResult<UserProfileQuery>) => {
+      this.userProfile = {
+        firstName: data.data.user.influencer.firstName,
+        lastName: data.data.user.influencer.lastName,
+        organisation: 'Influencer(s)',
+        position: 'YouTuber',
+        audience: [{
+          image: 'assets/images/YouTube%20Logo.png',
+          title: 'Youtube',
+          stats: {}
+        }]
+      };
+      this.googleAuthToken = data.data.user.influencer.googleAuthToken;
+      console.log('set Token');
+      this.selectedInfluencer = [];
+      data.data.user.influencer.type_of_influencers.forEach((inf) => {
+        this.selectedInfluencer.push(Number(inf.id));
+      });
+      this.selectedNonProfit = [];
+      data.data.user.influencer.type_of_non_profit_organisations.forEach((npo) => {
+        this.selectedNonProfit.push(Number(npo.id));
+      });
+      console.log(this.selectedNonProfit);
+      console.log(this.selectedInfluencer);
+      console.log(this.userProfile);
+      this.getYoutube();
+    });
     this.nonProfitOrganisation = influencerCategories;
     this.sponsorCategories = nonProfitCategories;
-    this.selectedCategories = user.selectedCategories;
-    this.selectedNonProfit = user.selectedNonProfit;
+  }
+  getYoutube() {
+    console.log('used TOken');
+    this.youtubeService.getYoutubeData(this.googleAuthToken).then((youtubeData: YoutubeData) => {
+      console.log(youtubeData);
+      this.userProfile.audience[0].stats = {...youtubeData.items[0].statistics};
+      this.channelName = youtubeData.items[0].brandingSettings.channel.title;
+      this.channelDescription = youtubeData.items[0].brandingSettings.channel.description;
+      this.bannerImage = youtubeData.items[0].brandingSettings.image.bannerImageUrl;
+    });
   }
   isCategorySelected(num): boolean {
-    return this.selectedCategories.indexOf(num) !== -1;
+    return this.selectedInfluencer.indexOf(num) !== -1;
   }
   isNonProfitSelected(num): boolean {
     return this.selectedNonProfit.indexOf(num) !== -1;
