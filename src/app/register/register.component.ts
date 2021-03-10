@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { PasswordValidation } from './passwordValidation';
 import {RegisterServiceService} from './register-service.service';
 import {Router} from '@angular/router';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

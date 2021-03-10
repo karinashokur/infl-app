@@ -184,6 +184,6 @@
 </div>
 <div class="buttons">
   <button class="clicksave">CANCEL & SAVE</button>
-  <button class="submit" [disabled]="this.proposalForm.valid">SUBMIT</button>
+  <button type="submit" class="submit" [disabled]="!this.proposalForm.valid">SUBMIT</button>
 </div>
 </form>

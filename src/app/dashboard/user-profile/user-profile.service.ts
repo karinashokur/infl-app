@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Apollo} from "apollo-angular";
-import {USERPROFILEQUERY} from "../../Apollo/queries";
-import {HttpHeaders} from "@angular/common/http";
-import {LocalstorageService} from "../../localstorage.service";
+import {Apollo} from 'apollo-angular';
+import {USERPROFILEQUERY} from '../../Apollo/queries';
+import {HttpHeaders} from '@angular/common/http';
+import {LocalstorageService} from '../../localstorage.service';
 @Injectable({
   providedIn: 'root'
 })

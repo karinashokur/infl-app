@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {nonProfitCategories} from '../../../constants';
 import {Router} from '@angular/router';
+import {CreateProposalService} from './create-proposal.service';
 @Component({
   selector: 'app-create-proposal',
   templateUrl: './create-proposal.component.html',
@@ -9,7 +10,8 @@ import {Router} from '@angular/router';
 })
 export class CreateProposalComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private createProposalService: CreateProposalService) { }
   proposalForm = this.formBuilder.group({
     campaignName: ['', Validators.required],
     campaignCategory: ['', Validators.required],
@@ -47,6 +49,7 @@ export class CreateProposalComponent implements OnInit {
   onSubmit() {
     console.log(this.proposalForm.value);
     console.log(this.proposalForm);
+    this.createProposalService.createProposal(this.proposalForm.value);
     this.router.navigate(['dashboard/proposal']);
   }
 }

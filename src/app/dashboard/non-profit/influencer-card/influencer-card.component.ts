@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {InfluencerCard} from '../non-profit.component';
 import {Router} from '@angular/router';
-import {YoutubeData, YoutubeService} from "../../youtube.service";
+import {YoutubeData, YoutubeService} from '../../youtube.service';
 @Component({
   selector: 'app-influencer-card',
   templateUrl: './influencer-card.component.html',

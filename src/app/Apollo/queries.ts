@@ -220,3 +220,45 @@ query($id: ID!) {
     }
   }
 }`;
+export const CREATEPROPOSAL = gql`
+mutation($campaignName: String!, $campaignCategory: ID!, $campaignDescription: String!,
+$campaignStartDate: Date!, $campaignEndDate: Date!, $proposalApprovalDate: Date!,
+$targetPlatform: [ID], $howShouldItLook: String!, $callToAction: String,
+$interestInForProfit: Boolean!, $promotingCampaign: Boolean!, $sendOnlyToInfluencer: Boolean!,
+$offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!) {
+  createProposal(input: {
+    data: {
+      campaignName: $campaignName
+      type_of_non_profit_organisation: $campaignCategory
+      campaignDescription: $campaignDescription
+      campaignStartDate: $campaignStartDate
+      campaignEndDate: $campaignEndDate
+      proposalApprovalDate: $proposalApprovalDate
+      proposal_visibilities: $targetPlatform
+      howShouldItLookNonProfit: $howShouldItLook
+      callToActionNonProfit: $callToAction
+      sponsorshipIntegration: $interestInForProfit
+      nonprofitOrganizationPromotion: $promotingCampaign
+      sendOnlyToInfluencers: $sendOnlyToInfluencer
+      taxReceipt: $offerTaxReceipt
+      anyThingElseNonProfit: $anyThingElse
+      # set the status of influencer to unread
+      statusInfluencer: "5"
+      non_profit: $id
+    }
+  }) {
+    proposal{
+      id
+      campaignName
+      campaignEndDate
+      campaignStartDate
+      non_profit {
+        id
+        non_profit {
+          firstName
+          lastName
+        }
+      }
+    }
+  }
+}`;
