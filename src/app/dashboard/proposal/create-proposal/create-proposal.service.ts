@@ -11,7 +11,7 @@ export class CreateProposalService {
   constructor(private apollo: Apollo,
               private localstorageService: LocalstorageService,
               private tostr: ToastrService) { }
-  createProposal(form) {
+  createProposal(form, influencerId) {
     this.apollo.mutate({
       mutation: CREATEPROPOSAL,
       variables: {
@@ -29,7 +29,9 @@ export class CreateProposalService {
         sendOnlyToInfluencer: form.sendOnlyToInfluencer,
         offerTaxReceipt: form.offerTaxReceipt,
         anyThingElse: form.anyThingElse,
-        id: this.localstorageService.getId()
+        id: this.localstorageService.getId(),
+        influencerId,
+        statusSponsor: form.sendOnlyToInfluencer ? '6' : '7'
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),

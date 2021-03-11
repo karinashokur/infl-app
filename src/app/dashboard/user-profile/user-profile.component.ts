@@ -46,16 +46,16 @@ export class UserProfileComponent implements OnInit {
   channelDescription;
   bannerImage;
   currentTab = 1;
-  audience;
   googleAuthToken;
+  influencerId;
   userProfile: UserProfile;
   nonProfitOrganisation: string[];
   sponsorCategories: string[];
   selectedNonProfit: number[];
   selectedInfluencer: number[];
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.userProfileService.getUserDetails(id).then((data: ApolloQueryResult<UserProfileQuery>) => {
+    this.influencerId = this.route.snapshot.paramMap.get('id');
+    this.userProfileService.getUserDetails(this.influencerId).then((data: ApolloQueryResult<UserProfileQuery>) => {
       this.userProfile = {
         firstName: data.data.user.influencer.firstName,
         lastName: data.data.user.influencer.lastName,
@@ -105,6 +105,6 @@ export class UserProfileComponent implements OnInit {
     this.currentTab = tab;
   }
   goToCreateProposal() {
-    this.router.navigate(['dashboard/createProposal']);
+    this.router.navigate(['dashboard/createProposal'], { queryParams: { influencerId: this.influencerId }});
   }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {nonProfitCategories} from '../../../constants';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProposalService} from './create-proposal.service';
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-create-proposal',
   templateUrl: './create-proposal.component.html',
@@ -11,7 +12,9 @@ import {CreateProposalService} from './create-proposal.service';
 export class CreateProposalComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private createProposalService: CreateProposalService) { }
+              private createProposalService: CreateProposalService,
+              private route: ActivatedRoute,
+              private tostr: ToastrService) { }
   proposalForm = this.formBuilder.group({
     campaignName: ['', Validators.required],
     campaignCategory: ['', Validators.required],
@@ -29,6 +32,7 @@ export class CreateProposalComponent implements OnInit {
     anyThingElse: ['', Validators.required]
   });
   campaignCategory = nonProfitCategories;
+  influencerId;
   onCheckChange(e) {
     const checkArray: FormArray = this.proposalForm.get('targetPlatform') as FormArray;
     if (e.target.checked) {
@@ -45,11 +49,18 @@ export class CreateProposalComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.influencerId = params.influencerId;
+    });
+    console.log(this.influencerId);
   }
   onSubmit() {
-    console.log(this.proposalForm.value);
-    console.log(this.proposalForm);
-    this.createProposalService.createProposal(this.proposalForm.value);
-    this.router.navigate(['dashboard/proposal']);
+    if (this.proposalForm.valid) {
+      console.log(this.influencerId);
+      this.createProposalService.createProposal(this.proposalForm.value, this.influencerId);
+      this.router.navigate(['dashboard/proposal']);
+    } else {
+      this.tostr.warning('Please be careful', 'All the fields are required');
+    }
   }
 }

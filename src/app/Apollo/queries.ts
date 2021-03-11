@@ -225,7 +225,7 @@ mutation($campaignName: String!, $campaignCategory: ID!, $campaignDescription: S
 $campaignStartDate: Date!, $campaignEndDate: Date!, $proposalApprovalDate: Date!,
 $targetPlatform: [ID], $howShouldItLook: String!, $callToAction: String,
 $interestInForProfit: Boolean!, $promotingCampaign: Boolean!, $sendOnlyToInfluencer: Boolean!,
-$offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!) {
+$offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!, $statusSponsor: ID!) {
   createProposal(input: {
     data: {
       campaignName: $campaignName
@@ -245,6 +245,8 @@ $offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!) {
       # set the status of influencer to unread
       statusInfluencer: "5"
       non_profit: $id
+      influencer: $influencerId
+      statusSponsor: $statusSponsor
     }
   }) {
     proposal{
@@ -262,3 +264,14 @@ $offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!) {
     }
   }
 }`;
+export const GETPROPOSALWITHNONPROFIT = gql`
+query($id: String!) {
+  proposals(sort: "proposalApprovalDate:asc", where: {
+    non_profit: $id
+  }) {
+    id
+    campaignName
+    campaignDescription
+  }
+}
+`

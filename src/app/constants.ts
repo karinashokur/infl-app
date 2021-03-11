@@ -1,3 +1,4 @@
+import {HttpHeaders} from '@angular/common/http';
 export const nonProfitCategories = ['Auto & Vehicles', 'Comedy', 'Education', 'Entertainment', 'Fashion',
   'Film & Animation', 'Food & Beverage', 'Gaming', 'Health & Fitness', 'How To',
   'Music', 'News & Politics', 'Nonprofit & Activism', 'People & Blogs', 'Pets & Animals',
@@ -74,8 +75,7 @@ export const proposalStatusSponsor = {
     color: '#0099d9'
   },
 };
-export let user: { firstName: any; lastName: any; companyName: string; position: string; userId: any; imgSrc: any } = {
-  id: 99,
+export let user = {
   firstName: 'Rohit',
   lastName: 'Jain',
   photoUrl: null,
