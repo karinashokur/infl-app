@@ -3,7 +3,6 @@ import {AmazonLoginProvider, GoogleLoginProvider, SocialAuthService} from 'angul
 import { SocialUser } from 'angularx-social-login';
 import {Router} from '@angular/router';
 import {LocalstorageService} from '../localstorage.service';
-import {CHECKSOCIALAUTH, ADDSOCIALAUTH} from '../Apollo/queries';
 import {Apollo} from 'apollo-angular';
 import {HttpHeaders} from '@angular/common/http';
 import {user} from '../constants';

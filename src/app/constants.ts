@@ -61,6 +61,36 @@ export const proposalStatusInfluencer = {
     color: '#3a3a3a'
   },
 };
+export const proposalStatus = {
+  1: {
+    name: 'Accepted',
+    color: '#58c5af'
+  },
+  2: {
+    name: 'read',
+    color: '#0099d9'
+  },
+  3: {
+    name: 'Awaiting',
+    color: '#0099d9'
+  },
+  4: {
+    name: 'declined',
+    color: '#3a3a3a'
+  },
+  5: {
+    name: 'Unread',
+    color: '#ff9900'
+  },
+  6: {
+    name: 'closed',
+    color: '#3a3a3a'
+  },
+  7: {
+    name: 'open',
+    color: '#3a3a3a'
+  },
+};
 export const proposalStatusSponsor = {
   1: {
     name: 'Unread',

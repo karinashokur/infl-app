@@ -2,16 +2,29 @@
   <div class="heading">
     Campaign Proposal
   </div>
-  <div class="influencer-details">
+  <div class="influencer-details" *ngIf="proposal.proposal.non_profit.non_profit">
     <div class="image">
-      <img src="../../../../assets/images/BlackBackground.png">
+      <img src="assets/images/Shelli.png">
     </div>
     <div class="name-detail">
       <div class="name">
-        Elijah Woods x Jamie Fine
+        {{proposal.proposal.non_profit.non_profit.firstName}} {{proposal.proposal.non_profit.non_profit.lastName}}
       </div>
       <div class="post">
         Influencer(s)
+      </div>
+    </div>
+  </div>
+  <div class="influencer-details" *ngIf="proposal.proposal.influencer.influencer">
+    <div class="image">
+      <img src="{{proposal.proposal.influencer.influencer.googlePhotoUrl}}">
+    </div>
+    <div class="name-detail">
+      <div class="name">
+        {{proposal.proposal.influencer.influencer.firstName}} {{proposal.proposal.influencer.influencer.lastName}}
+      </div>
+      <div class="post">
+        Youtuber
       </div>
     </div>
   </div>
@@ -28,7 +41,7 @@
         Campaign Name
       </div>
       <div class="text-on-input">
-        {{proposal.campaignName}}
+        {{proposal.proposal.campaignName}}
       </div>
     </div>
     <div class="input-category">
@@ -36,7 +49,7 @@
         Campaign Category
       </div>
       <div class="text-on-input">
-        {{proposal.campaignCategory}}
+        {{categories[proposal.proposal.proposal_visibilities[0].id]}}
       </div>
     </div>
   </div>
@@ -45,7 +58,7 @@
       Campaign Description
     </div>
     <div class="text-on-input">
-      {{proposal.campaignDescription}}
+      {{proposal.proposal.campaignDescription}}
     </div>
   </div>
   <div class="campaign-date">
@@ -54,14 +67,14 @@
         <div class="input-text">
           Campaign Start Date
         </div>
-        {{proposal.campaignStartDate}}
+        {{proposal.proposal.campaignStartDate | date:'dd/mm/yyyy'}}
       </div>
       <div class="campaign-date-input">
         <div class="input-text">
           Campaign End Date
         </div>
         <div class="text-on-input">
-          {{proposal.campaignEndDate}}
+          {{proposal.proposal.campaignEndDate | date:'dd/mm/yyyy'}}
         </div>
       </div>
     </div>
@@ -71,7 +84,7 @@
           Proposal Approval Date
         </div>
         <div class="text-on-input">
-          {{proposal.proposalApprovalDate}}
+          {{proposal.proposal.proposalApprovalDate | date:'dd/mm/yyyy'}}
         </div>
       </div>
     </div>
@@ -116,15 +129,15 @@
       How Should It Look?
     </div>
     <div class="text-on-input">
-      {{proposal.howShouldItLook}}
+      {{proposal.proposal.howShouldItLookNonProfit}}
     </div>
   </div>
   <div class="call-to-action">
     <div class="input-text">
-      How Should It Look?
+      Call To Action
     </div>
     <div class="text-on-input">
-      {{proposal.callToAction}}
+      {{proposal.proposal.callToActionNonProfit}}
     </div>
   </div>
   <div class="boolean-select-options-2">
@@ -134,8 +147,8 @@
       </div>
       <div class="radio-options">
         <div class="radio-option">
-          <input type="radio" name="interestInNonProfit" disabled [checked]="proposal.sponsorshipIntegration"> Yes
-          <input type="radio" name="interestInNonProfit" disabled [checked]="!proposal.sponsorshipIntegration"> No
+          <input type="radio" name="interestInNonProfit" disabled [checked]="proposal.proposal.sponsorshipIntegration"> Yes
+          <input type="radio" name="interestInNonProfit" disabled [checked]="!proposal.proposal.sponsorshipIntegration"> No
         </div>
       </div>
     </div>
@@ -145,8 +158,8 @@
       </div>
       <div class="radio-options">
         <div class="radio-option">
-          <input type="radio" name="enablePrompt"  disabled [checked]="proposal.nonprofitOrganizationPromotion"> Yes
-          <input type="radio" name="enablePrompt" disabled [checked]="!proposal.nonprofitOrganizationPromotion"> No
+          <input type="radio" name="enablePrompt"  disabled [checked]="proposal.proposal.nonprofitOrganizationPromotion"> Yes
+          <input type="radio" name="enablePrompt" disabled [checked]="!proposal.proposal.nonprofitOrganizationPromotion"> No
         </div>
       </div>
     </div>

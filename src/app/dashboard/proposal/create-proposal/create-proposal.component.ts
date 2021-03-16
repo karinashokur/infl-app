@@ -3,7 +3,7 @@ import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {nonProfitCategories} from '../../../constants';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProposalService} from './create-proposal.service';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-create-proposal',
   templateUrl: './create-proposal.component.html',

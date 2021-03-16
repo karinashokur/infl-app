@@ -1,30 +1,31 @@
-<form>
-  <app-view-proposal-top></app-view-proposal-top>
-  <div class="card">
+  <app-view-proposal-top [proposal]="proposal"></app-view-proposal-top>
+  <div class="card" *ngIf="proposal.proposal.statusSponsor.id === '1'">
     <div class="heading">
       Sponsorship Information
     </div>
+    <div class="boolean-select-options-2">
     <div class="boolean-select-option">
       <div class="input-text">
         Will you be promoting this campaign on the platforms of your organization?
       </div>
       <div class="radio-options">
         <div class="radio-option">
-          <input type="radio" name="interestInNonProfit"> Yes
-          <input type="radio" name="interestInNonProfit"> No
+          <input type="radio"  [value]="true" name="promotingCampaign"> Yes
+          <input type="radio" [value]="false" name="promotingCampaign"> No
         </div>
       </div>
     </div>
     <div class="boolean-select-option">
       <div class="input-text">
-        Will you be promoting this campaign on the platforms of your organization?
+        What is your budget for this campaign?
       </div>
-      <div class="radio-options">
-        <div class="radio-option">
-          <input type="radio" name="enablePrompt"  disabled [checked]="proposal.nonprofitOrganizationPromotion"> Yes
-          <input type="radio" name="enablePrompt" disabled [checked]="!proposal.nonprofitOrganizationPromotion"> No
-        </div>
+      <div class="sub-heading">
+        Please note this will be split equally as a sponsorship fee to the influencer and a donation to the nonprofit organization
       </div>
+      $&nbsp;
+    </div>
     </div>
   </div>
-</form>
+<div class="card" *ngIf="proposal.proposal.statusSponsor.id !== '1'">
+  Please wait for the sponsor to accept the Propsoal!
+</div>

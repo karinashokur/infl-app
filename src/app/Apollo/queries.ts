@@ -265,13 +265,58 @@ $offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!
   }
 }`;
 export const GETPROPOSALWITHNONPROFIT = gql`
-query($id: String!) {
-  proposals(sort: "proposalApprovalDate:asc", where: {
-    non_profit: $id
-  }) {
-    id
+  query($id: String!) {
+    proposals(sort: "proposalApprovalDate:asc", where: {
+      non_profit: $id
+    }) {
+      id
+      proposalApprovalDate
+      campaignName
+      influencer {
+        influencer {
+          firstName
+          lastName
+        }
+      }
+      statusInfluencer {
+        id
+      }
+      statusSponsor {
+        id
+      }
+    }
+  }
+`;
+export const GETVIEWPROPOSALNONPROFIT = gql`
+query($id: ID!) {
+  proposal(id: $id) {
+    non_profit {
+      non_profit {
+        organisation
+        firstName
+        lastName
+      }
+    }
+    influencer {
+      influencer {
+        firstName
+        lastName
+        googlePhotoUrl
+      }
+    }
     campaignName
     campaignDescription
+    campaignStartDate
+    campaignEndDate
+    proposalApprovalDate
+    proposal_visibilities {
+      id
+    }
+    howShouldItLookNonProfit
+    callToActionNonProfit
+    sponsorshipIntegration
+    statusSponsor {
+      id
+    }
   }
-}
-`
+}`;

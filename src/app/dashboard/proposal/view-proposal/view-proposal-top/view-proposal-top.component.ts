@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {proposal} from '../../../../constants';
+import {Component, Input, OnInit} from '@angular/core';
+import {nonProfitCategories} from '../../../../constants';
+import {ViewProposal} from '../viewProposal';
 @Component({
   selector: 'app-view-proposal-top',
   templateUrl: './view-proposal-top.component.html',
@@ -7,10 +8,18 @@ import {proposal} from '../../../../constants';
 })
 export class ViewProposalTopComponent implements OnInit {
   constructor() { }
-  proposal = proposal;
+  @Input()
+  proposal: ViewProposal;
+  categories = nonProfitCategories;
   ngOnInit(): void {
   }
   isCheckBox(num: number) {
-    return this.proposal.campaignVisibility.indexOf(num) !== -1;
+    let isPresent = false;
+    this.proposal.proposal.proposal_visibilities.forEach((data) => {
+      if (('' + num) === data.id) {
+        isPresent = true;
+      }
+    });
+    return isPresent;
   }
 }

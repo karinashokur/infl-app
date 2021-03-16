@@ -14,16 +14,13 @@ export class DashboardComponent implements OnInit {
   constructor(private localstorageService: LocalstorageService,
               private sessionStorageService: SessionStorageService,
               private router: Router,
-              private dashboardService: DashboardService,
-              private youtubeService: YoutubeService) {
+              private dashboardService: DashboardService) {
     this.imgSrc = 'assets/images/BlackBackground.png';
-    if (this.router.url === '/dashboard') {
-      this.dashboardService.redirectToDashboard();
-    }
-    console.log(this.youtubeService.getYoutubeData());
+    console.log('dashboard constructor');
   }
   imgSrc: string;
   ngOnInit(): void {
+    console.log('dashboard init');
   }
   logout() {
     this.localstorageService.logout();

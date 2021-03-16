@@ -24,23 +24,23 @@
   </thead>
   <tbody>
   <tr *ngFor="let proposal of proposals; let i = index" (click)="goToViewProposal(proposal.id)">
-    <td>{{proposal.campaignStartDate | date:'mm/dd/yyyy'}}</td>
+    <td>{{proposal.proposalApprovalDate | date:'dd/mm/yyyy'}}</td>
     <td>{{proposal.campaignName}}</td>
-    <td>{{proposal.nonProfitUser.companyName}}</td>
-    <td style="color: {{statusInfluencer[proposal.influencerStatus].color}}">
-      {{statusInfluencer[proposal.influencerStatus].name}}
+    <td>{{proposal.influencer.influencer.firstName}}{{proposal.influencer.influencer.lastName}}</td>
+    <td style="color: {{status[proposal.statusInfluencer.id].color}}">
+      {{status[proposal.statusInfluencer.id].name}}
       <br>
-      <ng-container *ngIf="proposal.influencerStatus === 2">
+      <ng-container *ngIf="proposal.statusInfluencer.id === 2">
         {{getRemainingDays(proposal.proposalApprovalDate)}} Days Left
       </ng-container>
     </td>
     <td>
-      <ng-container *ngIf="proposal.statusSponsor === 2">Closed</ng-container>
-      <ng-container *ngIf="proposal.statusSponsor === 3">In MarketPlace</ng-container>
+      <ng-container *ngIf="proposal.statusSponsor.id === 2">Closed</ng-container>
+      <ng-container *ngIf="proposal.statusSponsor.id === 3">In MarketPlace</ng-container>
     </td>
-    <td style="color: {{statusSponsor[proposal.statusSponsor].color}}">{{statusSponsor[proposal.statusSponsor].name}}
+    <td style="color: {{status[proposal.statusSponsor.id].color}}">{{status[proposal.statusSponsor.id].name}}
       <br>
-      <ng-container *ngIf="proposal.statusSponsor === 1">
+      <ng-container *ngIf="proposal.statusSponsor.id === 1">
         {{getRemainingDays(proposal.proposalApprovalDate)}} Days Left
       </ng-container>
     </td>

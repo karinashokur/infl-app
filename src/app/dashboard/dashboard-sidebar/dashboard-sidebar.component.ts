@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {LogoutEventEmitterService} from './logout-modal/logout-event-emitter.service';
 import {user} from '../../constants';
 import {DashboardSidebarService} from './dashboard-sidebar.service';
+import {DashboardService} from '../dashboard.service';
 export class UserSideBar {
   userId;
   imgSrc;
@@ -45,7 +46,8 @@ export class DashboardSidebarComponent implements OnInit {
               private localstorageService: LocalstorageService,
               private sessionStorageService: SessionStorageService,
               private logoutEventEmitterService: LogoutEventEmitterService,
-              private dashboardSidebarService: DashboardSidebarService) {
+              private dashboardSidebarService: DashboardSidebarService,
+              private dashboardService: DashboardService) {
   }
   showLogoutPopup: boolean;
   user: UserSideBar;
@@ -63,5 +65,8 @@ export class DashboardSidebarComponent implements OnInit {
   }
   goToUser() {
     this.router.navigate(['dashboard/user/', this.user.userId]);
+  }
+  redirectToDashboard() {
+    this.dashboardService.redirectToDashboard();
   }
 }
