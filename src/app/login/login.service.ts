@@ -59,8 +59,10 @@ export class LoginService {
     let check = false;
     await this.checkHasSubmittedQuestionnaire().then((data: ApolloQueryResult<HasSubmissionCovered>) => {
       check = data.data.user.hasSubmitQuestionnaire;
+      console.log(data);
       if (data.data.user.user_type !== null) {
         this.localstorageService.setUserType(data.data.user.user_type.id);
+        this.dashboardService.redirectToDashboard();
       }
     });
     return check;
@@ -71,7 +73,7 @@ export class LoginService {
       this.router.navigate(['register/onboardinga']);
     } else {
       if (this.localstorageService.isLoggedIn() || this.sessionStorageService.isLoggedIn()) {
-        this.router.navigate(['dashboard']);
+        this.dashboardService.redirectToDashboard();
       }
     }
   }

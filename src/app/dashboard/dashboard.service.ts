@@ -36,6 +36,7 @@ export class DashboardService {
       if (this.localstorageService.getUserType() === '1') {
         this.router.navigate(['/dashboard/influencer']);
       } else if (this.localstorageService.getUserType() === '2') {
+        console.log('redirected');
         this.router.navigate(['/dashboard/non-profit']);
       } else if (this.localstorageService.getUserType() === '3') {
         this.router.navigate(['/dashboard/sponsor']);
