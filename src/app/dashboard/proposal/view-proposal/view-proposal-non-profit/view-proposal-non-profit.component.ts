@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {proposal} from '../../../../constants';
 import {Apollo} from 'apollo-angular';
-import {GETVIEWPROPOSALNONPROFIT} from '../../../../Apollo/queries';
-import {ActivatedRoute} from '@angular/router';
+import {
+  ACCEPTPROPOSALNONPROFITWITHSPONSOR,
+  DECLINEPROPOSALNONPROFITWITHSPONSOR,
+  GETVIEWPROPOSALNONPROFIT
+} from '../../../../Apollo/queries';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
 import {LocalstorageService} from '../../../../localstorage.service';
 import {ApolloQueryResult} from 'apollo-client';
 import {ViewProposal} from '../viewProposal';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-view-proposal-non-profit',
   templateUrl: './view-proposal-non-profit.component.html',
@@ -15,7 +20,9 @@ import {ViewProposal} from '../viewProposal';
 export class ViewProposalNonProfitComponent implements OnInit {
   constructor(private apollo: Apollo,
               private activatedRoute: ActivatedRoute,
-              private localstorageService: LocalstorageService) { }
+              private localstorageService: LocalstorageService,
+              private tostr: ToastrService,
+              private router: Router) { }
   proposal: ViewProposal;
   proposalId;
   ngOnInit(): void {
@@ -34,6 +41,30 @@ export class ViewProposalNonProfitComponent implements OnInit {
       console.log(data.data.proposal);
     });
   }
-  onSubmit() {
+  acceptProposal() {
+    this.apollo.mutate({
+      mutation: ACCEPTPROPOSALNONPROFITWITHSPONSOR,
+      variables: {
+        id: this.proposalId
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
+      }
+    }).toPromise().then((data) => {
+        this.tostr.success('Thank You for your support', 'ProposalAccepted');
+        this.router.navigate(['dashboard/proposal']);
+      }
+    );
+  }
+  declineProposal() {
+    this.apollo.mutate({
+      mutation: DECLINEPROPOSALNONPROFITWITHSPONSOR,
+      variables: {
+        id: this.proposalId
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
+      }
+    }).toPromise().then();
   }
 }

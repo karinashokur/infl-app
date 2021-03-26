@@ -1,4 +1,4 @@
-  <app-view-proposal-top [proposal]="proposal"></app-view-proposal-top>
+<app-view-proposal-top [proposal]="proposal"></app-view-proposal-top>
   <div class="card" *ngIf="proposal.proposal.statusSponsor.id === '1'">
     <div class="heading">
       Sponsorship Information
@@ -10,8 +10,8 @@
       </div>
       <div class="radio-options">
         <div class="radio-option">
-          <input type="radio"  [value]="true" name="promotingCampaign"> Yes
-          <input type="radio" [value]="false" name="promotingCampaign"> No
+          <input type="radio" disabled [checked]="proposal.proposal.promotingCampaignSponsor" [value]="true" name="promotingCampaign"> Yes
+          <input type="radio" disabled [checked]="!proposal.proposal.promotingCampaignSponsor" [value]="false" name="promotingCampaign"> No
         </div>
       </div>
     </div>
@@ -22,10 +22,38 @@
       <div class="sub-heading">
         Please note this will be split equally as a sponsorship fee to the influencer and a donation to the nonprofit organization
       </div>
-      $&nbsp;
+      $&nbsp; {{proposal.proposal.budgetSponsor}}
     </div>
+    </div>
+    <div class="should-it-look">
+      <div class="input-text">
+        How Should It Look?
+      </div>
+      <div class="text-on-input">
+        {{proposal.proposal.howShouldItLookSponsor}}
+      </div>
+    </div>
+    <div class="call-to-action">
+      <div class="input-text">
+        Call To Action
+      </div>
+      <div class="text-on-input">
+        {{proposal.proposal.callToActionSponsor}}
+      </div>
     </div>
   </div>
+  <div class="buttons"  *ngIf="proposal.proposal.statusSponsor.id === '1' && proposal.proposal.statusNonProfitWithSponsor.id !== '1'">
+    <button class="submit" (click)="acceptProposal()">ACCEPT</button>
+    <button type="submit" (click)="declineProposal()" class="submit">DECLINE</button>
+  </div>
+<div class="card" *ngIf="proposal.proposal.statusSponsor.id === '1' && proposal.proposal.statusNonProfitWithSponsor.id === '1'">
+  <div class="buttons">
+    <button class="submit">ACCEPTED</button>
+  </div>
+</div>
+<div class="card" *ngIf="proposal.proposal.statusInfluencer.id !== '1'">
+  Please wait for the influencer to accept the Proposal!
+</div>
 <div class="card" *ngIf="proposal.proposal.statusSponsor.id !== '1'">
-  Please wait for the sponsor to accept the Propsoal!
+  Please wait for the sponsor to accept the Proposal!
 </div>

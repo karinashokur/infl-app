@@ -315,7 +315,58 @@ query($id: ID!) {
     howShouldItLookNonProfit
     callToActionNonProfit
     sponsorshipIntegration
+    nonprofitOrganizationPromotion
+    sendOnlyToInfluencers
+    taxReceipt
+    anyThingElseNonProfit
     statusSponsor {
+      id
+    }
+    statusInfluencer {
+      id
+    }
+    percentRevenueInfluencer
+    anythingElseInfluencer
+    budgetSponsor
+    howShouldItLookSponsor
+    callToActionSponsor
+    anyThingElseSponsor
+    statusInfluencerWithSponsor {
+      id
+    }
+    statusNonProfitWithSponsor {
+      id
+    }
+    isACampaign
+    promotingCampaignSponsor
+  }
+}`;
+export const DECLINEPROPOSALNONPROFITWITHSPONSOR = gql`
+mutation($id: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $id
+    }
+    data: {
+      statusNonProfitWithSponsor: "4"
+    }
+  }) {
+    proposal {
+      id
+    }
+  }
+}`;
+export const ACCEPTPROPOSALNONPROFITWITHSPONSOR = gql`
+mutation($id: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $id
+    }
+    data: {
+      statusNonProfitWithSponsor: "1"
+    }
+  }) {
+    proposal {
       id
     }
   }

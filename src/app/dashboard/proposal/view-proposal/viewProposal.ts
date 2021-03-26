@@ -26,8 +26,24 @@ export class ViewProposal {
     callToActionNonProfit
     sponsorshipIntegration
     nonprofitOrganizationPromotion
+    sendOnlyToInfluencers
+    taxReceipt
+    anyThingElseNonProfit
     statusSponsor: {
       id
     }
+    statusInfluencer: {
+      id
+    }
+    percentRevenueInfluencer
+    anythingElseInfluencer
+    budgetSponsor
+    howShouldItLookSponsor
+    callToActionSponsor
+    anyThingElseSponsor
+    statusInfluencerWithSponsor
+    statusNonProfitWithSponsor
+    isACampaign
+    promotingCampaignSponsor
   };
 }
