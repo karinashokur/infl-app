@@ -58,7 +58,6 @@ export class CreateProposalComponent implements OnInit {
     if (this.proposalForm.valid) {
       console.log(this.influencerId);
       this.createProposalService.createProposal(this.proposalForm.value, this.influencerId);
-      this.router.navigate(['dashboard/proposal']);
     } else {
       this.tostr.warning('Please be careful', 'All the fields are required');
     }

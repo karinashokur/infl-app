@@ -8,12 +8,18 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {CreateProposalComponent} from './proposal/create-proposal/create-proposal.component';
 import {ViewProposalComponent} from './proposal/view-proposal/view-proposal.component';
 import {ProposalComponent} from './proposal/proposal.component';
-import {ProposalStatusInfluencerComponent} from './proposal/proposal-status-influencer/proposal-status-influencer.component';
-import {ProposalStatusNonProfitComponent} from './proposal/proposal-status-non-profit/proposal-status-non-profit.component';
-import {ProposalStatusSponsorComponent} from './proposal/proposal-status-sponsor/proposal-status-sponsor.component';
-import {ViewProposalNonProfitComponent} from './proposal/view-proposal/view-proposal-non-profit/view-proposal-non-profit.component';
-import {ViewProposalInfluencerComponent} from './proposal/view-proposal/view-proposal-influencer/view-proposal-influencer.component';
-import {ViewProposalSponsorComponent} from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
+import {ProposalStatusInfluencerComponent
+} from './proposal/proposal-status/proposal-status-influencer/proposal-status-influencer.component';
+import {ProposalStatusNonProfitComponent
+} from './proposal/proposal-status/proposal-status-non-profit/proposal-status-non-profit.component';
+import {ProposalStatusSponsorComponent
+} from './proposal/proposal-status/proposal-status-sponsor/proposal-status-sponsor.component';
+import {ViewProposalNonProfitComponent
+} from './proposal/view-proposal/view-proposal-non-profit/view-proposal-non-profit.component';
+import {ViewProposalInfluencerComponent
+} from './proposal/view-proposal/view-proposal-influencer/view-proposal-influencer.component';
+import {ViewProposalSponsorComponent
+} from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
       {path: 'non-profit', component: NonProfitComponent},

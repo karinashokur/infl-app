@@ -4,13 +4,15 @@ import {CREATEPROPOSAL} from '../../../Apollo/queries';
 import {LocalstorageService} from '../../../localstorage.service';
 import {HttpHeaders} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class CreateProposalService {
   constructor(private apollo: Apollo,
               private localstorageService: LocalstorageService,
-              private tostr: ToastrService) { }
+              private tostr: ToastrService,
+              private router: Router) { }
   createProposal(form, influencerId) {
     this.apollo.mutate({
       mutation: CREATEPROPOSAL,
@@ -31,13 +33,16 @@ export class CreateProposalService {
         anyThingElse: form.anyThingElse,
         id: this.localstorageService.getId(),
         influencerId,
-        statusSponsor: form.sendOnlyToInfluencer ? '6' : '7'
+        statusSponsor: form.sendOnlyToInfluencer ? '6' : '7',
+        statusInfluencerWithSponsor: '5',
+        statusNonProfitWithSponsor : '5'
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).subscribe((data) => {
       this.tostr.success('We hope this is a successful campaign', 'Proposal Created!');
+      this.router.navigate(['dashboard/proposal']);
     });
   }
   convertDateString(date): string {

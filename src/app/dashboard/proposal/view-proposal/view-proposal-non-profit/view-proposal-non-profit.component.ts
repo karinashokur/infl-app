@@ -4,7 +4,7 @@ import {Apollo} from 'apollo-angular';
 import {
   ACCEPTPROPOSALNONPROFITWITHSPONSOR,
   DECLINEPROPOSALNONPROFITWITHSPONSOR,
-  GETVIEWPROPOSALNONPROFIT
+  GETVIEWPROPOSAL
 } from '../../../../Apollo/queries';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
@@ -28,7 +28,7 @@ export class ViewProposalNonProfitComponent implements OnInit {
   ngOnInit(): void {
     this.proposalId = this.activatedRoute.snapshot.paramMap.get('id');
     this.apollo.query({
-      query: GETVIEWPROPOSALNONPROFIT,
+      query: GETVIEWPROPOSAL,
       variables: {
         id: this.proposalId
       },

@@ -225,7 +225,8 @@ mutation($campaignName: String!, $campaignCategory: ID!, $campaignDescription: S
 $campaignStartDate: Date!, $campaignEndDate: Date!, $proposalApprovalDate: Date!,
 $targetPlatform: [ID], $howShouldItLook: String!, $callToAction: String,
 $interestInForProfit: Boolean!, $promotingCampaign: Boolean!, $sendOnlyToInfluencer: Boolean!,
-$offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!, $statusSponsor: ID!) {
+$offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!, $statusSponsor: ID!,
+$statusInfluencerWithSponsor: ID!, $statusNonProfitWithSponsor: ID!) {
   createProposal(input: {
     data: {
       campaignName: $campaignName
@@ -247,6 +248,8 @@ $offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!
       non_profit: $id
       influencer: $influencerId
       statusSponsor: $statusSponsor
+      statusInfluencerWithSponsor: $statusInfluencerWithSponsor
+      statusNonProfitWithSponsor: $statusNonProfitWithSponsor
     }
   }) {
     proposal{
@@ -264,11 +267,11 @@ $offerTaxReceipt: Boolean!, $anyThingElse: String!, $id: ID!, $influencerId: ID!
     }
   }
 }`;
-export const GETPROPOSALWITHNONPROFIT = gql`
+export const GETPROPOSALSTATUSNONPROFIT = gql`
   query($id: String!) {
     proposals(sort: "proposalApprovalDate:asc", where: {
       non_profit: $id
-    }) {
+      }) {
       id
       proposalApprovalDate
       campaignName
@@ -284,10 +287,101 @@ export const GETPROPOSALWITHNONPROFIT = gql`
       statusSponsor {
         id
       }
+      sponsor {
+        sponsor {
+          firstName
+          lastName
+          organisation
+        }
+      }
+      non_profit {
+      non_profit {
+        organisation
+        firstName
+        lastName
+      }
+    }
     }
   }
 `;
-export const GETVIEWPROPOSALNONPROFIT = gql`
+export const GETPROPOSALSTATUSINFLUENCER = gql`
+  query($id: String!) {
+    proposals(sort: "proposalApprovalDate:asc", where: {
+      influencer: $id
+      statusInfluencer_ne : "4"
+      }) {
+      id
+      proposalApprovalDate
+      campaignName
+      influencer {
+        influencer {
+          firstName
+          lastName
+        }
+      }
+      statusInfluencer {
+        id
+      }
+      statusSponsor {
+        id
+      }
+      sponsor {
+      sponsor {
+        firstName
+        lastName
+        organisation
+        }
+      }
+      non_profit {
+      non_profit {
+        organisation
+        firstName
+        lastName
+      }
+    }
+    }
+  }
+`;
+export const GETPROPOSALSTATUSSPONSOR = gql`
+ query {
+    proposals(sort: "proposalApprovalDate:asc", where: {
+      sendOnlyToInfluencers: false
+      statusSponsor_ne: "1"
+      statusInfluencer: "1"
+      }) {
+      id
+      proposalApprovalDate
+      campaignName
+      influencer {
+        influencer {
+          firstName
+          lastName
+        }
+      }
+      statusInfluencer {
+        id
+      }
+      statusSponsor {
+        id
+      }
+      sponsor {
+        sponsor {
+          firstName
+          lastName
+          organisation
+        }
+      }
+      non_profit {
+      non_profit {
+        organisation
+        firstName
+        lastName
+      }
+    }
+    }
+  }
+`;
+export const GETVIEWPROPOSAL = gql`
 query($id: ID!) {
   proposal(id: $id) {
     non_profit {
@@ -371,3 +465,111 @@ mutation($id: ID!) {
     }
   }
 }`;
+export const ACCEPTPROPOSALINFLUENCER = gql`
+mutation($id: ID!, $revenueDonated: Int!, $anythingElseInfluencer: String!){
+  updateProposal(
+    input: {
+      where: {
+        id: $id
+      }
+      data: {
+        percentRevenueInfluencer: $revenueDonated
+        anythingElseInfluencer: $anythingElseInfluencer
+        # make the status to be accepted
+        statusInfluencer: "1"
+      }
+    }) {
+    proposal {
+      id
+    }
+  }
+}`;
+export const INFLUENCERREJECTPROPOSAL = gql`
+mutation($id: ID!){
+  updateProposal(
+    input: {
+      where: {
+        id: $id
+      }
+      data: {
+        # make the status to be declined
+        statusInfluencer: "4"
+      }
+    }) {
+    proposal {
+      id
+      statusInfluencer {
+        id
+      }
+    }
+  }
+}
+`;
+export const INFLUENCERREADPROPOSAL = gql`
+mutation($id: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $id
+    }
+    data: {
+      statusInfluencer: "2"
+    }
+  }) {
+    proposal {
+      id
+    }
+  }
+}`;
+export const INFLUENCEACCEPTPROPOSALWITHSPONSOR = gql`
+mutation($id: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $id
+    }
+    data: {
+      statusInfluencerWithSponsor: "1"
+    }
+  }) {
+    proposal {
+      id
+    }
+  }
+}`;
+export const INFLUENCEREJECTPROPOSALWITHSPONSOR = gql`
+mutation($id: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $id
+    }
+    data: {
+      statusInfluencerWithSponsor: "4"
+    }
+  }) {
+    proposal {
+      id
+    }
+  }
+}`;
+export const SPONSORACCEPTPROPOSAL = gql`
+mutation($id: ID!, $promotingCampaign: Boolean!, $budgetSponsor: Int!,
+$howShouldItLook: String!, $callToAction: String!, $anyThingElse: String!) {
+     updateProposal(
+    input: {
+      where: {
+        id: $id
+      }
+      data: {
+        statusSponsor: "1"
+        budgetSponsor: $budgetSponsor
+        howShouldItLookSponsor: $howShouldItLook
+        callToActionSponsor: $callToAction
+        anyThingElseSponsor: $anyThingElse
+        promotingCampaignSponsor: $promotingCampaign
+      }
+    }) {
+    proposal {
+      id
+    }
+  }
+  }
+`;

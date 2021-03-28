@@ -16,21 +16,21 @@
   <tr>
     <td>Date</td>
     <td>CAMPAIGN</td>
-    <td>NON PROFIT</td>
+    <td>NONPROFIT</td>
     <td>INFLUENCER</td>
     <td>STATUS</td>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let proposal of proposals; let i = index" (click)="goToViewProposal(proposal.id)">
-    <td>{{proposal.campaignStartDate | date:'mm/dd/yyyy'}}</td>
+    <td>{{proposal.proposalApprovalDate | date:'shortDate'}}</td>
     <td>{{proposal.campaignName}}</td>
-    <td>{{proposal.nonProfitUser.companyName}}</td>
-    <td>{{proposal.influencer.firstName}} {{proposal.influencer.lastName}}</td>
-    <td style="color: {{statusInfluencer[proposal.influencerStatus].color}}">
-      {{statusInfluencer[proposal.influencerStatus].name}}
+    <td>{{proposal.non_profit.non_profit.firstName}} {{proposal.non_profit.non_profit.lastName}}</td>
+    <td>{{proposal.influencer.influencer.firstName}} {{proposal.influencer.influencer.lastName}}</td>
+    <td style="color: {{status[proposal.statusSponsor.id].color}}">
+      {{status[proposal.statusSponsor.id].name}}
       <br>
-      <ng-container *ngIf="proposal.influencerStatus === 2">
+      <ng-container *ngIf="proposal.statusSponsor.id === '2'">
         {{getRemainingDays(proposal.proposalApprovalDate)}} Days Left
       </ng-container>
     </td>

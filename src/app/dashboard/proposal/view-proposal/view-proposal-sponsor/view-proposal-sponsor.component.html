@@ -1,5 +1,5 @@
 <form [formGroup]="sponsorProposalForm">
-  <app-view-proposal-top></app-view-proposal-top>
+  <app-view-proposal-top [proposal]="proposal"></app-view-proposal-top>
 <div class="card">
   <div class="boolean-select-options-2">
     <div class="boolean-select-option">
@@ -8,8 +8,8 @@
       </div>
       <div class="radio-options">
         <div class="radio-option">
-          <input formControlName="promotingCampaign" [value]="true" type="radio" name="PromotingOnPlatoform" > Yes
-          <input formControlName="promotingCampaign" [value]="false" type="radio" name="PromotingOnPlatoform" > No
+          <input formControlName="promotingCampaign" [value]="true" type="radio" name="PromotingOnPlatform" > Yes
+          <input formControlName="promotingCampaign" [value]="false" type="radio" name="PromotingOnPlatform" > No
         </div>
       </div>
     </div>
@@ -48,8 +48,8 @@
 <div class="buttons">
   <button class="clicksave">MAKE CHANGES</button>
   <div class="right-buttons">
-    <button class="submit" routerLink="/proposal" (click)="onAccept()">SUBMIT</button>
-    <button class="submit" routerLink="/proposal" (click)="onDecline()">DECLINE</button>
+    <button class="submit" (click)="onAccept()">SUBMIT</button>
+    <button class="submit" (click)="onDecline()">DECLINE</button>
   </div>
 </div>
 </form>

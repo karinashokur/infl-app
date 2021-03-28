@@ -60,7 +60,7 @@ export class DashboardSidebarService {
           imgSrc: 'assets/images/Romeo.png',
           firstName: data.data.user.sponsor.firstName,
           lastName: data.data.user.sponsor.lastName,
-          position: 'Placeholder',
+          position: 'Representative',
           companyName: data.data.user.sponsor.organisation,
         };
       }

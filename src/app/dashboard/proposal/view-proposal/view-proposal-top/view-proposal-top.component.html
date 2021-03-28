@@ -67,14 +67,14 @@
         <div class="input-text">
           Campaign Start Date
         </div>
-        {{proposal.proposal.campaignStartDate | date:'dd/mm/yyyy'}}
+        {{proposal.proposal.campaignStartDate | date:'short'}}
       </div>
       <div class="campaign-date-input">
         <div class="input-text">
           Campaign End Date
         </div>
         <div class="text-on-input">
-          {{proposal.proposal.campaignEndDate | date:'dd/mm/yyyy'}}
+          {{proposal.proposal.campaignEndDate | date:'short'}}
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
           Proposal Approval Date
         </div>
         <div class="text-on-input">
-          {{proposal.proposal.proposalApprovalDate | date:'dd/mm/yyyy'}}
+          {{proposal.proposal.proposalApprovalDate | date:'short'}}
         </div>
       </div>
     </div>

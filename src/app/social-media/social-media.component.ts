@@ -8,6 +8,7 @@ import {HttpHeaders} from '@angular/common/http';
 import {user} from '../constants';
 import {ToastrService} from 'ngx-toastr';
 import {RegisterServiceService} from '../register/register-service.service';
+import {DashboardService} from '../dashboard/dashboard.service';
 export class SocialToken {
   amazon: {
     authToken
@@ -40,7 +41,8 @@ export class SocialMediaComponent implements OnInit {
               private localstorageService: LocalstorageService,
               private apollo: Apollo,
               private toastr: ToastrService,
-              private registerServiceService: RegisterServiceService
+              private registerServiceService: RegisterServiceService,
+              private dashboardService: DashboardService
   ) {
     console.log('cons');
     this.token = new SocialToken();
@@ -72,7 +74,7 @@ export class SocialMediaComponent implements OnInit {
     if (this.isValidToken()) {
       this.registerServiceService.submitCreateInfluencer(this.token);
       user.socialAuthToken = this.token;
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['dashboard/influencer']);
     }
   }
   signInWithGoogle(): void {
