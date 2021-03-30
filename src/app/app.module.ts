@@ -31,6 +31,8 @@ import {
 } from 'angularx-social-login';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {ToastrModule} from 'ngx-toastr';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,8 @@ import {ToastrModule} from 'ngx-toastr';
     HttpClientModule,
     MatRadioModule,
     SocialLoginModule,
-    DashboardModule
+    DashboardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
