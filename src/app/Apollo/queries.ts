@@ -552,7 +552,7 @@ mutation($id: ID!) {
 }`;
 export const SPONSORACCEPTPROPOSAL = gql`
 mutation($id: ID!, $promotingCampaign: Boolean!, $budgetSponsor: Int!,
-$howShouldItLook: String!, $callToAction: String!, $anyThingElse: String!) {
+$howShouldItLook: String!, $callToAction: String!, $anyThingElse: String!, $user: ID!) {
      updateProposal(
     input: {
       where: {
@@ -565,6 +565,7 @@ $howShouldItLook: String!, $callToAction: String!, $anyThingElse: String!) {
         callToActionSponsor: $callToAction
         anyThingElseSponsor: $anyThingElse
         promotingCampaignSponsor: $promotingCampaign
+        sponsor: $user
       }
     }) {
     proposal {

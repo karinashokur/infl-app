@@ -65,6 +65,7 @@ export class ViewProposalSponsorComponent implements OnInit {
           callToAction: this.sponsorProposalForm.value.callToAction,
           anyThingElse: this.sponsorProposalForm.value.anyThingElse,
           promotingCampaign: this.sponsorProposalForm.value.promotingCampaign,
+          user: this.localstorageService.getId()
         },
         context: {
           headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
