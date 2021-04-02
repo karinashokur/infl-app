@@ -151,3 +151,4 @@ export let proposal = {
   statusSponsor: 3,
   sponsor: null
 };
+export const amazonPayUrl = 'https:

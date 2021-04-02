@@ -1,0 +1,118 @@
+@import "../../../scss_mixins";
+.outer {
+  position: fixed;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 150;
+  .inner {
+    width: 60%;
+    height: 70%;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.08);
+    @include mobile {
+      width: 90%;
+    }
+    * {
+      margin-top: 10px;
+    }
+    .img {
+      height: 100px;
+      width: 100px;
+      margin: 30px 0px;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .heading {
+      font-family: Roboto;
+      font-size: 24px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+    .subHeading {
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.57;
+      letter-spacing: normal;
+      color: #3a3a3a;
+      text-align: center;
+    }
+    button {
+      width: 60%;
+      padding: 20px;
+      border: 0;
+      @include mobile {
+        padding: 10px;
+      }
+    }
+    .keepSignedIn {
+      border-radius: 5px;
+      box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
+      background-color: #0099d9;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: white;
+    }
+    .signout {
+      border-radius: 5px;
+      border: solid 1.5px #dee2e2;
+      background-color: #ffffff;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+  }
+}
+input {
+  width: 100%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: solid 1.5px #dee2e2;
+  background-color: #ffffff;
+  @include mobile {
+    padding: 10px;
+  }
+}
+.cloutvocate-link {
+  text-align: center;
+  font-family: AmazonEmber;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0099d9;
+}
+form {
+  width: 60%;
+}

@@ -1,0 +1,86 @@
+#addressBookWidgetDiv {
+  width: 400px;
+  height: 400px;
+}
+#walletWidgetDiv {
+    width: 400px;
+    height: 400px;
+  }
+.block-heading {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+.payments-due {
+  .card {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+    background-color: #e3f4fb;
+    padding: 30px 50px;
+    .card-left {
+      flex-grow: 3;
+      .card-new {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #6bcbb8;
+      }
+      .campaignName {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+      .between {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+      table {
+        tbody {
+          tr {
+            td {
+              padding-right: 30px;
+              font-family: Roboto;
+              font-size: 10px;
+              font-weight: 500;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.4;
+              letter-spacing: normal;
+              color: #3a3a3a;
+            }
+          }
+        }
+      }
+    }
+    .card-right {
+      flex-grow: 1;
+      .pay-details {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

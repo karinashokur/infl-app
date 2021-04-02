@@ -33,7 +33,9 @@
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/amazonPay.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -102,7 +104,9 @@
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/amazonPay.js"
+            ]
           }
         },
         "lint": {

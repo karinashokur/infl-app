@@ -33,6 +33,12 @@ import { ViewProposalSponsorComponent
 } from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
 import { ViewProposalTopComponent
 } from './proposal/view-proposal/view-proposal-top/view-proposal-top.component';
+import { PaymentsSponsorComponent } from './payments/payments-sponsor/payments-sponsor.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { CheckoutComponent } from './payments/checkout/checkout.component';
+import { CampaignComponent } from './campaign/campaign.component';
+import { ViewCampaignComponent } from './campaign/view-campaign/view-campaign.component';
+import { StartCampaignModalComponent } from './campaign/start-campaign-modal/start-campaign-modal.component';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -56,11 +62,18 @@ import { ViewProposalTopComponent
     ViewProposalNonProfitComponent,
     ViewProposalSponsorComponent,
     ViewProposalTopComponent,
+    PaymentsSponsorComponent,
+    PaymentsComponent,
+    CheckoutComponent,
+    CampaignComponent,
+    ViewCampaignComponent,
+    StartCampaignModalComponent,
     ],
   exports: [
     DashboardTopbarComponent,
     DashboardSidebarComponent,
-    LogoutModalComponent
+    LogoutModalComponent,
+    StartCampaignModalComponent
   ],
     imports: [
         CommonModule,

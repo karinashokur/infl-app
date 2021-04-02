@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import {proposal} from '../../../constants';
+import {Apollo} from "apollo-angular";
+import {PROPOSALTOCAMPAIGN} from "../../../Apollo/queries";
+import {HttpHeaders} from "@angular/common/http";
+import {LocalstorageService} from "../../../localstorage.service";
 @Injectable({
   providedIn: 'root'
 })
 export class ViewProposalService {
-  constructor() { }
-  setTrueToReadProposalInfluencer() {
-    proposal.influencerStatus = 2;
-  }
-  acceptInfluencerProposal(revenueDonated, anyThingElse) {
-    proposal.influencerStatus = 1;
-    proposal.influencerTotalRevenue = revenueDonated;
-    proposal.anythingElseInfluencer = anyThingElse;
-  }
-  rejectInfluencerProposal() {
-    proposal.influencerStatus = 4;
-  }
-  acceptSponsorProposal(promotingCampaign: any, bubbles: any, howShouldItLook: any, callToAction: any, anyThingElse: any) {
-      proposal.statusSponsor = 1;
-  }
-  rejectSponsorProposal() {
-    proposal.statusSponsor = 2;
+  constructor(private apollo: Apollo,
+              private localstorageService: LocalstorageService) { }
+  startCampaign(proposalId: string) {
+    this.apollo.mutate({
+      mutation: PROPOSALTOCAMPAIGN,
+      variables: {
+        proposalId
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
+      }
+    }).toPromise().then();
   }
 }

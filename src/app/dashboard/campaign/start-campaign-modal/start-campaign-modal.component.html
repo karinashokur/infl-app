@@ -1,0 +1,32 @@
+<div class="outer" *ngIf="show">
+  <div class="inner" *ngIf="page1">
+    <div class="heading">
+      Please Enter the YouTube Video ID
+    </div>
+    <div class="subHeading">
+      To start your campaign, please enter the ID of the YouTube video below.
+    </div>
+    <div class="img">
+      <img src="../../../../assets/images/BlackBackground.png">
+    </div>
+    <form [formGroup]="form">
+      <input formControlName="youtubeLink" type="text" placeholder="Enter YouTube Video ID">
+    </form>
+    <button class="keepSignedIn" (click)="submitId()">SUBMIT</button>
+    <button class="signout" (click)="close()">CLOSE</button>
+  </div>
+  <div class="inner" *ngIf="!page1">
+    <div class="heading">
+      Here Is Your Unique Campaign URL
+    </div>
+    <div class="subHeading">
+      Please copy and paste the link below into the description box of the campaign video
+      for inspired viewers to make a donation to the nonprofit organization
+    </div>
+    <div class="img">
+      <img src="../../../../assets/images/BlackBackground.png">
+    </div>
+    <input type="text" class="cloutvocate-link" placeholder="Enter YouTube Video ID" value="{{uniqueURL}}" disabled>
+    <button class="keepSignedIn" (click)="close()">CLOSE</button>
+  </div>
+</div>

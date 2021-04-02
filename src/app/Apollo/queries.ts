@@ -574,3 +574,34 @@ $howShouldItLook: String!, $callToAction: String!, $anyThingElse: String!, $user
   }
   }
 `;
+export const STARTCAMPAIGN = gql`
+  mutation($proposalId: ID!, $youtubeLink: String!) {
+  createCampaign(input: {
+    data: {
+      youtubeVideoLink: $youtubeLink
+      proposal: $proposalId
+    }
+  }) {
+    campaign {
+      id
+      youtubeVideoLink
+    }
+  }
+}`;
+export const PROPOSALTOCAMPAIGN = gql`
+mutation($proposalId: ID!) {
+  updateProposal(input: {
+    where: {
+      id: $proposalId
+    }
+    data: {
+      isACampaign: true
+    }
+  }) {
+    proposal {
+      id
+      isACampaign
+    }
+  }
+}
+`;

@@ -22,12 +22,12 @@ import {ApolloQueryResult} from 'apollo-client';
 })
 export class ViewProposalInfluencerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
-              private viewProposalService: ViewProposalService,
               private apollo: Apollo,
               private activatedRoute: ActivatedRoute,
               private localstorageService: LocalstorageService,
               private tostr: ToastrService,
-              private router: Router) { }
+              private router: Router,
+              private viewProposalService: ViewProposalService) { }
   proposal: ViewProposal;
   influencerProposalForm = this.formBuilder.group({
     revenueDonated: ['', Validators.required],
@@ -84,6 +84,9 @@ export class ViewProposalInfluencerComponent implements OnInit {
     });
   }
   onAcceptWithSponsor() {
+    if (this.proposal.proposal.statusNonProfitWithSponsor.id === '1') {
+      this.viewProposalService.startCampaign(this.proposalId);
+    }
     this.apollo.mutate({
       mutation: INFLUENCEACCEPTPROPOSALWITHSPONSOR,
       variables: {

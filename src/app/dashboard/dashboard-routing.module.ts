@@ -20,6 +20,10 @@ import {ViewProposalInfluencerComponent
 } from './proposal/view-proposal/view-proposal-influencer/view-proposal-influencer.component';
 import {ViewProposalSponsorComponent
 } from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
+import {PaymentsComponent} from "./payments/payments.component";
+import {PaymentsSponsorComponent} from "./payments/payments-sponsor/payments-sponsor.component";
+import {CampaignComponent} from "./campaign/campaign.component";
+import {CheckoutComponent} from "./payments/checkout/checkout.component";
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
       {path: 'non-profit', component: NonProfitComponent},
@@ -35,6 +39,10 @@ const routes: Routes = [
       {path: 'non-profit/viewProposal/:id', component: ViewProposalNonProfitComponent},
       {path: 'influencer/viewProposal/:id', component: ViewProposalInfluencerComponent},
       {path: 'sponsor/viewProposal/:id', component: ViewProposalSponsorComponent},
+      {path: 'payments', component: PaymentsComponent},
+      {path: 'sponsor/payments', component: PaymentsSponsorComponent},
+      {path: 'checkout', component: CheckoutComponent},
+      {path: 'campaign', component: CampaignComponent}
     ]},
 ];
 @NgModule({

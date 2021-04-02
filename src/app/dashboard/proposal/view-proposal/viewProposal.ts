@@ -41,8 +41,12 @@ export class ViewProposal {
     howShouldItLookSponsor
     callToActionSponsor
     anyThingElseSponsor
-    statusInfluencerWithSponsor
-    statusNonProfitWithSponsor
+    statusInfluencerWithSponsor: {
+      id
+    }
+    statusNonProfitWithSponsor: {
+      id
+    }
     isACampaign
     promotingCampaignSponsor
   };

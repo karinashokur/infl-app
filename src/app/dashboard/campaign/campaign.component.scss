@@ -1,0 +1,258 @@
+@import '../../scss_mixins';
+.upper {
+  width: 100%;
+  .heading {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  .upper-cards {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+      .card {
+        width: 100%;
+      }
+    }
+    .card {
+      border-radius: 5px;
+      box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+      background-color: white;
+      width: 32%;
+      height: 95px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      @include mobile {
+        width: 100%;
+        margin-top: 10px;
+      }
+      .card-text {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+      .card-amount {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3a3a3a;
+      }
+    }
+  }
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  .heading-text {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+  }
+  .heading-match {
+    i {
+      color: #c4c4c4;
+      margin-right: 20px;
+      font-size: 15px;
+    }
+    select {
+      border-radius: 100px;
+      border: solid 1px #dee2e2;
+      padding: 5px 10px;
+      font-family: Roboto;
+      font-size: 10px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+  }
+}
+.new-campaign {
+  table {
+    width: 100%;
+    border-spacing: 0 10px;
+    overflow-x: scroll;
+    thead {
+      tr {
+        td {
+          font-family: Roboto;
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 2.33;
+          letter-spacing: normal;
+          color: #000000;
+          padding: 10px 10px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        background: white;
+        margin: 0;
+        border-radius: 5px;
+        box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+        td {
+          font-family: Roboto;
+          font-size: 12px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 2.33;
+          letter-spacing: normal;
+          color: #000000;
+          padding: 30px 10px;
+          .button {
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 1px 2px 4px 0 rgba(20, 110, 180, 0.1);
+            padding: 10px 30px;
+            width: 100%;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+            background: #0099d9;
+          }
+        }
+      }
+    }
+    tr:first-child td:first-child {
+      border-top-left-radius: 10px;
+    }
+    tr:first-child td:last-child {
+      border-top-right-radius: 10px;
+    }
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
+.active-campaign {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .card {
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+    background-color: white;
+    width: 32%;
+    padding: 20px 20px;
+    @include tablet {
+      width: 50%;
+    }
+    @include mobile {
+      width: 100%;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      .card-top-image {
+        img {
+          width: 90px;
+          height: 70px;
+        }
+      }
+      .card-top-amountRaised {
+        text-align: right;
+        font-family: Roboto;
+        font-size: 10px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: #3a3a3a;
+        .card-top-amount {
+          color: #6bcbb8;
+        }
+      }
+    }
+    .card-body {
+      .campaignName {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.29;
+        letter-spacing: normal;
+        color: #000000;
+        margin-bottom: 6px;
+      }
+      .people-involved {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        font-family: Roboto;
+        font-size: 10px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: #3a3a3a;
+        * {
+          margin-right: 5px;
+        }
+      }
+    }
+    .card-footer {
+      width: 100%;
+      .view-more-button {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #0099d9;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
