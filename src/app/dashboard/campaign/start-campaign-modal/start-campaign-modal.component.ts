@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {LogoutEventEmitterService} from "../../dashboard-sidebar/logout-modal/logout-event-emitter.service";
-import {Router} from "@angular/router";
-import {LocalstorageService} from "../../../localstorage.service";
-import {SessionStorageService} from "../../../sessionstorage.service";
-import {StartCampaignModalEventEmitterService} from "./start-campaign-modal-event-emitter.service";
-import {Apollo} from "apollo-angular";
-import {STARTCAMPAIGN} from "../../../Apollo/queries";
-import {FormBuilder, Validators} from "@angular/forms";
-import {HttpHeaders} from "@angular/common/http";
+import {LogoutEventEmitterService} from '../../dashboard-sidebar/logout-modal/logout-event-emitter.service';
+import {Router} from '@angular/router';
+import {LocalstorageService} from '../../../localstorage.service';
+import {SessionStorageService} from '../../../sessionstorage.service';
+import {StartCampaignModalEventEmitterService} from './start-campaign-modal-event-emitter.service';
+import {Apollo} from 'apollo-angular';
+import {STARTCAMPAIGN} from '../../../Apollo/queries';
+import {FormBuilder, Validators} from '@angular/forms';
+import {HttpHeaders} from '@angular/common/http';
 class CampaignQuery {
   data: {
     createCampaign: {

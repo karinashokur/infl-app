@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StartCampaignModalEventEmitterService} from "./start-campaign-modal/start-campaign-modal-event-emitter.service";
+import {StartCampaignModalEventEmitterService} from './start-campaign-modal/start-campaign-modal-event-emitter.service';
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',

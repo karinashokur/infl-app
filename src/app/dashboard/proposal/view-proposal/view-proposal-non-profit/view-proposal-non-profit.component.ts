@@ -12,7 +12,7 @@ import {LocalstorageService} from '../../../../localstorage.service';
 import {ApolloQueryResult} from 'apollo-client';
 import {ViewProposal} from '../viewProposal';
 import {ToastrService} from 'ngx-toastr';
-import {ViewProposalService} from "../view-proposal.service";
+import {ViewProposalService} from '../view-proposal.service';
 @Component({
   selector: 'app-view-proposal-non-profit',
   templateUrl: './view-proposal-non-profit.component.html',

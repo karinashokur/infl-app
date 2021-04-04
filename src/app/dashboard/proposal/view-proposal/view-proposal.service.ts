@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {proposal} from '../../../constants';
-import {Apollo} from "apollo-angular";
-import {PROPOSALTOCAMPAIGN} from "../../../Apollo/queries";
-import {HttpHeaders} from "@angular/common/http";
-import {LocalstorageService} from "../../../localstorage.service";
+import {Apollo} from 'apollo-angular';
+import {PROPOSALTOCAMPAIGN} from '../../../Apollo/queries';
+import {HttpHeaders} from '@angular/common/http';
+import {LocalstorageService} from '../../../localstorage.service';
 @Injectable({
   providedIn: 'root'
 })

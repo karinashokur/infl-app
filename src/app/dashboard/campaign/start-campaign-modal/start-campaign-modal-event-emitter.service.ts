@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })

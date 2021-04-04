@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalstorageService} from "../../localstorage.service";
-import {Router} from "@angular/router";
+import {LocalstorageService} from '../../localstorage.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
