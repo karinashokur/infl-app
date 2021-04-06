@@ -71,6 +71,7 @@ export class SocialMediaComponent implements OnInit {
     });
   }
   onNext() {
+    console.log(this.token);
     if (this.isValidToken()) {
       this.registerServiceService.submitCreateInfluencer(this.token);
       user.socialAuthToken = this.token;
@@ -80,6 +81,8 @@ export class SocialMediaComponent implements OnInit {
   signInWithGoogle(): void {
     const googleLoginOptions = {
       scope: 'https:
+        'https:
+        'https:
     };
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID, googleLoginOptions);
   }

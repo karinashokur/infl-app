@@ -51,6 +51,9 @@ export class ViewProposalInfluencerComponent implements OnInit {
   onAccept() {
     if (this.influencerProposalForm.valid) {
       console.log(this.influencerProposalForm.value);
+      if (this.proposal.proposal.sendOnlyToInfluencers) {
+        this.viewProposalService.startCampaignOnlyInfluencer(this.proposalId);
+      }
       this.apollo.mutate({
         mutation: ACCEPTPROPOSALINFLUENCER,
         variables: {
@@ -84,8 +87,13 @@ export class ViewProposalInfluencerComponent implements OnInit {
     });
   }
   onAcceptWithSponsor() {
-    if (this.proposal.proposal.statusNonProfitWithSponsor.id === '1') {
-      this.viewProposalService.startCampaign(this.proposalId);
+    if (this.proposal.proposal.statusInfluencerWithSponsor.id === '1') {
+      this.viewProposalService.startCampaign(this.proposalId,
+        this.proposal.proposal.influencer.id,
+        this.proposal.proposal.non_profit.id,
+        this.proposal.proposal.budgetSponsor,
+        this.proposal.proposal.sponsor.id
+      );
     }
     this.apollo.mutate({
       mutation: INFLUENCEACCEPTPROPOSALWITHSPONSOR,

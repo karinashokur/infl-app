@@ -5,7 +5,7 @@ import {LocalstorageService} from '../../../localstorage.service';
 import {SessionStorageService} from '../../../sessionstorage.service';
 import {StartCampaignModalEventEmitterService} from './start-campaign-modal-event-emitter.service';
 import {Apollo} from 'apollo-angular';
-import {STARTCAMPAIGN} from '../../../Apollo/queries';
+import {GETCAMPAIGNUNIQUEIDANDSTARTCAMPAIGN} from '../../../Apollo/queries';
 import {FormBuilder, Validators} from '@angular/forms';
 import {HttpHeaders} from '@angular/common/http';
 class CampaignQuery {
@@ -14,6 +14,11 @@ class CampaignQuery {
       campaign: {
         id
         youtubeVideoLink
+      }
+    }
+    updateProposal: {
+      proposal: {
+        hasStartedCampaign
       }
     }
   };
@@ -51,9 +56,13 @@ export class StartCampaignModalComponent implements OnInit {
   close() {
     this.show = false;
   }
+  redirect() {
+    this.show = false;
+    this.router.navigate(['dashboard/campaign']);
+  }
   submitId() {
     this.apollo.mutate({
-      mutation: STARTCAMPAIGN,
+      mutation: GETCAMPAIGNUNIQUEIDANDSTARTCAMPAIGN,
       variables: {
         proposalId: this.campaignId,
         youtubeLink: this.form.value.youtubeLink

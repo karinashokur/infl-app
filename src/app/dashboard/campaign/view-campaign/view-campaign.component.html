@@ -1,1 +1,115 @@
-<p>view-campaign works!</p>
+<div class="heading">
+  Detailed Campaign Performance
+</div>
+<div class="top">
+  <div class="top-left">
+    <div class="img">
+      <img src="assets/images/BlackBackground.png">
+    </div>
+    <div class="top-left-right">
+      <div class="campaignName">
+        {{campaign.campaign.proposal.campaignName}}
+      </div>
+      <div class="peoples">
+      <div class="people-included">
+        <b>Influencer</b><br>
+        {{campaign.campaign.proposal.influencer.influencer.firstName}}{{campaign.campaign.proposal.influencer.influencer.lastName}}
+      </div>
+      <div *ngIf="campaign.campaign.proposal.sponsor !== null" class="people-included">
+        <b>Sponsor</b><br>
+        {{campaign.campaign.proposal.sponsor.sponsor.organisation}}
+      </div>
+      <div class="people-included">
+        <b>Non Profit</b><br>
+      {{campaign.campaign.proposal.non_profit.non_profit.organisation}}
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="top-right">
+    <div class="card last">
+      <div class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{campaign.campaign.proposal.campaignStartDate | date: 'longDate'}} - {{campaign.campaign.proposal.campaignEndDate | date: 'longDate'}}</div>
+    </div>
+    <div class="card blue last">
+      <div class="card-heading">
+        Total Amount Raised
+      </div>
+      <div class="card-text">
+        $14,267.46
+      </div>
+    </div>
+  </div>
+</div>
+<div class="body">
+  <div class="details-row">
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card last">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+  </div>
+  <div class="details-row">
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+    <div class="card last">
+      <div class="card-heading">
+        Views
+      </div>
+      <div class="card-text">
+        120,017
+      </div>
+    </div>
+  </div>
+</div>
+<div class="endCampaign" *ngIf="userId === campaign.campaign.proposal.influencer.id">
+  <button (click)="endCampaign()">END CAMPAIGN</button>
+</div>

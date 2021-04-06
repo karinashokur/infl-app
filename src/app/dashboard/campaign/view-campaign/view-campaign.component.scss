@@ -1,0 +1,146 @@
+@import "../../../scss_mixins";
+.heading {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  margin-bottom: 40px;
+}
+.blue {
+  background: #e3f4fb;
+}
+.card {
+  background: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  flex-grow: 1;
+  .card-heading {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3a3a3a;
+  }
+  .card-text {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3a3a3a;
+  }
+  .date {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3a3a3a;
+    i {
+      height: 21px;
+      width: 21px;
+      color: #0099d9;
+    }
+  }
+}
+.last {
+}
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .top-left {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 2;
+    max-width: 66%;
+    .img {
+      margin-right: 16px;
+      img {
+        width: 280px;
+        height: 175px;
+      }
+    }
+    .top-left-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .campaignName {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.29;
+        letter-spacing: normal;
+        color: #000000;
+      }
+      .peoples {
+        font-family: Roboto;
+        font-size: 12px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: #3a3a3a;
+        .people-included {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .top-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 33%;
+  }
+}
+.body {
+  margin-top: 50px;
+  .details-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .last {
+      max-width: 33%;
+    }
+  }
+}
+.endCampaign {
+  display: flex;
+  justify-content: flex-end;
+  margin: 100px 10px 10px;
+  button {
+    border: 0;
+    padding: 10px 20px;
+    text-shadow: 4px 5px 20px rgba(0, 0, 0, 0.1);
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 4px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: #0099d9;
+  }
+}

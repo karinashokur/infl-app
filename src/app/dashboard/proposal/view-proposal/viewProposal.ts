@@ -1,6 +1,7 @@
 export class ViewProposal {
   proposal: {
     non_profit: {
+      id
       non_profit: {
         organisation
         firstName
@@ -8,10 +9,19 @@ export class ViewProposal {
       }
     }
     influencer: {
+      id
       influencer: {
         firstName
         lastName
         googlePhotoUrl
+      }
+    }
+    sponsor: {
+      id
+      sponsor: {
+        firstName
+        lastName
+        organisation
       }
     }
     campaignName

@@ -1,16 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PaymentsSponsorComponent } from './payments-sponsor.component';
-describe('PaymentsSponsorComponent', () => {
-  let component: PaymentsSponsorComponent;
-  let fixture: ComponentFixture<PaymentsSponsorComponent>;
+import { EndCampaignComponent } from './end-campaign.component';
+describe('EndCampaignComponent', () => {
+  let component: EndCampaignComponent;
+  let fixture: ComponentFixture<EndCampaignComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaymentsSponsorComponent ]
+      declarations: [ EndCampaignComponent ]
     })
     .compileComponents();
   }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(PaymentsSponsorComponent);
+    fixture = TestBed.createComponent(EndCampaignComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

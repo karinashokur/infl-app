@@ -45,7 +45,12 @@ export class ViewProposalNonProfitComponent implements OnInit {
   }
   acceptProposal() {
     if (this.proposal.proposal.statusInfluencerWithSponsor.id === '1') {
-      this.viewProposalService.startCampaign(this.proposalId);
+      this.viewProposalService.startCampaign(this.proposalId,
+        this.proposal.proposal.influencer.id,
+        this.proposal.proposal.non_profit.id,
+        this.proposal.proposal.budgetSponsor,
+        this.proposal.proposal.sponsor.id
+        );
     }
     this.apollo.mutate({
       mutation: ACCEPTPROPOSALNONPROFITWITHSPONSOR,

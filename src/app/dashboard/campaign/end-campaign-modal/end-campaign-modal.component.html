@@ -1,0 +1,15 @@
+<div class="outer" *ngIf="show">
+  <div class="inner">
+    <div class="img">
+      <img src="../../../../assets/images/BlackBackground.png">
+    </div>
+    <div class="heading">
+      Confirm End Campaign
+    </div>
+    <div class="subHeading">
+      Are you sure you want to end this campaign
+    </div>
+    <button class="keepSignedIn" (click)="close()">NO, KEEP THE CAMPAIGN ACTIVE</button>
+    <button class="signout" (click)="endCampaign()">YES, END CAMPAIGN</button>
+  </div>
+</div>

@@ -33,12 +33,13 @@ import { ViewProposalSponsorComponent
 } from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
 import { ViewProposalTopComponent
 } from './proposal/view-proposal/view-proposal-top/view-proposal-top.component';
-import { PaymentsSponsorComponent } from './payments/payments-sponsor/payments-sponsor.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { CheckoutComponent } from './payments/checkout/checkout.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { ViewCampaignComponent } from './campaign/view-campaign/view-campaign.component';
 import { StartCampaignModalComponent } from './campaign/start-campaign-modal/start-campaign-modal.component';
+import { EndCampaignComponent } from './campaign/end-campaign/end-campaign.component';
+import { EndCampaignModalComponent } from './campaign/end-campaign-modal/end-campaign-modal.component';
 @NgModule({
   declarations: [
     DashboardTopbarComponent,
@@ -62,19 +63,21 @@ import { StartCampaignModalComponent } from './campaign/start-campaign-modal/sta
     ViewProposalNonProfitComponent,
     ViewProposalSponsorComponent,
     ViewProposalTopComponent,
-    PaymentsSponsorComponent,
     PaymentsComponent,
     CheckoutComponent,
     CampaignComponent,
     ViewCampaignComponent,
     StartCampaignModalComponent,
+    EndCampaignComponent,
+    EndCampaignModalComponent,
     ],
-  exports: [
-    DashboardTopbarComponent,
-    DashboardSidebarComponent,
-    LogoutModalComponent,
-    StartCampaignModalComponent
-  ],
+    exports: [
+        DashboardTopbarComponent,
+        DashboardSidebarComponent,
+        LogoutModalComponent,
+        StartCampaignModalComponent,
+        EndCampaignModalComponent
+    ],
     imports: [
         CommonModule,
         DashboardRoutingModule,

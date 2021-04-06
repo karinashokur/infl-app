@@ -1,5 +1,5 @@
 <div class="outer">
-  <div class="top" (click)="goToUser()">
+  <div class="top" *ngIf="user !== undefined" (click)="goToUser()">
     <div class="top-image">
       <img src="{{user.imgSrc}}">
     </div>
