@@ -56,6 +56,7 @@ export class DashboardSidebarComponent implements OnInit {
       this.router.navigate(['login']);
     } else {
       this.dashboardSidebarService.getUser().then((data: UserSideBar) => {
+        console.log(data);
         this.user = data;
       });
     }
