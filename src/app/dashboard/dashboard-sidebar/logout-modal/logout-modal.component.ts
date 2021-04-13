@@ -25,6 +25,7 @@ export class LogoutModalComponent implements OnInit {
     this.show = false;
   }
   logout() {
+    this.show = false;
     this.localstorageService.logout();
     this.sessionStorageService.logout();
     this.router.navigate(['login']);
