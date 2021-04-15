@@ -43,7 +43,7 @@
     </select>
   </div>
 </div>
-  <div class="influencer">
+  <div class="influencer" *ngIf="influencers !== null">
     <div class="influencer-card" *ngFor="let influencer of influencers">
       <div>
       <app-influencer-card [influencer]="influencer"></app-influencer-card>

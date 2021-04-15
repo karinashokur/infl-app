@@ -23,14 +23,18 @@ export class InfluencerCardQuery {
   };
 }
 export class InfluencerCard {
+  user: {
     id;
-    firstName;
-    lastName;
-    typeOfNonProfits: [{
-      name: string
-    }];
-    googleAuthToken;
-    googlePhotoUrl;
+    influencer: {
+      firstName,
+      lastName,
+      type_of_non_profit_organisations: [{
+        name: string
+      }],
+      googleAuthToken,
+      googlePhotoUrl,
+    };
+  };
 }
 @Component({
   selector: 'app-non-profit',
@@ -64,18 +68,7 @@ export class NonProfitComponent implements OnInit {
             headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
           }
         }).toPromise().then((data: InfluencerCardQuery) => {
-          this.influencers = [];
-          data.data.influencers.forEach((val) => {
-            console.log(val);
-            this.influencers.push({
-              id: val.user.id,
-              firstName: val.user.influencer.firstName,
-              lastName: val.user.influencer.lastName,
-              typeOfNonProfits: Object.assign([], val.user.influencer.type_of_non_profit_organisations),
-              googleAuthToken: val.user.influencer.googleAuthToken,
-              googlePhotoUrl: val.user.influencer.googlePhotoUrl
-            });
-          });
+          this.influencers = [...data.data.influencers];
         });
       });
   }

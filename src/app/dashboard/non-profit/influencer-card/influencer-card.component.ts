@@ -14,11 +14,14 @@ export class InfluencerCardComponent implements OnInit {
   influencer: InfluencerCard;
   youtubeCount: number;
   ngOnInit(): void {
-    this.youtubeService.getYoutubeData(this.influencer.googleAuthToken).then((data: YoutubeData) => {
-      this.youtubeCount = data.items[0].statistics.subscriberCount;
-    });
+    if (this.influencer.user !== null) {
+      this.youtubeService.getYoutubeData(this.influencer.user.influencer.googleAuthToken).then((data: YoutubeData) => {
+        console.log(data);
+        this.youtubeCount = data.items[0].statistics.subscriberCount;
+      });
+    }
   }
   goToProfile() {
-    this.router.navigate(['dashboard/user/' + this.influencer.id]);
+    this.router.navigate(['dashboard/user/' + this.influencer.user.id]);
   }
 }
