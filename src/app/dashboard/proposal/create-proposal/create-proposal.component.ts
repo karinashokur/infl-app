@@ -4,6 +4,20 @@ import {nonProfitCategories} from '../../../constants';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProposalService} from './create-proposal.service';
 import {ToastrService} from 'ngx-toastr';
+import {Apollo} from "apollo-angular";
+import {CREATEPROPOSALINFLUENCERDETAILS} from "../../../Apollo/queries";
+import {HttpHeaders} from "@angular/common/http";
+import {LocalstorageService} from "../../../localstorage.service";
+import {ApolloQueryResult} from "apollo-client";
+class InfluencerDetails {
+  user: {
+    influencer: {
+      firstName
+      lastName
+      googlePhotoUrl
+    }
+  };
+}
 @Component({
   selector: 'app-create-proposal',
   templateUrl: './create-proposal.component.html',
@@ -14,7 +28,9 @@ export class CreateProposalComponent implements OnInit {
               private router: Router,
               private createProposalService: CreateProposalService,
               private route: ActivatedRoute,
-              private tostr: ToastrService) { }
+              private tostr: ToastrService,
+              private apollo: Apollo,
+              private localstorageService: LocalstorageService) { }
   proposalForm = this.formBuilder.group({
     campaignName: ['', Validators.required],
     campaignCategory: ['', Validators.required],
@@ -48,9 +64,21 @@ export class CreateProposalComponent implements OnInit {
       });
     }
   }
+  influencerDetails: InfluencerDetails;
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.influencerId = params.influencerId;
+    });
+    this.apollo.query({
+      query: CREATEPROPOSALINFLUENCERDETAILS,
+      variables: {
+        id: this.influencerId
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
+      }
+    }).toPromise().then((data: ApolloQueryResult<InfluencerDetails>) => {
+      this.influencerDetails = {...data.data};
     });
     console.log(this.influencerId);
   }

@@ -3,13 +3,13 @@
   <div class="heading">
     You Have Selected to Propose a Campaign to
   </div>
-  <div class="influencer-details">
+  <div class="influencer-details" *ngIf="influencerDetails.user !== null">
     <div class="image">
-      <img src="../../../../assets/images/BlackBackground.png">
+      <img src="{{influencerDetails.user.influencer.googlePhotoUrl}}">
     </div>
     <div class="name-detail">
       <div class="name">
-      Elijah Woods x Jamie Fine
+        {{influencerDetails.user.influencer.firstName}}{{influencerDetails.user.influencer.lastName}}
       </div>
       <div class="post">
         Influencer(s)
