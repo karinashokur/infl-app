@@ -4,10 +4,11 @@
   padding: 0;
 }
 body {
-  padding: 30px 20px;
+  padding: 100px 100px;
 }
 header {
   height: 100px;
+  padding: 0px 100px;
   ul {
     list-style-type: none;
     text-align: center;
@@ -75,7 +76,7 @@ header {
   }
 }
 .section1 {
-  padding: 100px 30px;
+  padding: 100px 100px;
   display: flex;
   .left {
     width: 50%;
@@ -127,7 +128,7 @@ header {
   }
 }
 .section2 {
-  padding: 100px 30px;
+  padding: 100px 100px;
   display: flex;
   .right {
     width: 50%;
@@ -186,7 +187,7 @@ header {
   }
 }
 .section3 {
-  padding: 100px 30px;
+  padding: 100px 100px;
   .text {
     text-align: center;
     padding: 50px;
