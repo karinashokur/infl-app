@@ -21,7 +21,7 @@
       <form [formGroup]="formInfluencer" (ngSubmit)="submitInfluencer()" *ngIf="currentProfile == profiles.influencer">
         <div class="container">
           <div class="select-option-text">
-            Select the option that best describes you
+            Select the options that are of most interest to you
           </div>
           <div class="select-option">
             <label *ngFor="let option of options; let i = index" class="container">
