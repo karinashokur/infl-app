@@ -193,7 +193,7 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 30px;
   margin-bottom: 100px;
   button {

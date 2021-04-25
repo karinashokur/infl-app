@@ -94,9 +94,12 @@
     </div>
   </div>
 </div>
-<div class="buttons" *ngIf="proposal.proposal.statusInfluencer.id === '1' && proposal.proposal.sponsorshipIntegration && proposal.proposal.statusSponsor.id === '1'">
+<div class="buttons" *ngIf="proposal.proposal.statusInfluencer.id === '1' && proposal.proposal.sponsorshipIntegration && proposal.proposal.statusSponsor.id === '1' && proposal.proposal.statusInfluencerWithSponsor.id !== '1'">
   <div class="right-buttons">
-    <button class="submit" (click)="onAcceptWithSponsor()">ACCEPT SPONSOR</button>
-    <button class="submit" (click)="onRejectWithSponsor()">DECLINE SPONSOR</button>
+    <button class="submit" (click)="onAcceptWithSponsor()">ACCEPT</button>
+    <button class="submit" (click)="onRejectWithSponsor()">DECLINE</button>
   </div>
+</div>
+<div class="buttons" *ngIf="proposal.proposal.statusInfluencerWithSponsor.id === '1'">
+  Already accepted
 </div>
