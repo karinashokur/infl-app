@@ -96,10 +96,21 @@ export const CREATENONPROFIT = gql`
       }
     }
   }`;
+export const CREATEPROPOSALINFLUENCERDETAILS = gql`
+query($id: ID!) {
+  user(id: $id) {
+    influencer {
+      firstName
+      lastName
+      googlePhotoUrl
+    }
+  }
+}
+`;
 export const CREATEINFLUENCER = gql`
 mutation createQuestionnaireInfluencer($firstName: String!, $lastName: String!, $interestedInDonating: Boolean!,
  $type_of_influencers: [ID], $type_of_non_profit_organisations: [ID], $user: ID!, $rangeOfCompensation: ID!,
-$googleAuthToken: String!, $amazonAuthToken: String!, $googlePhotoUrl: String!) {
+$googleAuthToken: String!, $googlePhotoUrl: String!) {
         createInfluencer(input: {
           data: {
             firstName: $firstName
@@ -109,7 +120,6 @@ $googleAuthToken: String!, $amazonAuthToken: String!, $googlePhotoUrl: String!) 
             type_of_non_profit_organisations: $type_of_non_profit_organisations
             range_of_compensation: $rangeOfCompensation
             googleAuthToken: $googleAuthToken
-            amazonAuthToken: $amazonAuthToken
             googlePhotoUrl: $googlePhotoUrl
             user: $user
           }
