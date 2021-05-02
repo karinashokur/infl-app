@@ -132,7 +132,6 @@ export class RegisterServiceService {
         type_of_influencers: this.questionnaireB.contentType,
         type_of_non_profit_organisations: this.questionnaireC.typeOfInterestedNonProfit,
         googleAuthToken: token.google.authToken,
-        amazonAuthToken: token.amazon.authToken,
         googlePhotoUrl: token.google.photoUrl
       },
       context: {
