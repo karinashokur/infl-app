@@ -10,20 +10,14 @@ import {ToastrService} from 'ngx-toastr';
 import {RegisterServiceService} from '../register/register-service.service';
 import {DashboardService} from '../dashboard/dashboard.service';
 export class SocialToken {
-  amazon: {
-    authToken
-  };
   google: {
     authToken
     photoUrl
   };
   isValid() {
-    return this.amazon.authToken !== null && this.google.authToken !== null;
+    return this.google.authToken !== null;
   }
   constructor() {
-    this.amazon = {
-      authToken: null
-    };
     this.google = {
       authToken: null,
       photoUrl: null
@@ -57,16 +51,10 @@ export class SocialMediaComponent implements OnInit {
       this.loggedIn = (user != null);
       console.log(user);
       if (this.loggedIn) {
-        if (this.user.provider === 'AMAZON') {
-          this.token.amazon.authToken = this.user.authToken;
-          console.log('success message A');
-          this.toastr.success('Amazon\'s Login success', 'Amazon Added');
-        } else {
-          this.token.google.authToken = this.user.authToken;
-          this.token.google.photoUrl = this.user.photoUrl;
-          console.log('success message G');
-          this.toastr.success('Google\'s Login success', 'Google Added');
-        }
+        this.token.google.authToken = this.user.authToken;
+        this.token.google.photoUrl = this.user.photoUrl;
+        console.log('success message G');
+        this.toastr.success('Google\'s Login success', 'Google Added');
       }
     });
   }
@@ -85,12 +73,6 @@ export class SocialMediaComponent implements OnInit {
         'https:
     };
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID, googleLoginOptions);
-  }
-  signInWithAmazon(): void {
-    const amazonLoginOptions = {
-      scope: 'profile profile:user_id postal_code'
-    };
-    this.authService.signIn(AmazonLoginProvider.PROVIDER_ID, amazonLoginOptions);
   }
   isValidToken() {
     if (this.token === undefined) {
