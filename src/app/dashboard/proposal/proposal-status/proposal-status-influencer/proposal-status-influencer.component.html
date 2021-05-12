@@ -26,8 +26,7 @@
   <tr *ngFor="let proposal of proposals; let i = index" (click)="goToViewProposal(proposal.id, i)">
     <td>{{proposal.proposalApprovalDate | date:'shortDate'}}</td>
     <td>{{proposal.campaignName}}</td>
-    <td>{{proposal.firstName}}{{proposal.influencer.influencer.lastName}}</td>
-    <td>{{proposal.influencer.influencer.firstName}}{{proposal.influencer.influencer.lastName}}</td>
+    <td>{{proposal.influencer.influencer.firstName}} {{proposal.influencer.influencer.lastName}}</td>
     <td style="color: {{status[proposal.statusInfluencer.id].color}}">
       {{status[proposal.statusInfluencer.id].name}}
       <br>
