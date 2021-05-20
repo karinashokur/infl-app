@@ -99,6 +99,7 @@ export class RegisterServiceService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).subscribe((data) => {
+      this.localstorageService.setUserType('3');
       this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
     });
   }
@@ -117,6 +118,7 @@ export class RegisterServiceService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).subscribe((data) => {
+      this.localstorageService.setUserType('2');
       this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
     });
   }
@@ -138,7 +140,9 @@ export class RegisterServiceService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).subscribe((data) => {
+      this.localstorageService.setUserType('1');
       this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+      this.router.navigate(['dashboard/influencer']);
     });
   }
 }
