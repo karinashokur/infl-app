@@ -63,7 +63,6 @@ export class SocialMediaComponent implements OnInit {
     if (this.isValidToken()) {
       this.registerServiceService.submitCreateInfluencer(this.token);
       user.socialAuthToken = this.token;
-      this.router.navigate(['dashboard/influencer']);
     }
   }
   signInWithGoogle(): void {
