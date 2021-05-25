@@ -17,15 +17,15 @@ export class LogoutModalComponent implements OnInit {
   ngOnInit(): void {
     if (this.logoutEventEmitterService.subsVar === undefined) {
       this.logoutEventEmitterService.subsVar = this.logoutEventEmitterService.invokeFirstComponentFunction.subscribe(((data) => {
-        this.show = true;
+        this.show = !this.show;
       }));
     }
   }
   close() {
-    this.show = false;
+    this.show = !this.show;
   }
   logout() {
-    this.show = false;
+    this.show = !this.show;
     this.localstorageService.logout();
     this.sessionStorageService.logout();
     this.router.navigate(['login']);
