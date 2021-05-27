@@ -69,7 +69,6 @@ export class RegisterServiceService {
   public setQuestionnaireCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit) {
     this.questionnaireC = new QuestionnareCCorporateSponsor(nameOfTheCompany, isInterestedInNonProfit);
     this.submitCreateSponsor();
-    this.router.navigate(['dashboard/sponsor']);
   }
   public setQuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating) {
     this.questionnaireC = new QuestionnaireCInfluencer(typeOfInterestedNonProfit, interestedInDonating);
@@ -78,7 +77,6 @@ export class RegisterServiceService {
   public setQuestionnaireCNonProfit(nameOfOrganization, categoryOfOrganization) {
     this.questionnaireC = new QuestionnareCNonProfit(nameOfOrganization, categoryOfOrganization);
     this.submitCreateNonProfit();
-    this.router.navigate(['dashboard/non-profit']);
   }
   public setQuestionnaireDInfluencer(compensationRange) {
     this.questionnaireD = new QuestionnareDInfluencer(compensationRange);
@@ -101,6 +99,7 @@ export class RegisterServiceService {
     }).subscribe((data) => {
       this.localstorageService.setUserType('3');
       this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+      this.router.navigate(['dashboard/sponsor']);
     });
   }
   submitCreateNonProfit() {
@@ -120,6 +119,7 @@ export class RegisterServiceService {
     }).subscribe((data) => {
       this.localstorageService.setUserType('2');
       this.tostr.success('', 'Hola, ' + this.questionnaireA.firstName);
+      this.router.navigate(['dashboard/non-profit']);
     });
   }
   submitCreateInfluencer(token: SocialToken) {
