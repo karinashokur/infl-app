@@ -627,7 +627,7 @@ mutation($proposalId: ID!) {
       id: $proposalId
     }
     data: {
-      hasCampaignStarted: true
+      isACampaign: true
     }
   }) {
     proposal {
