@@ -92,6 +92,7 @@ export class CampaignComponent implements OnInit {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data: ApolloQueryResult<ActiveCampaign>) => {
+      console.log(data.data);
       this.activeCampaign = data.data;
     });
   }
@@ -99,6 +100,7 @@ export class CampaignComponent implements OnInit {
     this.startCampaignModalEventEmitterService.onFirstComponentButtonClick(campaignId);
   }
   goToCampaign(id) {
+    console.log(id);
     this.router.navigate(['dashboard/campaign', id]);
   }
 }

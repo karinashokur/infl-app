@@ -33,6 +33,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
 import {ToastrModule} from 'ngx-toastr';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PublicDonationCampaignComponent } from './public-donation-campaign/public-donation-campaign.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { environment } from '../environments/environment';
     OnboardingDComponent,
     DashboardComponent,
     SocialMediaComponent,
-    CardComponent
+    CardComponent,
+    PublicDonationCampaignComponent
   ],
   imports: [
     BrowserModule,
