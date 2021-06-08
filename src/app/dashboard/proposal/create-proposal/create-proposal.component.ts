@@ -4,11 +4,11 @@ import {nonProfitCategories} from '../../../constants';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProposalService} from './create-proposal.service';
 import {ToastrService} from 'ngx-toastr';
-import {Apollo} from "apollo-angular";
-import {CREATEPROPOSALINFLUENCERDETAILS} from "../../../Apollo/queries";
-import {HttpHeaders} from "@angular/common/http";
-import {LocalstorageService} from "../../../localstorage.service";
-import {ApolloQueryResult} from "apollo-client";
+import {Apollo} from 'apollo-angular';
+import {CREATEPROPOSALINFLUENCERDETAILS} from '../../../Apollo/queries';
+import {HttpHeaders} from '@angular/common/http';
+import {LocalstorageService} from '../../../localstorage.service';
+import {ApolloQueryResult} from 'apollo-client';
 class InfluencerDetails {
   user: {
     influencer: {
@@ -49,6 +49,7 @@ export class CreateProposalComponent implements OnInit {
   });
   campaignCategory = nonProfitCategories;
   influencerId;
+  influencerDetails: InfluencerDetails;
   onCheckChange(e) {
     const checkArray: FormArray = this.proposalForm.get('targetPlatform') as FormArray;
     if (e.target.checked) {
@@ -64,7 +65,6 @@ export class CreateProposalComponent implements OnInit {
       });
     }
   }
-  influencerDetails: InfluencerDetails;
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.influencerId = params.influencerId;

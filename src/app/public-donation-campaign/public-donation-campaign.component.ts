@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
+import {get} from 'scriptjs';
 @Component({
   selector: 'app-public-donation-campaign',
   templateUrl: './public-donation-campaign.component.html',

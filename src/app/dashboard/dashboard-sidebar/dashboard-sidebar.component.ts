@@ -6,9 +6,9 @@ import {LogoutEventEmitterService} from './logout-modal/logout-event-emitter.ser
 import {user} from '../../constants';
 import {DashboardSidebarService} from './dashboard-sidebar.service';
 import {DashboardService} from '../dashboard.service';
-import {GETUSERDETAILSSIDEBAR} from "../../Apollo/queries";
-import {HttpHeaders} from "@angular/common/http";
-import {Apollo} from "apollo-angular";
+import {GETUSERDETAILSSIDEBAR} from '../../Apollo/queries';
+import {HttpHeaders} from '@angular/common/http';
+import {Apollo} from 'apollo-angular';
 export class UserSideBar {
   userId;
   imgSrc;
@@ -72,7 +72,7 @@ export class DashboardSidebarComponent implements OnInit {
         console.log(this.convertUserQueryDetailToUserSideBar(data));
         console.log(data);
       });
-    console.log('ng on inti finish fetched');
+      console.log('ng on inti finish fetched');
   }
   convertUserQueryDetailToUserSideBar(data) {
     if (this.localstorageService.getUserType() === '1') {

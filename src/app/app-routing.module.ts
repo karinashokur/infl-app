@@ -9,7 +9,7 @@ import {OnboardingCComponent} from './register/onboarding-c/onboarding-c.compone
 import {OnboardingDComponent} from './register/onboarding-d/onboarding-d.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {SocialMediaComponent} from './social-media/social-media.component';
-import {PublicDonationCampaignComponent} from "./public-donation-campaign/public-donation-campaign.component";
+import {PublicDonationCampaignComponent} from './public-donation-campaign/public-donation-campaign.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
