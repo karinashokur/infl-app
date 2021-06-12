@@ -5,13 +5,15 @@ import {ExternalScriptService} from './external-script.service';
 import {get} from 'scriptjs';
 import {amazonPayUrl} from '../../constants';
 import {Apollo} from 'apollo-angular';
-import {GETFROMPAYMENT, GETTOPAYMENT} from '../../Apollo/queries';
+import {COMPLETEPAYMENT, GETFROMPAYMENT, GETTOPAYMENT} from '../../Apollo/queries';
 import {HttpHeaders} from '@angular/common/http';
 import {ApolloQueryResult} from 'apollo-client';
+import {ToastrService} from "ngx-toastr";
 class Payments {
   payments: [Payment];
 }
 class Payment {
+  id;
   payment_status: {
     id
   };
@@ -57,30 +59,8 @@ export class PaymentsComponent implements OnInit {
               private externalScriptService: ExternalScriptService,
               private localstorageService: LocalstorageService,
               private router: Router,
-              private apollo: Apollo) {
-    get(amazonPayUrl, () => {
-      console.log('loaded');
-      window.onAmazonLoginReady = function() {
-        amazon.Login.setClientId('amzn1.application-oa2-client.d627327cd6f749f3846a6b57f69688be');
-      };
-      window.onAmazonPaymentsReady = function() {
-        showButton();
-      };
-      function showButton() {
-        let authRequest;
-        new OffAmazonPayments.Button('AmazonPayButton', 'A2S2XWN7B3EK8I', {
-          type:  'PwA',
-          color: 'Gold',
-          size:  'medium',
-          authorization() {
-            const loginOptions = {scope: 'profile payments:widget payments:shipping_address',
-              popup: true};
-            authRequest = amazon.Login.authorize (loginOptions,
-              '/dashboard/checkout');
-          }
-        });
-      }
-    });
+              private apollo: Apollo,
+              private tostr: ToastrService) {
   }
   duePayments: Payment[];
   completedPayments: Payment[];
@@ -102,6 +82,7 @@ export class PaymentsComponent implements OnInit {
       this.duePayments = [];
       this.completedPayments = [];
       data.data.payments.forEach((payment: Payment) => {
+        console.log(payment);
         if (payment.payment_status.id === '2') {
           this.duePayments.push({...payment});
         } else {
@@ -122,6 +103,21 @@ export class PaymentsComponent implements OnInit {
       data.data.payments.forEach((payment: Payment) => {
         this.receivedPayments.push({...payment});
       });
+    });
+  }
+  paymentComplete(paymentId: Payment) {
+    console.log(paymentId);
+    this.apollo.mutate({
+      mutation: COMPLETEPAYMENT,
+      variables: {
+        id: paymentId
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
+      }
+    }).toPromise().then((data) => {
+      this.tostr.success('Thanks for your support', 'Payment completed');
+      this.router.navigate(['dashboard/proposal']);
     });
   }
 }
