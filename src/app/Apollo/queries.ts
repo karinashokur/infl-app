@@ -260,6 +260,7 @@ $statusInfluencerWithSponsor: ID!, $statusNonProfitWithSponsor: ID!) {
       statusSponsor: $statusSponsor
       statusInfluencerWithSponsor: $statusInfluencerWithSponsor
       statusNonProfitWithSponsor: $statusNonProfitWithSponsor
+      hasCampaignStarted : false
     }
   }) {
     proposal{
@@ -281,6 +282,7 @@ export const GETPROPOSALSTATUSNONPROFIT = gql`
   query($id: String!) {
     proposals(sort: "proposalApprovalDate:asc", where: {
       non_profit: $id
+      hasCampaignStarted : false
       }) {
       id
       proposalApprovalDate
@@ -319,6 +321,7 @@ export const GETPROPOSALSTATUSINFLUENCER = gql`
     proposals(sort: "proposalApprovalDate:asc", where: {
       influencer: $id
       statusInfluencer_ne : "4"
+      hasCampaignStarted : false
       }) {
       id
       proposalApprovalDate
@@ -358,6 +361,7 @@ export const GETPROPOSALSTATUSSPONSOR = gql`
       sendOnlyToInfluencers: false
       statusSponsor_ne: "1"
       statusInfluencer: "1"
+      hasCampaignStarted : false
       }) {
       id
       proposalApprovalDate
@@ -628,6 +632,8 @@ mutation($proposalId: ID!) {
     }
     data: {
       isACampaign: true
+      hasCampaignStarted: false
+      hasCampaignEnded: false
     }
   }) {
     proposal {
@@ -659,9 +665,7 @@ query($influencer: ID!) {
   proposals(where: {
     isACampaign: true
     hasCampaignStarted: false
-    influencer: {
-      id: $influencer
-    }
+    influencer: $influencer
   }) {
     campaignName
     non_profit {
@@ -799,6 +803,7 @@ query($id: ID!) {
   proposals(
     where: {
     hasCampaignStarted: true
+    hasCampaignEnded: false
       influencer: $id
   },
   ) {
@@ -824,6 +829,7 @@ query($id: ID!) {
   proposals(
     where: {
     hasCampaignStarted: true
+    hasCampaignEnded: false
       non_profit: $id
   },
   ) {
@@ -849,6 +855,7 @@ query($id: ID!) {
   proposals(
     where: {
     hasCampaignStarted: true
+    hasCampaignEnded: false
       sponsor: $id
   },
   ) {
@@ -874,12 +881,14 @@ query($id: ID!) {
   payments(where: {
     from: $id
   }) {
+    id
     payment_status {
       id
     }
     amount
     proposal {
       campaignEndDate
+      campaignName
       non_profit {
         id
         non_profit {
@@ -997,6 +1006,55 @@ mutation($proposalId: ID!, $paymentId: ID!) {
         }
         amount
       }
+    }
+  }
+}`;
+export const PUBLICCAMPAIGNDETAILS = gql`
+query($id: ID!) {
+  campaign(id: $id) {
+    youtubeVideoLink
+    proposal {
+    campaignName
+    campaignDescription
+    sendOnlyToInfluencers
+      non_profit {
+        non_profit {
+          firstName
+          lastName
+          organisation
+        }
+      }
+      sponsor {
+        sponsor {
+          firstName
+          lastName
+          organisation
+        }
+      }
+      influencer {
+        influencer {
+          firstName
+          lastName
+          googlePhotoUrl
+          googleAuthToken
+        }
+      }
+    }
+  }
+}`;
+export const COMPLETEPAYMENT = gql`
+mutation($id: ID!) {
+   updatePayment(input: {
+      where: {
+        id: $id
+      }
+    data: {
+      payment_status: "1"
+    }
+  }
+  ) {
+    payment {
+      id
     }
   }
 }`;

@@ -1,0 +1,173 @@
+<head>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      margin: 0;
+    }
+    img {
+      width: 100%;
+      height: 60vh;
+    }
+    .inner {
+      position: fixed;
+      width: 70%;
+      background-color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 50px 100px;
+      border-radius: 5px;
+      box-shadow: 1px 2px 4px 0 rgba(58, 58, 58, 0.1);
+    }
+    .influencer-name {
+      font-family: Roboto;
+      font-size: 24px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+    .campaign-name {
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      color: #0099d9;
+      margin-top: 4px;
+    }
+    .sometext {
+      font-family: Roboto;
+      font-size: 10px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.4;
+      letter-spacing: normal;
+      color: #000000;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      width: 50%;
+    }
+    .form {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+    input {
+      border-radius: 5px;
+      border: solid 1.5px #dee2e2;
+      background-color: #ffffff;
+      padding: 20px 50px;
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #c4c4c4;
+    }
+    .left {
+      width: 24%;
+    }
+    .right {
+      width: 49%;
+    }
+    .amazon-donation {
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: italic;
+      line-height: 1.4;
+      letter-spacing: normal;
+      color: #3a3a3a;
+    }
+    .text-donation {
+      font-size: 10px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: italic;
+      line-height: 14px;
+      letter-spacing: normal;
+      color: #3a3a3a;
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script async src="https://static-na.payments-amazon.com/OffAmazonPayments/us/sandbox/js/Widgets.js"></script>
+</head>
+<div class="outer">
+  <div class="inner">
+    <div class="influencer-name">
+      Elijah Woods X Jamie Fine
+    </div>
+    <div class="campaign-name">
+      Stop Animal Hurting
+    </div>
+    <div class="sometext">
+      Elijah Woods x Jamie Fine have teamed up with the World Wildlife Fund and Beyond Meat to help raise awareness about climate change and it’s impact on animal welfare. Donate today to make a difference!
+    </div>
+    <form class="form">
+      <label class="left">
+        <span>Your Name</span>
+        <input class="input">
+      </label>
+      <label class="left">
+        <span>last Name</span>
+        <input class="input">
+      </label>
+      <label class="right">
+        <span>Email Address</span>
+        <input class="input">
+      </label>
+    </form>
+    <div class="amazon-donation">
+      <div class="heading-donation">
+        Enter Your Donation
+      </div>
+      <div class="text-donation">
+        Please note that 100% of your donation will be made directly to the nonprofit organization featured in this campaign
+      </div>
+      <div class="donation-component" *ngIf="scriptLoaded">
+        <div
+          data-ap-widget-type="expressDonationWidget"
+          data-ap-widget-theme="ap-light"
+          data-ap-widget-amount-presets="5,25,50,100"
+          data-ap-widget-default-amount="1"
+          data-ap-signature="v0v4cDy9PqWN%2FDmXCyIEyLVDRbaw25jHoKNZFDKckTg%3D"
+          data-ap-seller-id="A2S2XWN7B3EK8I"
+          data-ap-access-key="AKIAJKVNMI4FH74OQDUA"
+          data-ap-lwa-client-id="amzn1.application-oa2-client.be5c3cbc93584d519c0682ec45ec1a86"
+          data-ap-return-url="https://master.ddtfzmv0ytpn4.amplifyapp.com/dashboard/payment"
+          data-ap-currency-code="USD"
+          data-ap-amount="0"
+          data-ap-note=""
+          data-ap-shipping-address-required="false"
+          data-ap-payment-action="AuthorizeAndCapture"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="image">
+    <img src="assets/images/BlackBackground.png">
+  </div>
+</div>

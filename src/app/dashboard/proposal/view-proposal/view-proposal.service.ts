@@ -12,8 +12,10 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 class CreatePayment {
   data: {
-    payment: {
-      id
+    createPayment: {
+      payment: {
+        id
+      }
     }
   };
 }
@@ -35,6 +37,7 @@ export class ViewProposalService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data) => {
+      console.log('set is a campaign to true');
       this.createPaymentStoInf(influencerId, sponsorBudget, proposalId, sponsorId);
       this.createPaymentStoNP(nonProfitId, sponsorBudget, proposalId, sponsorId);
     });
@@ -47,9 +50,14 @@ export class ViewProposalService {
         sponsorId,
         proposalId,
         amount: amount / 2
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data: CreatePayment) => {
-        this.setPaymentStoI(proposalId, data.data.payment.id);
+        console.log('created payment from s to inf');
+        console.log(data);
+        this.setPaymentStoI(proposalId, data.data.createPayment.payment.id);
     });
   }
   createPaymentStoNP(id, amount, proposalId, sponsorId) {
@@ -60,9 +68,13 @@ export class ViewProposalService {
         sponsorId,
         proposalId,
         amount: amount / 2
+      },
+      context: {
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data: CreatePayment) => {
-      this.setPaymentStoNP(proposalId, data.data.payment.id);
+      console.log('created payment from s to np');
+      this.setPaymentStoNP(proposalId, data.data.createPayment.payment.id);
     });
   }
   private setPaymentStoI(proposalId: string, paymentId: string) {
@@ -76,6 +88,7 @@ export class ViewProposalService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data) => {
+      console.log('set payment from s to inf');
     });
   }
   private setPaymentStoNP(proposalId: string, paymentId: string) {
@@ -89,6 +102,7 @@ export class ViewProposalService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data) => {
+      console.log('set payment from s to np');
     });
   }
   startCampaignOnlyInfluencer(proposalId: any) {
