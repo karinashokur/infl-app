@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {get} from 'scriptjs';
-import {amazonPayUrl} from "../constants";
-import {Apollo} from "apollo-angular";
-import {PUBLICCAMPAIGNDETAILS} from "../Apollo/queries";
-import {ApolloQueryResult} from "apollo-client";
+import {amazonPayUrl} from '../constants';
+import {Apollo} from 'apollo-angular';
+import {PUBLICCAMPAIGNDETAILS} from '../Apollo/queries';
+import {ApolloQueryResult} from 'apollo-client';
 class PublicCampaignDetails {
   campaign: {
     youtubeVideoLink;

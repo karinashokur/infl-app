@@ -8,7 +8,7 @@ import {Apollo} from 'apollo-angular';
 import {COMPLETEPAYMENT, GETFROMPAYMENT, GETTOPAYMENT} from '../../Apollo/queries';
 import {HttpHeaders} from '@angular/common/http';
 import {ApolloQueryResult} from 'apollo-client';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 class Payments {
   payments: [Payment];
 }
