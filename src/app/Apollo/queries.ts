@@ -191,10 +191,11 @@ query {
   }
 }`;
 export const SEARCHQUERY = gql`
-query ($text: String!) {
+query ($text: String!, $types: [ID]) {
   influencers(
     where: {
       firstName_contains: $text
+      type_of_non_profit_organisations: $types
     }
     limit: 10
   ) {
@@ -1058,3 +1059,14 @@ mutation($id: ID!) {
     }
   }
 }`;
+export const GETNONPROFITTYPEOFNONPROFIT = gql`
+query($userId: ID!) {
+  user(id: $userId) {
+    non_profit {
+      type_of_non_profit_organisations {
+        id
+      }
+    }
+  }
+}
+`;
