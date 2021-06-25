@@ -11,17 +11,17 @@
         <tbody>
         <tr>
           <td *ngIf="payment.proposal.sponsor !== null">
-            {{payment.proposal.sponsor.sponsor.firstName}}{{payment.proposal.sponsor.sponsor.lastName}}
+            {{payment.proposal.sponsor.sponsor.firstName}} {{payment.proposal.sponsor.sponsor.lastName}}
             <br>
             {{payment.proposal.sponsor.sponsor.organisation}}
           </td>
           <td>
-            {{payment.proposal.influencer.influencer.firstName}}{{payment.proposal.influencer.influencer.lastName}}
+            {{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.lastName}}
             <br>
             YouTuber
           </td>
           <td>
-            {{payment.proposal.non_profit.non_profit.firstName}}{{payment.proposal.non_profit.non_profit.lastName}}
+            {{payment.proposal.non_profit.non_profit.firstName}} {{payment.proposal.non_profit.non_profit.lastName}}
             <br>
             {{payment.proposal.non_profit.non_profit.organisation}}
           </td>
@@ -87,14 +87,14 @@
         <td>{{payment.proposal.campaignEndDate}}</td>
         <td>{{payment.proposal.campaignName}}</td>
         <td>{{payment.proposal.non_profit.non_profit.organisation}}</td>
-        <td>{{payment.proposal.influencer.influencer.firstName}}{{payment.proposal.influencer.influencer.firstName}}</td>
+        <td>{{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.firstName}}</td>
         <td>Sent</td>
       </tr>
       <tr *ngFor="let payment of receivedPayments">
         <td>{{payment.proposal.campaignEndDate}}</td>
         <td>{{payment.proposal.campaignName}}</td>
         <td>{{payment.proposal.non_profit.non_profit.organisation}}</td>
-        <td>{{payment.proposal.influencer.influencer.firstName}}{{payment.proposal.influencer.influencer.firstName}}</td>
+        <td>{{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.firstName}}</td>
         <td>Received</td>
       </tr>
     </tbody>
