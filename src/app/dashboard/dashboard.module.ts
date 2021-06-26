@@ -34,7 +34,6 @@ import { ViewProposalSponsorComponent
 import { ViewProposalTopComponent
 } from './proposal/view-proposal/view-proposal-top/view-proposal-top.component';
 import { PaymentsComponent } from './payments/payments.component';
-import { CheckoutComponent } from './payments/checkout/checkout.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { ViewCampaignComponent } from './campaign/view-campaign/view-campaign.component';
 import { StartCampaignModalComponent } from './campaign/start-campaign-modal/start-campaign-modal.component';
@@ -64,7 +63,6 @@ import { EndCampaignModalComponent } from './campaign/end-campaign-modal/end-cam
     ViewProposalSponsorComponent,
     ViewProposalTopComponent,
     PaymentsComponent,
-    CheckoutComponent,
     CampaignComponent,
     ViewCampaignComponent,
     StartCampaignModalComponent,
