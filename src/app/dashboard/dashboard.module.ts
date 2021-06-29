@@ -37,7 +37,6 @@ import { PaymentsComponent } from './payments/payments.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { ViewCampaignComponent } from './campaign/view-campaign/view-campaign.component';
 import { StartCampaignModalComponent } from './campaign/start-campaign-modal/start-campaign-modal.component';
-import { EndCampaignComponent } from './campaign/end-campaign/end-campaign.component';
 import { EndCampaignModalComponent } from './campaign/end-campaign-modal/end-campaign-modal.component';
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { EndCampaignModalComponent } from './campaign/end-campaign-modal/end-cam
     CampaignComponent,
     ViewCampaignComponent,
     StartCampaignModalComponent,
-    EndCampaignComponent,
     EndCampaignModalComponent,
     ],
     exports: [
