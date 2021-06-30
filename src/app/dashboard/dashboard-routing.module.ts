@@ -22,7 +22,6 @@ import {ViewProposalSponsorComponent
 } from './proposal/view-proposal/view-proposal-sponsor/view-proposal-sponsor.component';
 import {PaymentsComponent} from './payments/payments.component';
 import {CampaignComponent} from './campaign/campaign.component';
-import {CheckoutComponent} from './payments/checkout/checkout.component';
 import {ViewCampaignComponent} from './campaign/view-campaign/view-campaign.component';
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
@@ -40,7 +39,6 @@ const routes: Routes = [
       {path: 'influencer/viewProposal/:id', component: ViewProposalInfluencerComponent},
       {path: 'sponsor/viewProposal/:id', component: ViewProposalSponsorComponent},
       {path: 'payments', component: PaymentsComponent},
-      {path: 'checkout', component: CheckoutComponent},
       {path: 'campaign', component: CampaignComponent},
       {path: 'campaign/:id', component: ViewCampaignComponent}
     ]},
