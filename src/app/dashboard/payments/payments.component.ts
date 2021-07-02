@@ -48,6 +48,9 @@ sponsor: {
 to: {
   id
 };
+from: {
+  id
+};
 }
 @Component({
   selector: 'app-payments',
@@ -79,6 +82,7 @@ export class PaymentsComponent implements OnInit {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data: ApolloQueryResult<Payments>) => {
+      console.log(data.data);
       this.duePayments = [];
       this.completedPayments = [];
       data.data.payments.forEach((payment: Payment) => {
@@ -99,6 +103,7 @@ export class PaymentsComponent implements OnInit {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
       }
     }).toPromise().then((data: ApolloQueryResult<Payments>) => {
+      console.log(data.data);
       this.receivedPayments = [];
       data.data.payments.forEach((payment: Payment) => {
         this.receivedPayments.push({...payment});

@@ -72,13 +72,13 @@
           Campaign Name
         </td>
         <td>
-          Non Profit
+          From
         </td>
         <td>
-          Influencer
+          To
         </td>
         <td>
-          Status
+          Amount
         </td>
       </tr>
     </thead>
@@ -86,16 +86,23 @@
       <tr *ngFor="let payment of completedPayments">
         <td>{{payment.proposal.campaignEndDate}}</td>
         <td>{{payment.proposal.campaignName}}</td>
-        <td>{{payment.proposal.non_profit.non_profit.organisation}}</td>
-        <td>{{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.firstName}}</td>
-        <td>Sent</td>
+        <td>
+          You
+        </td>
+        <td>
+          <ng-container *ngIf="payment.to.id === payment.proposal.influencer.id"> {{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.lastName}}</ng-container>
+          <ng-container *ngIf="payment.to.id === payment.proposal.non_profit.id"> {{payment.proposal.non_profit.non_profit.organisation}}</ng-container>
+        </td>
+        <td>{{payment.amount}}</td>
       </tr>
       <tr *ngFor="let payment of receivedPayments">
         <td>{{payment.proposal.campaignEndDate}}</td>
         <td>{{payment.proposal.campaignName}}</td>
-        <td>{{payment.proposal.non_profit.non_profit.organisation}}</td>
-        <td>{{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.firstName}}</td>
-        <td>Received</td>
+        <td>
+          <ng-container *ngIf="payment.from.id === payment.proposal.influencer.id"> {{payment.proposal.influencer.influencer.firstName}} {{payment.proposal.influencer.influencer.lastName}}</ng-container>
+          <ng-container *ngIf="payment.from.id === payment.proposal.sponsor.id"> {{payment.proposal.sponsor.sponsor.organisation}}</ng-container></td>
+        <td>You</td>
+        <td>{{payment.amount}}</td>
       </tr>
     </tbody>
   </table>
