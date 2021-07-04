@@ -57,7 +57,7 @@
     <tr *ngFor="let proposal of newCampaign.proposals">
       <td>{{proposal.campaignName}}</td>
       <td>{{proposal.non_profit.non_profit.organisation}}</td>
-      <td><ng-container *ngIf="proposal.sponsor !== null">{{proposal.sponsor.sponsor.firstName}}{{proposal.sponsor.sponsor.lastName}}</ng-container></td>
+      <td><ng-container *ngIf="proposal.sponsor !== null">{{proposal.sponsor.sponsor.firstName}} {{proposal.sponsor.sponsor.lastName}}</ng-container></td>
       <td><ng-container *ngIf="proposal.sponsor !== null">{{proposal.budgetSponsor}}</ng-container></td>
       <td><button (click)="showStartCampaignModal(proposal.id)" class="button">Start Campaign</button></td>
     </tr>
