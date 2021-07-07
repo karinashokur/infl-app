@@ -80,6 +80,9 @@
         <td>
           Amount
         </td>
+        <td>
+          Status
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -103,6 +106,8 @@
           <ng-container *ngIf="payment.from.id === payment.proposal.sponsor.id"> {{payment.proposal.sponsor.sponsor.organisation}}</ng-container></td>
         <td>You</td>
         <td>{{payment.amount}}</td>
+        <td><ng-container *ngIf="payment.payment_status.id === '1'">Done</ng-container>
+          <ng-container *ngIf="payment.payment_status.id === '2'">Pending</ng-container></td>
       </tr>
     </tbody>
   </table>
