@@ -97,6 +97,8 @@
           <ng-container *ngIf="payment.to.id === payment.proposal.non_profit.id"> {{payment.proposal.non_profit.non_profit.organisation}}</ng-container>
         </td>
         <td>{{payment.amount}}</td>
+        <td><ng-container *ngIf="payment.payment_status.id === '1'">Done</ng-container>
+          <ng-container *ngIf="payment.payment_status.id === '2'">Pending</ng-container></td>
       </tr>
       <tr *ngFor="let payment of receivedPayments">
         <td>{{payment.proposal.campaignEndDate}}</td>
