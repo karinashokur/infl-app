@@ -51,12 +51,7 @@ export class PublicDonationCampaignComponent implements OnInit {
   scriptLoaded: boolean;
   campaignDetails: PublicCampaignDetails;
   ngOnInit(): void {
-    if (!this.scriptLoaded) {
-      get(amazonPayUrl, () => {
-        console.log('loaded');
-        this.scriptLoaded = true;
-      });
-    }
+    this.scriptLoaded = true;
     this.campaignId = this.activatedRoute.snapshot.paramMap.get('id');
     this.url = this.router.url;
     console.log(this.campaignId);
