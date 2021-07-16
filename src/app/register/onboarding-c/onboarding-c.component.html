@@ -51,7 +51,7 @@
       </form>
       <form (ngSubmit)="submitNonProfit()" [formGroup]="formNonProfit" *ngIf="currentProfile == profiles.nonProfit">
         <div class="container">
-          <label for="name"><b>What’s your first name?</b></label>
+          <label for="name"><b>What is the name of your organization?</b></label>
           <input type="text" placeholder="Name" name="name" formControlName="name" required>
           <div class="select-option-text">
             Please select the category your organization represents
