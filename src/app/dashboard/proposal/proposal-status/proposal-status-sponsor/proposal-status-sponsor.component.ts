@@ -35,6 +35,8 @@ export class ProposalStatusSponsorComponent implements OnInit {
     this.router.navigate(['dashboard/viewProposal', id]);
   }
   getRemainingDays(proposalApprovalDate: Date) {
-    return 2;
+    const currentDate = new Date();
+    const diff = proposalApprovalDate.getTime() - currentDate.getTime();
+    return Math.ceil(diff / (1000 * 3600 * 24));
   }
 }

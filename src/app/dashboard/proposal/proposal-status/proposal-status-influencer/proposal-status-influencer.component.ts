@@ -20,6 +20,7 @@ export class ProposalStatusInfluencerComponent implements OnInit {
   proposals: ProposalStatus[];
   status = proposalStatus;
   ngOnInit(): void {
+    console.log(this.getRemainingDays(new Date('2020-07-27')));
     this.apollo.mutate({
       mutation: GETPROPOSALSTATUSINFLUENCER,
       variables: {
@@ -53,6 +54,8 @@ export class ProposalStatusInfluencerComponent implements OnInit {
     this.router.navigate(['dashboard/viewProposal', id]);
   }
   getRemainingDays(proposalApprovalDate: Date) {
-    return 2;
+    const currentDate = new Date();
+    const diff = proposalApprovalDate.getTime() - currentDate.getTime();
+    return Math.ceil(diff / (1000 * 3600 * 24));
   }
 }
