@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RegisterServiceService} from '../register-service.service';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
-import {influencerCategories, onBoardingCProfiles} from '../../constants';
+import {influencerCategories, nonProfitCategories, onBoardingCProfiles} from '../../constants';
 @Component({
   selector: 'app-onboarding-c',
   templateUrl: './onboarding-c.component.html',
@@ -20,7 +20,7 @@ export class OnboardingCComponent implements OnInit {
   }
   currentProfile;
   profiles = onBoardingCProfiles;
-  options = influencerCategories;
+  options = nonProfitCategories;
   formInfluencer = this.formBuilder.group({
       selectedDescription: new FormArray([]),
       partnershipWithNonProfit: ['', Validators.required]

@@ -90,8 +90,8 @@ export class RegisterServiceService {
         lastName: this.questionnaireA.lastName,
         organisation: this.questionnaireC.nameOfCompany,
         user: this.localstorageService.getId(),
-        type_of_influencers: this.questionnaireB.contentType,
-        type_of_non_profit_organisations: this.questionnaireC.nonprofitInterestedIn
+        type_of_influencers: this.questionnaireC.nonprofitInterestedIn,
+        type_of_non_profit_organisations: this.questionnaireB.contentType
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
@@ -110,8 +110,8 @@ export class RegisterServiceService {
         lastName: this.questionnaireA.lastName,
         organisation: this.questionnaireC.nameOfOrganization,
         user: this.localstorageService.getId(),
-        type_of_influencers: this.questionnaireB.contentType,
-        type_of_non_profit_organisations: this.questionnaireC.categoryOrganizationRepresent
+        type_of_influencers: this.questionnaireC.categoryOrganizationRepresent,
+        type_of_non_profit_organisations: this.questionnaireB.contentType
       },
       context: {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
@@ -131,8 +131,8 @@ export class RegisterServiceService {
         interestedInDonating: this.questionnaireC.interestedInDonating,
         rangeOfCompensation: this.questionnaireD.compensationRange,
         user: this.localstorageService.getId(),
-        type_of_influencers: this.questionnaireB.contentType,
-        type_of_non_profit_organisations: this.questionnaireC.typeOfInterestedNonProfit,
+        type_of_influencers: this.questionnaireC.typeOfInterestedNonProfit,
+        type_of_non_profit_organisations: this.questionnaireB.contentType,
         googleAuthToken: token.google.authToken,
         googlePhotoUrl: token.google.photoUrl
       },

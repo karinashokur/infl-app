@@ -21,7 +21,7 @@
     </div>
     <div class="boolean-select-option campaignRevenueGenerated">
       <div class="input-text">
-        How much of the campaign revenue generated are you interested in giving back?
+        How much of the campaign revenue % are you interested in giving back?
       </div>
       <input *ngIf="proposal.proposal.statusInfluencer.id !== '1'" formControlName="revenueDonated" class="input-style revenueDonated" type="number" placeholder="10" min="0" max="100">
       <ng-container *ngIf="proposal.proposal.statusInfluencer.id === '1'">

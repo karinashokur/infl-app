@@ -73,6 +73,7 @@ export class NonProfitComponent implements OnInit {
       gt.data.user.non_profit.type_of_non_profit_organisations.forEach((np: {id: string}) => {
         nonProfitTypes.push(np.id);
       });
+      console.log(nonProfitTypes);
       this.route.queryParams.subscribe(params => {
           console.log(params); 
           if (params.q) {
@@ -92,6 +93,7 @@ export class NonProfitComponent implements OnInit {
               headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.localstorageService.getJwtToken()),
             }
           }).toPromise().then((data: InfluencerCardQuery) => {
+            console.log(data);
             this.influencers = [...data.data.influencers];
           });
         });
