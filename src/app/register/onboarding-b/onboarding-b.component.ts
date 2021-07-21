@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RegisterServiceService} from '../register-service.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {influencerCategories, nonProfitCategories, onBoardingScreenB} from '../../constants';
+import {influencerCategories, influencerId, nonProfitCategories, onBoardingScreenB} from '../../constants';
 @Component({
   selector: 'app-onboarding-b',
   templateUrl: './onboarding-b.component.html',
@@ -21,6 +21,7 @@ export class OnboardingBComponent implements OnInit {
   currentProfile;
   profiles = onBoardingScreenB;
   options = influencerCategories;
+  optionID = influencerId;
   form = this.formBuilder.group({
     selectedOptions: new FormArray([])
   });

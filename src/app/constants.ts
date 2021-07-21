@@ -1,8 +1,25 @@
 import {HttpHeaders} from '@angular/common/http';
-export const influencerCategories = ['Auto & Vehicles', 'Comedy', 'Education', 'Entertainment', 'Fashion',
-  'Film & Animation', 'Food & Beverage', 'Gaming', 'Health & Fitness', 'How To',
-  'Music', 'News & Politics', 'Nonprofit & Activism', 'People & Blogs', 'Pets & Animals',
-  'Science & Technology', 'Self Care & Beauty', 'Sports', 'Travel & Events'];
+export const influencerCategories = [
+  'Auto & Vehicles',
+  'Comedy',
+  'Education',
+  'Entertainment',
+  'Fashion',
+  'Film & Animation',
+  'Food & Beverage',
+  'Gaming',
+  'Health & Fitness',
+  'How To',
+  'Music',
+  'News & Politics',
+  'Nonprofit & Activism',
+  'People & Blogs',
+  'Pets & Animals',
+  'Science & Technology',
+  'Self Care & Beauty',
+  'Sports',
+  'Travel & Events'];
+export const influencerId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20];
 export const nonProfitCategories = ['Animals', 'Arts, Culture, Humanities', 'Community Development', 'Education',
   'Environment', 'Health', 'Human & Civil Rights', 'Human Services', 'International',
   'Religion', 'Research & Public Policy'];
