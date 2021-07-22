@@ -262,20 +262,13 @@ $statusInfluencerWithSponsor: ID!, $statusNonProfitWithSponsor: ID!) {
       statusInfluencerWithSponsor: $statusInfluencerWithSponsor
       statusNonProfitWithSponsor: $statusNonProfitWithSponsor
       hasCampaignStarted : false
+      hasCampaignEnded: false
     }
   }) {
     proposal{
       id
       campaignName
       campaignEndDate
-      campaignStartDate
-      non_profit {
-        id
-        non_profit {
-          firstName
-          lastName
-        }
-      }
     }
   }
 }`;
@@ -322,6 +315,7 @@ export const GETPROPOSALSTATUSINFLUENCER = gql`
     proposals(sort: "proposalApprovalDate:asc", where: {
       influencer: $id
       statusInfluencer_ne : "4"
+      # isACampaign: false
       hasCampaignStarted : false
       }) {
       id
@@ -359,7 +353,7 @@ export const GETPROPOSALSTATUSINFLUENCER = gql`
 export const GETPROPOSALSTATUSSPONSOR = gql`
  query {
     proposals(sort: "proposalApprovalDate:asc", where: {
-      sendOnlyToInfluencers: false
+      sponsorshipIntegration: true
       statusSponsor_ne: "1"
       statusInfluencer: "1"
       hasCampaignStarted : false

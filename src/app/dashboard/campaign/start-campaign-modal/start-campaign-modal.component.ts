@@ -58,7 +58,7 @@ export class StartCampaignModalComponent implements OnInit {
   }
   redirect() {
     this.show = false;
-    this.router.navigate(['dashboard/campaign']);
+    this.router.navigate(['dashboard/influencer']);
   }
   submitId() {
     this.apollo.mutate({

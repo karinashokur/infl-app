@@ -51,7 +51,7 @@ export class ViewProposalInfluencerComponent implements OnInit {
   onAccept() {
     if (this.influencerProposalForm.valid) {
       console.log(this.influencerProposalForm.value);
-      if (this.proposal.proposal.sendOnlyToInfluencers) {
+      if (!this.proposal.proposal.sponsorshipIntegration) {
         this.viewProposalService.startCampaignOnlyInfluencer(this.proposalId);
       }
       this.apollo.mutate({

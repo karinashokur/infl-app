@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
-import {nonProfitCategories} from '../../../constants';
+import {influencerCategories, influencerId, nonProfitCategories} from '../../../constants';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProposalService} from './create-proposal.service';
 import {ToastrService} from 'ngx-toastr';
@@ -47,7 +47,8 @@ export class CreateProposalComponent implements OnInit {
     offerTaxReceipt: ['', Validators.required],
     anyThingElse: ['', Validators.required]
   });
-  campaignCategory = nonProfitCategories;
+  campaignCategory = influencerCategories;
+  campaignCategoryId = influencerId;
   influencerId;
   influencerDetails: InfluencerDetails;
   onCheckChange(e) {

@@ -86,13 +86,20 @@ export class UserProfileComponent implements OnInit {
     this.sponsorCategories = nonProfitCategories;
   }
   getYoutube() {
-    console.log('used TOken');
     this.youtubeService.getYoutubeData(this.googleAuthToken).then((youtubeData: YoutubeData) => {
       console.log(youtubeData);
       this.userProfile.audience[0].stats = {...youtubeData.items[0].statistics};
       this.channelName = youtubeData.items[0].brandingSettings.channel.title;
       this.channelDescription = youtubeData.items[0].brandingSettings.channel.description;
       this.bannerImage = youtubeData.items[0].brandingSettings.image.bannerImageUrl;
+    }).catch((error) => {
+      console.log(error);
+      this.userProfile.audience[0].stats = {
+        authToken: 'expired'
+      };
+      this.channelName = '';
+      this.channelDescription = '';
+      this.bannerImage = 'assets/images/road-nature-trees-branches-38537.jpg';
     });
   }
   isCategorySelected(num): boolean {

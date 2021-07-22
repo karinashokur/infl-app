@@ -6,13 +6,10 @@
     <div class="inner-details-tabs">
       <div class="details-tabs-left">
         <div class="tags">
-          <span *ngFor="let tags of selectedInfluencer">{{sponsorCategories[tags-1]}} &nbsp;</span>
+          <span *ngFor="let tags of selectedInfluencer">{{sponsorCategories[tags-1]}} &nbsp; | &nbsp;</span>
         </div>
         <div class="name">
           {{userProfile.firstName}} {{userProfile.lastName}}
-        </div>
-        <div class="location">
-          {{userProfile.position}} of {{userProfile.organisation}}
         </div>
       </div>
       <div class="details-tabs-right">

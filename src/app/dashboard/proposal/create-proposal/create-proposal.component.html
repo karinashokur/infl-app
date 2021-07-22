@@ -9,7 +9,7 @@
     </div>
     <div class="name-detail">
       <div class="name">
-        {{influencerDetails.user.influencer.firstName}}{{influencerDetails.user.influencer.lastName}}
+        {{influencerDetails.user.influencer.firstName}} {{influencerDetails.user.influencer.lastName}}
       </div>
       <div class="post">
         Influencer(s)
@@ -36,7 +36,7 @@
         Campaign Category
       </div>
       <select class="input-style" formControlName="campaignCategory">
-        <option *ngFor="let category of campaignCategory; let i = index" value="{{i+1}}">{{category}}</option>
+        <option *ngFor="let category of campaignCategory; let i = index" value="{{campaignCategoryId[i]}}">{{category}}</option>
       </select>
     </div>
   </div>

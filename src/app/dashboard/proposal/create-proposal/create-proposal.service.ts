@@ -33,7 +33,7 @@ export class CreateProposalService {
         anyThingElse: form.anyThingElse,
         id: this.localstorageService.getId(),
         influencerId,
-        statusSponsor: form.sendOnlyToInfluencer ? '6' : '7',
+        statusSponsor: form.interestInForProfit ? '7' : '6',
         statusInfluencerWithSponsor: '5',
         statusNonProfitWithSponsor : '5'
       },

@@ -55,7 +55,7 @@ export class ProposalStatusInfluencerComponent implements OnInit {
   }
   getRemainingDays(proposalApprovalDate: Date) {
     const currentDate = new Date();
-    const diff = proposalApprovalDate.getTime() - currentDate.getTime();
+    const diff = new Date(proposalApprovalDate).getTime() - currentDate.getTime();
     return Math.ceil(diff / (1000 * 3600 * 24));
   }
 }

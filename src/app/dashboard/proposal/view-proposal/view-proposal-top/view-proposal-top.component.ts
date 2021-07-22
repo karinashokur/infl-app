@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {nonProfitCategories} from '../../../../constants';
+import {influencerCategories, influencerId, nonProfitCategories} from '../../../../constants';
 import {ViewProposal} from '../viewProposal';
 @Component({
   selector: 'app-view-proposal-top',
@@ -10,7 +10,8 @@ export class ViewProposalTopComponent implements OnInit {
   constructor() { }
   @Input()
   proposal: ViewProposal;
-  categories = nonProfitCategories;
+  categories = influencerCategories;
+  categoriesId = influencerId;
   ngOnInit(): void {
   }
   isCheckBox(num: number) {
@@ -21,5 +22,9 @@ export class ViewProposalTopComponent implements OnInit {
       }
     });
     return isPresent;
+  }
+  getCategoryIndex(id) {
+    const numId = Number(id);
+    return this.categoriesId.indexOf(numId)+1;
   }
 }
