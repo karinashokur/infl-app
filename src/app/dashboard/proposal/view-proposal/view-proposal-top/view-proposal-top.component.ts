@@ -25,6 +25,6 @@ export class ViewProposalTopComponent implements OnInit {
   }
   getCategoryIndex(id) {
     const numId = Number(id);
-    return this.categoriesId.indexOf(numId)+1;
+    return this.categoriesId.indexOf(numId) + 1;
   }
 }
