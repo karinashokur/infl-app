@@ -99,7 +99,7 @@ export class UserProfileComponent implements OnInit {
       };
       this.channelName = '';
       this.channelDescription = '';
-      this.bannerImage = 'assets/images/road-nature-trees-branches-38537.jpg';
+      this.bannerImage = 'assets/images/elijah-and-jamie-1000x500.jpg';
     });
   }
   isCategorySelected(num): boolean {
