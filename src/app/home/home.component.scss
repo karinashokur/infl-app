@@ -83,6 +83,7 @@ header {
     justify-content: center;
     display: flex;
     flex-direction: column;
+    margin-right: 28px;
   .heading {
       font-family: Roboto;
       font-size: 36px;
@@ -92,6 +93,7 @@ header {
       line-height: normal;
       letter-spacing: normal;
       color: #3a3a3a;
+    margin-bottom: 18px;
     }
     .text {
       font-family: Roboto;
@@ -130,6 +132,9 @@ header {
 .section2 {
   padding: 100px 100px;
   display: flex;
+  .left {
+    margin-right: 28px;
+  }
   .right {
     width: 50%;
     justify-content: center;
